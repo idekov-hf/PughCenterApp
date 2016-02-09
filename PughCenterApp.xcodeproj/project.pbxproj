@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5D1657871C6AA24A005D2229 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1657861C6AA24A005D2229 /* SWRevealViewController.m */; };
+		5D1657891C6AAA18005D2229 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */; };
+		5D16578B1C6AAD73005D2229 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */; };
 		5DA58EFF1C696EFD00CB062D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */; };
-		5DA58F011C696EFD00CB062D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA58F001C696EFD00CB062D /* ViewController.swift */; };
 		5DA58F041C696EFD00CB062D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F021C696EFD00CB062D /* Main.storyboard */; };
 		5DA58F061C696EFD00CB062D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F051C696EFD00CB062D /* Assets.xcassets */; };
 		5DA58F091C696EFD00CB062D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F071C696EFD00CB062D /* LaunchScreen.storyboard */; };
@@ -19,9 +20,10 @@
 		5D1657841C6AA249005D2229 /* PughCenterApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PughCenterApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		5D1657851C6AA24A005D2229 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		5D1657861C6AA24A005D2229 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
+		5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		5DA58EFB1C696EFD00CB062D /* PughCenterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PughCenterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5DA58F001C696EFD00CB062D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5DA58F031C696EFD00CB062D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5DA58F051C696EFD00CB062D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DA58F081C696EFD00CB062D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -70,7 +72,8 @@
 			children = (
 				5D1657831C6AA1AD005D2229 /* SWRevealViewController */,
 				5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */,
-				5DA58F001C696EFD00CB062D /* ViewController.swift */,
+				5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */,
+				5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */,
 				5DA58F021C696EFD00CB062D /* Main.storyboard */,
 				5DA58F051C696EFD00CB062D /* Assets.xcassets */,
 				5DA58F071C696EFD00CB062D /* LaunchScreen.storyboard */,
@@ -150,9 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DA58F011C696EFD00CB062D /* ViewController.swift in Sources */,
+				5D16578B1C6AAD73005D2229 /* EventsTableViewCell.swift in Sources */,
 				5DA58EFF1C696EFD00CB062D /* AppDelegate.swift in Sources */,
 				5D1657871C6AA24A005D2229 /* SWRevealViewController.m in Sources */,
+				5D1657891C6AAA18005D2229 /* EventsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
