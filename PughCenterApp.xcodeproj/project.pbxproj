@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D1657871C6AA24A005D2229 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1657861C6AA24A005D2229 /* SWRevealViewController.m */; };
 		5DA58EFF1C696EFD00CB062D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */; };
 		5DA58F011C696EFD00CB062D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA58F001C696EFD00CB062D /* ViewController.swift */; };
 		5DA58F041C696EFD00CB062D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F021C696EFD00CB062D /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D1657841C6AA249005D2229 /* PughCenterApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PughCenterApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		5D1657851C6AA24A005D2229 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		5D1657861C6AA24A005D2229 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		5DA58EFB1C696EFD00CB062D /* PughCenterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PughCenterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DA58F001C696EFD00CB062D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +39,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D1657831C6AA1AD005D2229 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5D1657851C6AA24A005D2229 /* SWRevealViewController.h */,
+				5D1657861C6AA24A005D2229 /* SWRevealViewController.m */,
+				5D1657841C6AA249005D2229 /* PughCenterApp-Bridging-Header.h */,
+			);
+			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		5DA58EF21C696EFD00CB062D = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +68,7 @@
 		5DA58EFD1C696EFD00CB062D /* PughCenterApp */ = {
 			isa = PBXGroup;
 			children = (
+				5D1657831C6AA1AD005D2229 /* SWRevealViewController */,
 				5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */,
 				5DA58F001C696EFD00CB062D /* ViewController.swift */,
 				5DA58F021C696EFD00CB062D /* Main.storyboard */,
@@ -137,6 +152,7 @@
 			files = (
 				5DA58F011C696EFD00CB062D /* ViewController.swift in Sources */,
 				5DA58EFF1C696EFD00CB062D /* AppDelegate.swift in Sources */,
+				5D1657871C6AA24A005D2229 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,10 +263,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PughCenterApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iavordekov.PughCenterApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PughCenterApp/PughCenterApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -258,10 +277,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PughCenterApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iavordekov.PughCenterApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PughCenterApp/PughCenterApp-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -284,6 +305,7 @@
 				5DA58F0F1C696EFD00CB062D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
