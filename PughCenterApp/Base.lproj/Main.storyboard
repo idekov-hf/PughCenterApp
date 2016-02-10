@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="245" y="337"/>
         </scene>
-        <!--Events-->
+        <!--Events Controller-->
         <scene sceneID="rf2-iI-xUf">
             <objects>
-                <tableViewController id="08v-8T-YcL" customClass="EventsTableViewController" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Events Controller" id="08v-8T-YcL" customClass="EventsTableViewController" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ii5-Qn-4IA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,7 +59,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duy-H4-wt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1640" y="337"/>
+            <point key="canvasLocation" x="1638" y="-356"/>
         </scene>
         <!--Menu Controller-->
         <scene sceneID="29h-nL-09l">
@@ -72,7 +72,7 @@
                         <sections>
                             <tableViewSection id="Wxb-jA-GN8">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Tku-0C-CUD">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Tku-0C-CUD">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tku-0C-CUD" id="7ZL-q5-zNv">
@@ -138,6 +138,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Kbv-pa-DgR" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Ve9-rN-RpA"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rhG-Gu-YWG">
                                         <rect key="frame" x="0.0" y="176" width="600" height="44"/>
@@ -154,6 +157,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="esX-Lx-888" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="PhJ-Vu-Ewl"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -168,10 +174,119 @@
             </objects>
             <point key="canvasLocation" x="245" y="1048"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Contact Controller-->
+        <scene sceneID="5aB-Ha-P4x">
+            <objects>
+                <viewController title="Contact Controller" id="o1R-mD-Wjt" customClass="ContactViewController" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mng-wD-AkW"/>
+                        <viewControllerLayoutGuide type="bottom" id="RRh-QK-En9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jaL-kH-pNz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpn-hB-gct">
+                                <rect key="frame" x="20" y="72" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8Z-Jj-CBe">
+                                <rect key="frame" x="20" y="101" width="189" height="44"/>
+                                <string key="text">4250 Mayflower Hill
+Waterville, Maine 04901</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iaf-l5-XBG">
+                                <rect key="frame" x="20" y="158" width="54" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="207-859-4250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLF-uW-OtI">
+                                <rect key="frame" x="20" y="187" width="117" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="E-mail:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRe-fi-XLu">
+                                <rect key="frame" x="20" y="223" width="54" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="pughcenter@colby.edu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wet-Pw-AwQ">
+                                <rect key="frame" x="20" y="252" width="177" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Contact" id="Wrk-c2-JvK">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="1Sm-qS-vNI"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="1Sm-qS-vNI" id="1Se-Np-zVw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zNg-OW-9B9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1638" y="1064"/>
+        </scene>
+        <!--About Controller-->
+        <scene sceneID="mfG-OB-igF">
+            <objects>
+                <viewController title="About Controller" id="vSu-kw-TRE" customClass="AboutViewController" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="scU-3c-uSa"/>
+                        <viewControllerLayoutGuide type="bottom" id="Piq-ox-VoO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d9l-of-gmR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Pugh Center's Purpose is to:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mg-Jg-9UM">
+                                <rect key="frame" x="20" y="72" width="252" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyL-Pe-CzE">
+                                <rect key="frame" x="20" y="101" width="290" height="479"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">•  Engage students to become critical and imaginative thinkers who are welcoming of diversity and ready for leadership in our global society
+•  Serve as a gathering place for students who are devoted to learning about and understanding experiences and issues related to race, ethnicity, gender,
+culture, sexual orientation, identity, and spirituality
+•  Provide social justice leadership opportunities through student clubs and organizations
+•  Facilitate the exploration of various experiences through the presentation of lectures, performances, discussions, trainings, symposia, and intentional dialogue
+•  Advocate for a campus climate that is welcoming and inclusive of students from Colby College’s underrepresented groups
+•  Support student success through strategic relations and targeted retention efforts</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14.5"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="55S-Fy-2Sz">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="G7B-eW-OcU"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="G7B-eW-OcU" id="3PO-bh-reK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igl-Fr-v5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1658" y="367"/>
+        </scene>
+        <!--Events Navigation Controller-->
         <scene sceneID="gH6-pv-qOE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bh5-X1-j3R" sceneMemberID="viewController">
+                <navigationController title="Events Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="bh5-X1-j3R" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vsE-B2-Zhf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -184,7 +299,43 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ph0-dk-X2S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="942" y="337"/>
+            <point key="canvasLocation" x="952" y="-356"/>
+        </scene>
+        <!--About Navigation Controller-->
+        <scene sceneID="Q35-HW-1Gg">
+            <objects>
+                <navigationController title="About Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="esX-Lx-888" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1EH-Ra-BU7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vSu-kw-TRE" kind="relationship" relationship="rootViewController" id="jZ3-Ug-pc5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9hx-bE-QNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="952" y="367"/>
+        </scene>
+        <!--Contact Navigation Controller-->
+        <scene sceneID="2wE-te-Znp">
+            <objects>
+                <navigationController title="Contact Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="Kbv-pa-DgR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TwQ-BD-uTL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="o1R-mD-Wjt" kind="relationship" relationship="rootViewController" id="MJx-90-SRf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uM3-MV-npR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="952" y="1064"/>
         </scene>
     </scenes>
     <resources>

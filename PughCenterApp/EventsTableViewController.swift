@@ -10,7 +10,7 @@ import UIKit
 
 class EventsTableViewController: UITableViewController {
     
-    @IBOutlet var menuButton:UIBarButtonItem!
+    @IBOutlet var menuButton: UIBarButtonItem!
     
     var screenWidth: CGFloat = 0
     
@@ -36,6 +36,7 @@ class EventsTableViewController: UITableViewController {
     
     override func viewDidLayoutSubviews() {
         self.screenWidth = self.view.frame.size.width
+        print(self.screenWidth)
     }
 
     override func didReceiveMemoryWarning() {
