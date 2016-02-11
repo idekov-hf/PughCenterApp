@@ -36,7 +36,6 @@ class EventsTableViewController: UITableViewController {
     
     override func viewDidLayoutSubviews() {
         self.screenWidth = self.view.frame.size.width
-        print(self.screenWidth)
     }
 
     override func didReceiveMemoryWarning() {
