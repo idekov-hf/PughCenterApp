@@ -41,7 +41,7 @@ class ClubsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showClubDetails" {
             
-            let indexPath:NSIndexPath = tableView.indexPathForSelectedRow!
+            let indexPath: NSIndexPath = tableView.indexPathForSelectedRow!
             
             let detailsController = segue.destinationViewController as! ClubDetailViewController
             
