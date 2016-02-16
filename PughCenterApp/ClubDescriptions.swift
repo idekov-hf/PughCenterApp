@@ -8,6 +8,22 @@
 
 import Foundation
 
+let clubNames: [String] = [
+    "Amnesty International",
+    "Asian-American Student Association",
+    "Colby International Club",
+    "Colby Muslim Group",
+    "Four Winds",
+    "Gentlemen of Quality",
+    "Hillel",
+    "Newman Council",
+    "Students Organized for Black and Hispanic Unity (SOBHU)",
+    "Students Toward Equality and Peace (STEP)",
+    "The Bridge",
+    "The Feminist Alliance",
+    "The Pugh Community Board (PCB)"
+]
+
 let clubDescriptions: [String: String] = [
     "Amnesty International": "Strives to increase awareness of human-rights struggles around the world.",
     "Asian-American Student Association": "Supports the issues and concerns of Asian cultures represented in the student body.",

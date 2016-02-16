@@ -13,7 +13,6 @@ class ClubsTableViewController: UITableViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
     
     var screenWidth: CGFloat = 0
-    var selectedTag: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,23 +40,19 @@ class ClubsTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showClubDetails" {
-            let detailsController = segue.destinationViewController as! ClubDetailViewController;
-            if let name = self.view.viewWithTag(1) as? UILabel {
-                detailsController.clubNameString = name.text!
-                detailsController.clubDescriptionString = clubDescriptions[name.text!]!
-            }
+            
+            let indexPath:NSIndexPath = tableView.indexPathForSelectedRow!
+            
+            let detailsController = segue.destinationViewController as! ClubDetailViewController
+            
+            detailsController.clubNameString = clubNames[indexPath.row]
+            detailsController.clubDescriptionString = clubDescriptions[clubNames[indexPath.row]]!
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesBegan(touches, withEvent: event)
-        let touch: UITouch = touches.first! 
-        self.selectedTag = touch.view!.tag
     }
 
     // MARK: - Table view data source
