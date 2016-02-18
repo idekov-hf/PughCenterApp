@@ -740,21 +740,16 @@ culture, sexual orientation, identity, and spirituality
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYW-ps-jc3">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rYW-ps-jc3" firstAttribute="top" secondItem="Xik-dA-nIK" secondAttribute="bottom" id="7qs-3g-3xO"/>
-                            <constraint firstItem="rYW-ps-jc3" firstAttribute="centerX" secondItem="uDl-PI-qOR" secondAttribute="centerX" id="C5b-ja-2oQ"/>
-                            <constraint firstAttribute="trailing" secondItem="rYW-ps-jc3" secondAttribute="trailing" id="Sez-ll-VwM"/>
-                            <constraint firstItem="rYW-ps-jc3" firstAttribute="leading" secondItem="uDl-PI-qOR" secondAttribute="leading" id="bE5-5c-ReB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rYW-ps-jc3" secondAttribute="trailing" constant="-20" id="cuz-dF-c6G"/>
-                            <constraint firstItem="rYW-ps-jc3" firstAttribute="top" secondItem="Xik-dA-nIK" secondAttribute="bottom" id="grr-bh-akH"/>
-                            <constraint firstItem="rYW-ps-jc3" firstAttribute="leading" secondItem="uDl-PI-qOR" secondAttribute="leadingMargin" constant="-20" id="kue-Ep-J7D"/>
-                            <constraint firstItem="avW-il-lRN" firstAttribute="top" secondItem="rYW-ps-jc3" secondAttribute="bottom" id="p0O-Cr-FQ1"/>
-                            <constraint firstItem="avW-il-lRN" firstAttribute="top" secondItem="rYW-ps-jc3" secondAttribute="bottom" id="tf2-bw-w3r"/>
+                            <constraint firstItem="rYW-ps-jc3" firstAttribute="leading" secondItem="uDl-PI-qOR" secondAttribute="leading" id="5wt-OD-fMu"/>
+                            <constraint firstItem="rYW-ps-jc3" firstAttribute="bottom" secondItem="avW-il-lRN" secondAttribute="top" id="It2-ev-Bqq"/>
+                            <constraint firstItem="rYW-ps-jc3" firstAttribute="top" secondItem="uDl-PI-qOR" secondAttribute="top" id="MRV-9a-X9x"/>
+                            <constraint firstItem="rYW-ps-jc3" firstAttribute="centerX" secondItem="uDl-PI-qOR" secondAttribute="centerX" id="YYl-UU-Lxq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Colby Pugh" id="Nk3-DM-aI3">
