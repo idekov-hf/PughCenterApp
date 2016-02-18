@@ -20,6 +20,7 @@
 		5DCBD46F1C72C15200A6E09D /* ClubsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */; };
 		5DCBD4711C72DE1F00A6E09D /* ClubDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */; };
 		5DCBD4731C72E0A600A6E09D /* ClubDescriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBD4721C72E0A600A6E09D /* ClubDescriptions.swift */; };
+		5DCC00C01C760C8200B29657 /* FacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubsTableViewController.swift; sourceTree = "<group>"; };
 		5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailViewController.swift; sourceTree = "<group>"; };
 		5DCBD4721C72E0A600A6E09D /* ClubDescriptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDescriptions.swift; sourceTree = "<group>"; };
+		5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */,
 				5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */,
 				5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */,
+				5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */,
 				5D644C2A1C6AFD0C002FC8E9 /* AboutViewController.swift */,
 				5D644C2C1C6B0899002FC8E9 /* ContactViewController.swift */,
 				5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */,
@@ -174,6 +177,7 @@
 			files = (
 				5DCBD46F1C72C15200A6E09D /* ClubsTableViewController.swift in Sources */,
 				5DCBD4711C72DE1F00A6E09D /* ClubDetailViewController.swift in Sources */,
+				5DCC00C01C760C8200B29657 /* FacebookViewController.swift in Sources */,
 				5D16578B1C6AAD73005D2229 /* EventsTableViewCell.swift in Sources */,
 				5DCBD4731C72E0A600A6E09D /* ClubDescriptions.swift in Sources */,
 				5DA58EFF1C696EFD00CB062D /* AppDelegate.swift in Sources */,
