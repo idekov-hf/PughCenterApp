@@ -22,7 +22,7 @@ class ClubsTableViewController: UITableViewController {
         if revealViewController() != nil {
             revealViewController().rearViewRevealWidth = screenWidth / 2
             menuButton.target = revealViewController()
-            menuButton.action = "revealToggle:"
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
