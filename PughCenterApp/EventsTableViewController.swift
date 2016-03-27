@@ -12,6 +12,7 @@ class EventsTableViewController: UITableViewController {
     
     @IBOutlet var menuButton: UIBarButtonItem!
     
+    var activityIndicator: UIActivityIndicatorView!
     static var outDateFormatter: NSDateFormatter = {
         var formatter = NSDateFormatter()
         formatter.dateFormat = "EEEE, MMMM dd, 'at' h:mm a"
@@ -23,12 +24,19 @@ class EventsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Parse
-        let eventParser = EventParser()
-        eventParser.beginParsing()
-        events = eventParser.events
+        
+        // Enables self sizing cells
+        // http://www.appcoda.com/self-sizing-cells/
+        tableView.estimatedRowHeight = 65.0
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         self.viewDidLayoutSubviews()
+        
+        // Loading indicator is displayed before event data has loaded
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        activityIndicator.center = CGPointMake(view.center.x, view.center.y - 50)
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
         
         if revealViewController() != nil {
             revealViewController().rearViewRevealWidth = screenWidth / 2
@@ -37,6 +45,17 @@ class EventsTableViewController: UITableViewController {
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        // Parse and set events field
+        // cellForRowAtIndexPath uses the data 
+        // from the events data field when the data is reloaded
+        let eventParser = EventParser()
+        eventParser.beginParsing()
+        events = eventParser.events
+        activityIndicator.stopAnimating()
+        tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -55,8 +74,10 @@ class EventsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("EventsTableViewCell", forIndexPath: indexPath) as! EventsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! EventsTableViewCell
         let dateAsString = EventsTableViewController.outDateFormatter.stringFromDate(events[indexPath.row].startDate!)
+//        cell.textLabel?.text = events[indexPath.row].title
+//        cell.detailTextLabel!.text = dateAsString
         cell.titleLabel.text = events[indexPath.row].title
         cell.dateLabel.text = dateAsString
 
