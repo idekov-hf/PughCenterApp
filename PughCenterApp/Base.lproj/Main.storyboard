@@ -32,44 +32,89 @@
         <scene sceneID="rf2-iI-xUf">
             <objects>
                 <tableViewController title="Events Controller" id="08v-8T-YcL" customClass="EventsTableViewController" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ii5-Qn-4IA">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="87" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ii5-Qn-4IA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="66" id="fmh-dF-Oaa" customClass="EventsTableViewCell" customModule="PughCenterApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="66"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectedCell" rowHeight="86" id="fmh-dF-Oaa" customClass="EventsTableViewCell" customModule="PughCenterApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="86"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fmh-dF-Oaa" id="bJ4-qW-TRE">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="86"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecx-ko-cOQ">
-                                            <rect key="frame" x="14" y="37" width="578" height="16"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQk-NB-aRK">
                                             <rect key="frame" x="14" y="14" width="578" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecx-ko-cOQ">
+                                            <rect key="frame" x="14" y="37" width="578" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwT-iJ-2oi">
+                                            <rect key="frame" x="14" y="54" width="578" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="rQk-NB-aRK" firstAttribute="leading" secondItem="bJ4-qW-TRE" secondAttribute="leadingMargin" constant="6" id="3TW-RI-26m"/>
-                                        <constraint firstItem="ecx-ko-cOQ" firstAttribute="top" secondItem="rQk-NB-aRK" secondAttribute="bottom" constant="1" id="8fZ-jN-Hk1"/>
                                         <constraint firstItem="rQk-NB-aRK" firstAttribute="top" secondItem="bJ4-qW-TRE" secondAttribute="topMargin" constant="6" id="HGt-vV-zok"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="BwT-iJ-2oi" secondAttribute="trailing" id="Mf4-jQ-fwV"/>
+                                        <constraint firstItem="BwT-iJ-2oi" firstAttribute="top" secondItem="ecx-ko-cOQ" secondAttribute="bottom" constant="1" id="PXZ-e5-VkR"/>
+                                        <constraint firstItem="ecx-ko-cOQ" firstAttribute="top" secondItem="rQk-NB-aRK" secondAttribute="bottom" constant="1" id="Ql5-HQ-lEF"/>
+                                        <constraint firstItem="BwT-iJ-2oi" firstAttribute="leading" secondItem="bJ4-qW-TRE" secondAttribute="leadingMargin" constant="6" id="gHf-vm-noG"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="BwT-iJ-2oi" secondAttribute="bottom" constant="6" id="mYd-4A-av4"/>
                                         <constraint firstItem="ecx-ko-cOQ" firstAttribute="trailing" secondItem="bJ4-qW-TRE" secondAttribute="trailingMargin" id="rFj-hP-1xA"/>
                                         <constraint firstItem="rQk-NB-aRK" firstAttribute="trailing" secondItem="bJ4-qW-TRE" secondAttribute="trailingMargin" id="s5D-mu-YjI"/>
                                         <constraint firstItem="ecx-ko-cOQ" firstAttribute="leading" secondItem="bJ4-qW-TRE" secondAttribute="leadingMargin" constant="6" id="sUs-pV-Wtc"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ecx-ko-cOQ" secondAttribute="bottom" constant="5" id="wN2-Om-c9o"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="ecx-ko-cOQ" id="LBv-QN-PeB"/>
+                                    <outlet property="descriptionLabel" destination="BwT-iJ-2oi" id="PMA-l9-CUi"/>
                                     <outlet property="titleLabel" destination="rQk-NB-aRK" id="6lv-uU-7af"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UnselectedCell" rowHeight="69" id="LlY-0R-usw" customClass="EventsTableViewCell" customModule="PughCenterApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="178" width="600" height="69"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LlY-0R-usw" id="4Me-hE-fDk">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qi-LQ-OP9">
+                                            <rect key="frame" x="14" y="14" width="578" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ths-qO-Y2v">
+                                            <rect key="frame" x="14" y="37" width="578" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ths-qO-Y2v" secondAttribute="bottom" constant="8" id="7pO-Ei-9PN"/>
+                                        <constraint firstItem="1Qi-LQ-OP9" firstAttribute="leading" secondItem="4Me-hE-fDk" secondAttribute="leadingMargin" constant="6" id="8Ph-xf-EgD"/>
+                                        <constraint firstItem="1Qi-LQ-OP9" firstAttribute="top" secondItem="4Me-hE-fDk" secondAttribute="topMargin" constant="6" id="XKn-Zk-lxv"/>
+                                        <constraint firstItem="ths-qO-Y2v" firstAttribute="trailing" secondItem="4Me-hE-fDk" secondAttribute="trailingMargin" id="YXW-rx-Ml1"/>
+                                        <constraint firstItem="1Qi-LQ-OP9" firstAttribute="trailing" secondItem="4Me-hE-fDk" secondAttribute="trailingMargin" id="wCC-0a-493"/>
+                                        <constraint firstItem="ths-qO-Y2v" firstAttribute="top" secondItem="1Qi-LQ-OP9" secondAttribute="bottom" constant="1" id="x17-rB-Ir6"/>
+                                        <constraint firstItem="ths-qO-Y2v" firstAttribute="leading" secondItem="4Me-hE-fDk" secondAttribute="leadingMargin" constant="6" id="zVS-0k-uiJ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="ths-qO-Y2v" id="IhW-Uy-iwQ"/>
+                                    <outlet property="titleLabel" destination="1Qi-LQ-OP9" id="eyE-2y-cGZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -831,7 +876,7 @@ culture, sexual orientation, identity, and spirituality
         <image name="menu" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yML-CC-HYj"/>
+        <segue reference="zq6-bt-r2g"/>
         <segue reference="8JR-3a-I9t"/>
     </inferredMetricsTieBreakers>
 </document>

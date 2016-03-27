@@ -21,6 +21,7 @@ class EventsTableViewController: UITableViewController {
     }()
     var screenWidth: CGFloat = 0
     var events = [Event]()
+    var selectedIndexPath: NSIndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,36 +75,54 @@ class EventsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! EventsTableViewCell
+        var cellID: String
+        if indexPath == selectedIndexPath {
+            cellID = "SelectedCell"
+        }
+        else {
+            cellID = "UnselectedCell"
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! EventsTableViewCell
         let dateAsString = EventsTableViewController.outDateFormatter.stringFromDate(events[indexPath.row].startDate!)
-//        cell.textLabel?.text = events[indexPath.row].title
-//        cell.detailTextLabel!.text = dateAsString
         cell.titleLabel.text = events[indexPath.row].title
         cell.dateLabel.text = dateAsString
-
+        
+        if indexPath == selectedIndexPath {
+            cell.descriptionLabel.text = events[indexPath.row].eventDescription
+        }
+        
         return cell
     }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedIndexPath = indexPath
+        tableView.reloadData()
+    }
     
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        selectedIndexPath = indexPath
+//        tableView.beginUpdates()
+//        tableView.endUpdates()
+//        let cell = tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
+//        cell.descriptionLabel.text = events[indexPath.row].eventDescription
+//        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+//        tableView.reloadData()
+//    }
+    
+//    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+//        let cell = tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
+//        cell.descriptionLabel.text = ""
+//        tableView.reloadData()
 //    }
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        if (selectedIndexPath == indexPath) {
+//            let cell = tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
+//            cell.descriptionLabel.hidden = false
+//            return cell.frame.height
+//        }
+//        return UITableViewAutomaticDimension
+//    }
 
 }
