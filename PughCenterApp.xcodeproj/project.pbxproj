@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D0B79521CA495F000CE2E94 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B79501CA495F000CE2E94 /* Event.swift */; };
+		5D0B79531CA495F000CE2E94 /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B79511CA495F000CE2E94 /* EventParser.swift */; };
 		5D1657871C6AA24A005D2229 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1657861C6AA24A005D2229 /* SWRevealViewController.m */; };
 		5D1657891C6AAA18005D2229 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */; };
 		5D16578B1C6AAD73005D2229 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D0B79501CA495F000CE2E94 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		5D0B79511CA495F000CE2E94 /* EventParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
 		5D1657841C6AA249005D2229 /* PughCenterApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PughCenterApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		5D1657851C6AA24A005D2229 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		5D1657861C6AA24A005D2229 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 		5D1657831C6AA1AD005D2229 /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
+				5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */,
 				5D1657851C6AA24A005D2229 /* SWRevealViewController.h */,
 				5D1657861C6AA24A005D2229 /* SWRevealViewController.m */,
 				5D1657841C6AA249005D2229 /* PughCenterApp-Bridging-Header.h */,
@@ -87,9 +92,10 @@
 			children = (
 				5D1657831C6AA1AD005D2229 /* SWRevealViewController */,
 				5DCBD4721C72E0A600A6E09D /* ClubDescriptions.swift */,
-				5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */,
-				5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */,
+				5D0B79501CA495F000CE2E94 /* Event.swift */,
+				5D0B79511CA495F000CE2E94 /* EventParser.swift */,
 				5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */,
+				5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */,
 				5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */,
 				5D644C2A1C6AFD0C002FC8E9 /* AboutViewController.swift */,
 				5D644C2C1C6B0899002FC8E9 /* ContactViewController.swift */,
@@ -176,11 +182,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DCBD46F1C72C15200A6E09D /* ClubsTableViewController.swift in Sources */,
+				5D0B79521CA495F000CE2E94 /* Event.swift in Sources */,
 				5DCBD4711C72DE1F00A6E09D /* ClubDetailViewController.swift in Sources */,
 				5DCC00C01C760C8200B29657 /* FacebookViewController.swift in Sources */,
 				5D16578B1C6AAD73005D2229 /* EventsTableViewCell.swift in Sources */,
 				5DCBD4731C72E0A600A6E09D /* ClubDescriptions.swift in Sources */,
 				5DA58EFF1C696EFD00CB062D /* AppDelegate.swift in Sources */,
+				5D0B79531CA495F000CE2E94 /* EventParser.swift in Sources */,
 				5D1657871C6AA24A005D2229 /* SWRevealViewController.m in Sources */,
 				5D644C2B1C6AFD0C002FC8E9 /* AboutViewController.swift in Sources */,
 				5D1657891C6AAA18005D2229 /* EventsTableViewController.swift in Sources */,

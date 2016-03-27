@@ -12,10 +12,21 @@ class EventsTableViewController: UITableViewController {
     
     @IBOutlet var menuButton: UIBarButtonItem!
     
+    static var outDateFormatter: NSDateFormatter = {
+        var formatter = NSDateFormatter()
+        formatter.dateFormat = "EEEE, MMMM dd, 'at' h:mm a"
+        formatter.locale = NSLocale.currentLocale()
+        return formatter
+    }()
     var screenWidth: CGFloat = 0
+    var events = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Parse
+        let eventParser = EventParser()
+        eventParser.beginParsing()
+        events = eventParser.events
         
         self.viewDidLayoutSubviews()
         
@@ -26,69 +37,35 @@ class EventsTableViewController: UITableViewController {
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewDidLayoutSubviews() {
         self.screenWidth = self.view.frame.size.width
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return events.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! EventsTableViewCell
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier("EventsTableViewCell", forIndexPath: indexPath) as! EventsTableViewCell
+        let dateAsString = EventsTableViewController.outDateFormatter.stringFromDate(events[indexPath.row].startDate!)
+        cell.titleLabel.text = events[indexPath.row].title
+        cell.dateLabel.text = dateAsString
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
+    
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
 
     /*
     // Override to support conditional rearranging of the table view.
