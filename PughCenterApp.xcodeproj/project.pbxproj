@@ -62,7 +62,6 @@
 		5D1657831C6AA1AD005D2229 /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */,
 				5D1657851C6AA24A005D2229 /* SWRevealViewController.h */,
 				5D1657861C6AA24A005D2229 /* SWRevealViewController.m */,
 				5D1657841C6AA249005D2229 /* PughCenterApp-Bridging-Header.h */,
@@ -90,6 +89,7 @@
 		5DA58EFD1C696EFD00CB062D /* PughCenterApp */ = {
 			isa = PBXGroup;
 			children = (
+				5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */,
 				5D1657831C6AA1AD005D2229 /* SWRevealViewController */,
 				5DCBD4721C72E0A600A6E09D /* ClubDescriptions.swift */,
 				5D0B79501CA495F000CE2E94 /* Event.swift */,
