@@ -70,6 +70,28 @@
 			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
+		5D41D2401CBC7B6D00F21991 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5DCBD4721C72E0A600A6E09D /* ClubDescriptions.swift */,
+				5D0B79501CA495F000CE2E94 /* Event.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5D41D2421CBC7B7800F21991 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */,
+				5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */,
+				5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */,
+				5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */,
+				5D644C2C1C6B0899002FC8E9 /* ContactViewController.swift */,
+				5D644C2A1C6AFD0C002FC8E9 /* AboutViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		5DA58EF21C696EFD00CB062D = {
 			isa = PBXGroup;
 			children = (
@@ -90,17 +112,11 @@
 			isa = PBXGroup;
 			children = (
 				5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */,
-				5D1657831C6AA1AD005D2229 /* SWRevealViewController */,
-				5DCBD4721C72E0A600A6E09D /* ClubDescriptions.swift */,
-				5D0B79501CA495F000CE2E94 /* Event.swift */,
 				5D0B79511CA495F000CE2E94 /* EventParser.swift */,
-				5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */,
 				5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */,
-				5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */,
-				5D644C2A1C6AFD0C002FC8E9 /* AboutViewController.swift */,
-				5D644C2C1C6B0899002FC8E9 /* ContactViewController.swift */,
-				5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */,
-				5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */,
+				5D1657831C6AA1AD005D2229 /* SWRevealViewController */,
+				5D41D2401CBC7B6D00F21991 /* Model */,
+				5D41D2421CBC7B7800F21991 /* Controller */,
 				5DA58F021C696EFD00CB062D /* Main.storyboard */,
 				5DA58F051C696EFD00CB062D /* Assets.xcassets */,
 				5DA58F071C696EFD00CB062D /* LaunchScreen.storyboard */,

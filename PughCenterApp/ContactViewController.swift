@@ -11,6 +11,7 @@ import UIKit
 class ContactViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
+    @IBOutlet weak var textView: UITextView!
     
     var screenWidth: CGFloat = 0
     
@@ -29,6 +30,7 @@ class ContactViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         self.screenWidth = self.view.frame.size.width
     }
 

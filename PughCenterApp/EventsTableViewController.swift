@@ -19,10 +19,12 @@ class EventsTableViewController: UITableViewController {
         formatter.locale = NSLocale.currentLocale()
         return formatter
     }()
+    
     var screenWidth: CGFloat = 0
     var events = [Event]()
     var selectedIndexPath: NSIndexPath?
     var deSelectedIndexPath: NSIndexPath?
+    var eventSelected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,12 +55,12 @@ class EventsTableViewController: UITableViewController {
         // Parse and set events field
         // cellForRowAtIndexPath uses the data 
         // from the events data field when the data is reloaded
-//        let eventParser = EventParser()
-//        eventParser.beginParsing()
-//        events = eventParser.events
+        let eventParser = EventParser()
+        eventParser.beginParsing()
+        events = eventParser.events
         
         // test local notifications with custom data
-        loadCustomData()
+//        loadCustomData()
         
         addLocalNotifications()
         activityIndicator.stopAnimating()
@@ -98,7 +100,7 @@ class EventsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cellID: String
-        if indexPath == selectedIndexPath {
+        if indexPath == selectedIndexPath && eventSelected == true {
             cellID = "SelectedCell"
         }
         else {
@@ -110,7 +112,7 @@ class EventsTableViewController: UITableViewController {
         cell.titleLabel.text = events[indexPath.row].title
         cell.dateLabel.text = dateAsString
         
-        if indexPath == selectedIndexPath {
+        if indexPath == selectedIndexPath && eventSelected == true {
             cell.backgroundColor = UIColor.lightGrayColor()
             cell.descriptionLabel.text = events[indexPath.row].eventDescription
         }
@@ -119,19 +121,27 @@ class EventsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         var indexPathArray = [NSIndexPath]()
         
-        deSelectedIndexPath = selectedIndexPath
-        if let deSelectedIndexPath = deSelectedIndexPath {
-            indexPathArray.append(deSelectedIndexPath)
+        if indexPath == selectedIndexPath && eventSelected {
+            eventSelected = false
+        }
+        else {
+            eventSelected = true
+            deSelectedIndexPath = selectedIndexPath
+            if let deSelectedIndexPath = deSelectedIndexPath {
+                indexPathArray.append(deSelectedIndexPath)
+            }
         }
         
         selectedIndexPath = indexPath
         indexPathArray.append(indexPath)
         
         tableView.reloadRowsAtIndexPaths(indexPathArray, withRowAnimation: UITableViewRowAnimation.Automatic)
-        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
-        
+        if eventSelected {
+            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+        }
     }
 
 }
