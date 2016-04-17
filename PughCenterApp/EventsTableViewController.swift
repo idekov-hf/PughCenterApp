@@ -113,7 +113,6 @@ class EventsTableViewController: UITableViewController {
         cell.dateLabel.text = dateAsString
         
         if indexPath == selectedIndexPath && eventSelected == true {
-            cell.backgroundColor = UIColor.lightGrayColor()
             cell.descriptionLabel.text = events[indexPath.row].eventDescription
         }
         
