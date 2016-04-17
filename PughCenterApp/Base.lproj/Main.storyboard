@@ -59,7 +59,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwT-iJ-2oi">
                                             <rect key="frame" x="14" y="54" width="578" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -516,7 +516,7 @@ If you run into any problems with the app, please contact Iavor Dekov at ivdekov
         <!--About Controller-->
         <scene sceneID="mfG-OB-igF">
             <objects>
-                <viewController title="About Controller" id="vSu-kw-TRE" customClass="AboutViewController" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="About Controller" automaticallyAdjustsScrollViewInsets="NO" id="vSu-kw-TRE" customClass="AboutViewController" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="scU-3c-uSa"/>
                         <viewControllerLayoutGuide type="bottom" id="Piq-ox-VoO"/>
@@ -525,22 +525,22 @@ If you run into any problems with the app, please contact Iavor Dekov at ivdekov
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Pugh Center's Purpose is to:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mg-Jg-9UM">
-                                <rect key="frame" x="20" y="72" width="339" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Pugh Center's Purpose is to:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mg-Jg-9UM">
+                                <rect key="frame" x="20" y="72" width="280" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.19215686269999999" green="0.28235294119999998" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyL-Pe-CzE">
-                                <rect key="frame" x="20" y="109" width="560" height="471"/>
+                                <rect key="frame" x="20" y="103" width="560" height="477"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">•  Engage students to become critical and imaginative thinkers who are welcoming of diversity and ready for leadership in our global society 
+                                <string key="text">•  Engage students to become critical and imaginative thinkers who are welcoming of diversity and ready for leadership in our global society 
 •  Serve as a gathering place for students who are devoted to learning about and understanding experiences and issues related to race, ethnicity, gender,
 culture, sexual orientation, identity, and spirituality 
 •  Provide social justice leadership opportunities through student clubs and organizations 
 •  Facilitate the exploration of various experiences through the presentation of lectures, performances, discussions, trainings, symposia, and intentional dialogue
  •  Advocate for a campus climate that is welcoming and inclusive of students from Colby College’s underrepresented groups 
-•  Support student success through strategic relations and targeted retention efforts</mutableString>
+•  Support student success through strategic relations and targeted retention efforts</string>
                                 <color key="textColor" red="0.098039215690000001" green="0.26274509800000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -548,8 +548,10 @@ culture, sexual orientation, identity, and spirituality 
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yyL-Pe-CzE" firstAttribute="top" secondItem="d9l-of-gmR" secondAttribute="topMargin" constant="109" id="EcW-1A-5uD"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="7mg-Jg-9UM" secondAttribute="leading" id="SDX-11-ww4"/>
+                            <constraint firstItem="yyL-Pe-CzE" firstAttribute="top" secondItem="7mg-Jg-9UM" secondAttribute="bottom" constant="8" id="UxO-FX-YVB"/>
                             <constraint firstItem="yyL-Pe-CzE" firstAttribute="leading" secondItem="d9l-of-gmR" secondAttribute="leadingMargin" id="XVl-nm-pTm"/>
+                            <constraint firstItem="7mg-Jg-9UM" firstAttribute="top" secondItem="scU-3c-uSa" secondAttribute="bottom" constant="8" id="dNi-RY-xgV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yyL-Pe-CzE" secondAttribute="trailing" id="nzr-nb-95f"/>
                             <constraint firstItem="Piq-ox-VoO" firstAttribute="top" secondItem="yyL-Pe-CzE" secondAttribute="bottom" constant="20" id="p8G-Hj-rZ5"/>
                         </constraints>
@@ -561,6 +563,7 @@ culture, sexual orientation, identity, and spirituality 
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="G7B-eW-OcU" id="3PO-bh-reK"/>
+                        <outlet property="textView" destination="yyL-Pe-CzE" id="pvr-ad-nr3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igl-Fr-v5W" userLabel="First Responder" sceneMemberID="firstResponder"/>

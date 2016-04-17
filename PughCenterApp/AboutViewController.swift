@@ -11,13 +11,14 @@ import UIKit
 class AboutViewController: UIViewController {
     
     @IBOutlet var menuButton: UIBarButtonItem!
+    @IBOutlet weak var textView: UITextView!
     
     var screenWidth: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.viewDidLayoutSubviews()
+        
+        viewDidLayoutSubviews()
         
         if revealViewController() != nil {
             revealViewController().rearViewRevealWidth = screenWidth / 2
@@ -26,26 +27,14 @@ class AboutViewController: UIViewController {
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+    
+        
     }
     
     override func viewDidLayoutSubviews() {
-        self.screenWidth = self.view.frame.size.width
+        super.viewDidLayoutSubviews()
+        screenWidth = view.frame.size.width
+        textView.setContentOffset(CGPointMake(0, 0), animated: false)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
