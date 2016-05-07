@@ -59,19 +59,9 @@ class EventsTableViewController: UITableViewController {
         eventParser.beginParsing()
         events = eventParser.events
         
-        // test local notifications with custom data
-//        loadCustomData()
-        
         addLocalNotifications()
         activityIndicator.stopAnimating()
         tableView.reloadData()
-    }
-    
-    func loadCustomData() {
-        let event1 = Event(title: "Event 1", description: "This is a description of Event 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris scelerisque porttitor nunc, a vestibulum odio faucibus sed. Morbi in tortor nec enim rutrum auctor a eget leo. Integer vel dapibus turpis. Aliquam tempor vehicula sapien id varius. Duis nec sapien id eros imperdiet ullamcorper. ", startDate: NSDate().dateByAddingTimeInterval(1815))
-        let event2 = Event(title: "Event 2", description: "This is a short description of Event 2", startDate: NSDate().dateByAddingTimeInterval(1830))
-        let event3 = Event(title: "Event 3", description: "This is a description of Event 3: Proin enim arcu, commodo eu tellus eu, eleifend iaculis eros. Nam id ante placerat, malesuada metus eu, varius dolor. In eu eros posuere magna tincidunt maximus nec sed dui. Nam condimentum massa ut auctor porta.", startDate: NSDate().dateByAddingTimeInterval(1845))
-        events += [event1, event2, event3]
     }
     
     func addLocalNotifications() {

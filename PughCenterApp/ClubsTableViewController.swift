@@ -16,10 +16,15 @@ class ClubsTableViewController: UITableViewController {
     
     var clubs = [Club]()
     
+    let url = NSURL(string: "https://www.colby.edu/pugh/wp-json/colby-rest/v0/acf-options?clubs=1")!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.viewDidLayoutSubviews()
+        
+        tableView.estimatedRowHeight = 46.0
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         if revealViewController() != nil {
             revealViewController().rearViewRevealWidth = screenWidth / 2
@@ -29,6 +34,12 @@ class ClubsTableViewController: UITableViewController {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        loadClubs()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func viewDidLayoutSubviews() {
@@ -42,10 +53,12 @@ class ClubsTableViewController: UITableViewController {
             
             let detailsController = segue.destinationViewController as! ClubDetailViewController
             
-            detailsController.clubNameString = clubNames[indexPath.row]
-            detailsController.clubDescriptionString = clubDescriptions[clubNames[indexPath.row]]!
+            detailsController.clubNameString = clubs[indexPath.row].name
+            detailsController.clubDescriptionString = clubs[indexPath.row].description
         }
     }
+    
+    // MARK: - UITableView DataSource and Delegate Methods
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -66,6 +79,74 @@ class ClubsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("showClubDetails", sender: self)
+    }
+    
+    // MARK: - Wordpress JSON Parsing Methods
+    
+    func loadClubs() {
+        
+        // create request
+        let session = NSURLSession.sharedSession()
+        let request = NSURLRequest(URL: url)
+        
+        // create network request
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            
+            // if an error occurs, print it
+            func displayError(error: String) {
+                print(error)
+            }
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                displayError("There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                displayError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                displayError("No data was returned by the request!")
+                return
+            }
+            
+            // parse the data
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            } catch {
+                displayError("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
+            // get list of club dictionaries form the parsed results
+            guard let clubsList = parsedResult["clubs"] as? [[String: AnyObject]] else {
+                print("clubList was not succesfully parsed")
+                return
+            }
+            
+            // create each club object and fill in details
+            for club in clubsList {
+                let name = club["title"] as! String
+                let description = club["description"] as! String
+                self.clubs.append(Club(name: name, description: description))
+            }
+            
+            // update the table view
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
+        
+        }
+        
+        // start the task!
+        task.resume()
+        
     }
     
 }

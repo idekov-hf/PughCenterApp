@@ -22,7 +22,6 @@
 		5DA58F091C696EFD00CB062D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F071C696EFD00CB062D /* LaunchScreen.storyboard */; };
 		5DCBD46F1C72C15200A6E09D /* ClubsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */; };
 		5DCBD4711C72DE1F00A6E09D /* ClubDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */; };
-		5DCBD4731C72E0A600A6E09D /* ClubDescriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBD4721C72E0A600A6E09D /* ClubDescriptions.swift */; };
 		5DCC00C01C760C8200B29657 /* FacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,6 @@
 		5DA58F0A1C696EFD00CB062D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubsTableViewController.swift; sourceTree = "<group>"; };
 		5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailViewController.swift; sourceTree = "<group>"; };
-		5DCBD4721C72E0A600A6E09D /* ClubDescriptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDescriptions.swift; sourceTree = "<group>"; };
 		5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,7 +73,6 @@
 		5D41D2401CBC7B6D00F21991 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5DCBD4721C72E0A600A6E09D /* ClubDescriptions.swift */,
 				5D0B79501CA495F000CE2E94 /* Event.swift */,
 				5D57D6F91CDD93D600FF0D0E /* Club.swift */,
 			);
@@ -206,7 +203,6 @@
 				5DCBD4711C72DE1F00A6E09D /* ClubDetailViewController.swift in Sources */,
 				5DCC00C01C760C8200B29657 /* FacebookViewController.swift in Sources */,
 				5D16578B1C6AAD73005D2229 /* EventsTableViewCell.swift in Sources */,
-				5DCBD4731C72E0A600A6E09D /* ClubDescriptions.swift in Sources */,
 				5DA58EFF1C696EFD00CB062D /* AppDelegate.swift in Sources */,
 				5D0B79531CA495F000CE2E94 /* EventParser.swift in Sources */,
 				5D1657871C6AA24A005D2229 /* SWRevealViewController.m in Sources */,

@@ -126,7 +126,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Events" id="rpN-Qm-flU">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="taK-u4-Z7w">
-                            <color key="tintColor" red="0.1058823529" green="0.21960784310000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.37647058823529411" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -501,7 +501,7 @@ If you run into any problems with the app, please contact Iavor Dekov at ivdekov
                     </view>
                     <navigationItem key="navigationItem" title="Contact" id="Wrk-c2-JvK">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="1Sm-qS-vNI">
-                            <color key="tintColor" red="0.098039215690000001" green="0.26274509800000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.37647058820000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -558,7 +558,7 @@ culture, sexual orientation, identity, and spirituality 
                     </view>
                     <navigationItem key="navigationItem" title="About" id="55S-Fy-2Sz">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="G7B-eW-OcU">
-                            <color key="tintColor" red="0.098039215690000001" green="0.26274509800000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.37647058820000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -640,17 +640,26 @@ culture, sexual orientation, identity, and spirituality 
         <scene sceneID="UV3-we-S6N">
             <objects>
                 <tableViewController title="Clubs Controller" id="906-fd-bkb" customClass="ClubsTableViewController" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="eFv-7e-wID">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" sectionHeaderHeight="28" sectionFooterHeight="28" id="eFv-7e-wID">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClubNameCell" id="nsW-Ws-X6C">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClubNameCell" textLabel="Bd7-Up-BWH" style="IBUITableViewCellStyleDefault" id="nsW-Ws-X6C">
+                                <rect key="frame" x="0.0" y="92" width="600" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nsW-Ws-X6C" id="bXR-wn-i08">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bd7-Up-BWH">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="45"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -662,7 +671,7 @@ culture, sexual orientation, identity, and spirituality 
                     </tableView>
                     <navigationItem key="navigationItem" title="Clubs" id="YBn-cq-sUv">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="Fzq-gq-oJv">
-                            <color key="tintColor" red="0.098039215690000001" green="0.26274509800000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.37647058820000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -753,7 +762,7 @@ culture, sexual orientation, identity, and spirituality 
                     </view>
                     <navigationItem key="navigationItem" title="Colby Pugh" id="Nk3-DM-aI3">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="KSb-Aw-5ey">
-                            <color key="tintColor" red="0.098039215690000001" green="0.26274509800000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
