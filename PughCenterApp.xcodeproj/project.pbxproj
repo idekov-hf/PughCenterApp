@@ -12,6 +12,7 @@
 		5D1657871C6AA24A005D2229 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1657861C6AA24A005D2229 /* SWRevealViewController.m */; };
 		5D1657891C6AAA18005D2229 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */; };
 		5D16578B1C6AAD73005D2229 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */; };
+		5D57D6FA1CDD93D600FF0D0E /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D57D6F91CDD93D600FF0D0E /* Club.swift */; };
 		5D644C2B1C6AFD0C002FC8E9 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D644C2A1C6AFD0C002FC8E9 /* AboutViewController.swift */; };
 		5D644C2D1C6B0899002FC8E9 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D644C2C1C6B0899002FC8E9 /* ContactViewController.swift */; };
 		5D644C2F1C6B0BFC002FC8E9 /* Sliding Menu Tutorial in Resources */ = {isa = PBXBuildFile; fileRef = 5D644C2E1C6B0BFC002FC8E9 /* Sliding Menu Tutorial */; };
@@ -33,6 +34,7 @@
 		5D1657861C6AA24A005D2229 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
+		5D57D6F91CDD93D600FF0D0E /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		5D644C2A1C6AFD0C002FC8E9 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5D644C2C1C6B0899002FC8E9 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		5D644C2E1C6B0BFC002FC8E9 /* Sliding Menu Tutorial */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Sliding Menu Tutorial"; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			children = (
 				5DCBD4721C72E0A600A6E09D /* ClubDescriptions.swift */,
 				5D0B79501CA495F000CE2E94 /* Event.swift */,
+				5D57D6F91CDD93D600FF0D0E /* Club.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				5D1657871C6AA24A005D2229 /* SWRevealViewController.m in Sources */,
 				5D644C2B1C6AFD0C002FC8E9 /* AboutViewController.swift in Sources */,
 				5D1657891C6AAA18005D2229 /* EventsTableViewController.swift in Sources */,
+				5D57D6FA1CDD93D600FF0D0E /* Club.swift in Sources */,
 				5D644C2D1C6B0899002FC8E9 /* ContactViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
