@@ -34,12 +34,11 @@ class ClubsTableViewController: UITableViewController {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        loadClubs()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        loadClubs()
     }
     
     override func viewDidLayoutSubviews() {
