@@ -29,7 +29,6 @@ class AboutViewController: UIViewController {
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -91,6 +90,7 @@ class AboutViewController: UIViewController {
             
             dispatch_async(dispatch_get_main_queue()) {
                 self.textView.text = text
+                self.textView.textColor = UIColor(red: 0.1, green: 0.3, blue: 0.5, alpha: 1)
             }
             
         }
