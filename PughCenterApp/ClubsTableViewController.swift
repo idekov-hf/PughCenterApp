@@ -33,11 +33,6 @@ class ClubsTableViewController: UITableViewController {
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         loadClubs()
     }
     
@@ -54,6 +49,7 @@ class ClubsTableViewController: UITableViewController {
             
             detailsController.clubNameString = clubs[indexPath.row].name
             detailsController.clubDescriptionString = clubs[indexPath.row].description
+            detailsController.urlString = clubs[indexPath.row].url
         }
     }
     
@@ -133,7 +129,8 @@ class ClubsTableViewController: UITableViewController {
             for club in clubsList {
                 let name = club["title"] as! String
                 let description = club["description"] as! String
-                self.clubs.append(Club(name: name, description: description))
+                let url = club["url"] as! String
+                self.clubs.append(Club(name: name, description: description, url: url))
             }
             
             // update the table view

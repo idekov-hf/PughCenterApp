@@ -12,10 +12,12 @@ class Club {
     
     var name: String
     var description: String
+    var url: String
     
-    init(name: String, description: String) {
+    init(name: String, description: String, url: String) {
         self.name = name
         self.description = description
+        self.url = url
     }
     
 }
