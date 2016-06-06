@@ -696,12 +696,6 @@ If you run into any problems with the app, please contact Iavor Dekov at ivdekov
                                 <color key="textColor" red="0.098039215690000001" green="0.26274509800000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Club Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KH6-mr-8F4">
-                                <rect key="frame" x="20" y="72" width="560" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.19215686269999999" green="0.28235294119999998" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="URL" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PjD-mw-jIN">
                                 <rect key="frame" x="20" y="133" width="560" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -712,16 +706,29 @@ If you run into any problems with the app, please contact Iavor Dekov at ivdekov
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Club Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KH6-mr-8F4">
+                                <rect key="frame" x="20" y="72" width="560" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.28235294119999998" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jMo-2a-U77">
+                                <rect key="frame" x="20" y="175" width="560" height="567"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PjD-mw-jIN" firstAttribute="leading" secondItem="gz0-T0-SlB" secondAttribute="leadingMargin" id="Kf6-FG-YJT"/>
+                            <constraint firstItem="f5m-Hg-MQN" firstAttribute="top" secondItem="jMo-2a-U77" secondAttribute="bottom" constant="8" id="RvY-ni-4oR"/>
                             <constraint firstItem="PjD-mw-jIN" firstAttribute="top" secondItem="Ymf-x7-Cku" secondAttribute="bottom" constant="8" id="S4T-o7-GFR"/>
                             <constraint firstItem="Ymf-x7-Cku" firstAttribute="top" secondItem="KH6-mr-8F4" secondAttribute="bottom" constant="8" id="WPO-ee-Qfg"/>
                             <constraint firstItem="KH6-mr-8F4" firstAttribute="leading" secondItem="gz0-T0-SlB" secondAttribute="leadingMargin" id="aXe-Up-hpf"/>
                             <constraint firstItem="KH6-mr-8F4" firstAttribute="trailing" secondItem="gz0-T0-SlB" secondAttribute="trailingMargin" id="dTZ-hj-mU5"/>
+                            <constraint firstItem="jMo-2a-U77" firstAttribute="top" secondItem="PjD-mw-jIN" secondAttribute="bottom" constant="8" id="dqH-PM-dhp"/>
                             <constraint firstItem="Ymf-x7-Cku" firstAttribute="trailing" secondItem="gz0-T0-SlB" secondAttribute="trailingMargin" id="eVh-Lt-2Pu"/>
                             <constraint firstItem="Ymf-x7-Cku" firstAttribute="leading" secondItem="gz0-T0-SlB" secondAttribute="leadingMargin" id="ghc-K5-Prm"/>
+                            <constraint firstItem="jMo-2a-U77" firstAttribute="leading" secondItem="gz0-T0-SlB" secondAttribute="leadingMargin" id="m7e-RJ-OZP"/>
+                            <constraint firstItem="jMo-2a-U77" firstAttribute="trailing" secondItem="gz0-T0-SlB" secondAttribute="trailingMargin" id="nOR-ZX-hmd"/>
                             <constraint firstItem="KH6-mr-8F4" firstAttribute="top" secondItem="kFo-9U-oMX" secondAttribute="bottom" constant="8" id="tvv-7m-sqP"/>
                             <constraint firstItem="PjD-mw-jIN" firstAttribute="trailing" secondItem="gz0-T0-SlB" secondAttribute="trailingMargin" id="wEM-0F-GWd"/>
                         </constraints>
@@ -730,6 +737,7 @@ If you run into any problems with the app, please contact Iavor Dekov at ivdekov
                     <connections>
                         <outlet property="clubDescription" destination="Ymf-x7-Cku" id="tyY-ay-vOi"/>
                         <outlet property="clubName" destination="KH6-mr-8F4" id="tMq-VW-tvA"/>
+                        <outlet property="imageView" destination="jMo-2a-U77" id="CRS-Zs-BRu"/>
                         <outlet property="urlHeightConstaint" destination="NBU-j7-9Ys" id="cnS-hD-kUw"/>
                         <outlet property="urlTextView" destination="PjD-mw-jIN" id="MEC-W0-uZ7"/>
                     </connections>

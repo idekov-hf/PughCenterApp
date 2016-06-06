@@ -14,16 +14,19 @@ class ClubDetailViewController: UIViewController {
     @IBOutlet var clubDescription: UILabel!
     @IBOutlet var urlTextView: UITextView!
     @IBOutlet var urlHeightConstaint: NSLayoutConstraint!
+    @IBOutlet var imageView: UIImageView!
     
     var clubNameString: String = ""
     var clubDescriptionString: String = ""
     var urlString: String = ""
+    var imageURL: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         clubName.text = clubNameString
         clubDescription.text = clubDescriptionString
         urlTextView.text = urlString
+        loadImage(imageURL)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -31,13 +34,23 @@ class ClubDetailViewController: UIViewController {
         let size = urlTextView.contentSize
         urlHeightConstaint.constant = size.height
     }
-
-}
-
-extension NSLayoutConstraint {
     
-    override public var description: String {
-        let id = identifier ?? ""
-        return "id: \(id), constant: \(constant)" //you may print whatever you want here
+    func loadImage(imageURL: String) {
+        
+        if imageURL != "" {
+            
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED,  0)) {
+                let url = NSURL(string: imageURL)
+                let imageData = NSData(contentsOfURL: url!)
+                let image = UIImage (data: imageData!)
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.imageView.image = image
+                }
+            }
+            
+        }
+        
     }
+
 }

@@ -13,11 +13,13 @@ class Club {
     var name: String
     var description: String
     var url: String
+    var imageURL: String
     
-    init(name: String, description: String, url: String) {
+    init(name: String, description: String, url: String, imageURL: String) {
         self.name = name
         self.description = description
         self.url = url
+        self.imageURL = imageURL
     }
     
 }

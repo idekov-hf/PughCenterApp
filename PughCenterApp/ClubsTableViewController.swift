@@ -50,6 +50,7 @@ class ClubsTableViewController: UITableViewController {
             detailsController.clubNameString = clubs[indexPath.row].name
             detailsController.clubDescriptionString = clubs[indexPath.row].description
             detailsController.urlString = clubs[indexPath.row].url
+            detailsController.imageURL = clubs[indexPath.row].imageURL
         }
     }
     
@@ -130,7 +131,11 @@ class ClubsTableViewController: UITableViewController {
                 let name = club["title"] as! String
                 let description = club["description"] as! String
                 let url = club["url"] as! String
-                self.clubs.append(Club(name: name, description: description, url: url))
+                var imageURL = ""
+                if let url = club["image"] as? String {
+                    imageURL = url
+                }
+                self.clubs.append(Club(name: name, description: description, url: url, imageURL: imageURL))
             }
             
             // update the table view
