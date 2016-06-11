@@ -1,0 +1,6 @@
+framework module Pods_PughCenterApp {
+  umbrella header "Pods-PughCenterApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DF54A173285FD812E10A763 /* Pods_PughCenterApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6A96F90CF728FCDC297F85 /* Pods_PughCenterApp.framework */; };
 		5D0B79521CA495F000CE2E94 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B79501CA495F000CE2E94 /* Event.swift */; };
 		5D0B79531CA495F000CE2E94 /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B79511CA495F000CE2E94 /* EventParser.swift */; };
 		5D1657871C6AA24A005D2229 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1657861C6AA24A005D2229 /* SWRevealViewController.m */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C6A96F90CF728FCDC297F85 /* Pods_PughCenterApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PughCenterApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D0B79501CA495F000CE2E94 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		5D0B79511CA495F000CE2E94 /* EventParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
 		5D1657841C6AA249005D2229 /* PughCenterApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PughCenterApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -46,6 +48,8 @@
 		5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubsTableViewController.swift; sourceTree = "<group>"; };
 		5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailViewController.swift; sourceTree = "<group>"; };
 		5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookViewController.swift; sourceTree = "<group>"; };
+		8667E8350F8A7F20B9EF259C /* Pods-PughCenterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PughCenterApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PughCenterApp/Pods-PughCenterApp.release.xcconfig"; sourceTree = "<group>"; };
+		BE906F218BFF8DC16FB1CD16 /* Pods-PughCenterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PughCenterApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PughCenterApp/Pods-PughCenterApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DF54A173285FD812E10A763 /* Pods_PughCenterApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +102,8 @@
 			children = (
 				5DA58EFD1C696EFD00CB062D /* PughCenterApp */,
 				5DA58EFC1C696EFD00CB062D /* Products */,
+				B34B5FF4DD9FEA8381391DC2 /* Pods */,
+				F5A0D614A29E5F50D4C580D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +132,23 @@
 			path = PughCenterApp;
 			sourceTree = "<group>";
 		};
+		B34B5FF4DD9FEA8381391DC2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BE906F218BFF8DC16FB1CD16 /* Pods-PughCenterApp.debug.xcconfig */,
+				8667E8350F8A7F20B9EF259C /* Pods-PughCenterApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F5A0D614A29E5F50D4C580D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C6A96F90CF728FCDC297F85 /* Pods_PughCenterApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5DA58F0D1C696EFD00CB062D /* Build configuration list for PBXNativeTarget "PughCenterApp" */;
 			buildPhases = (
+				54E2DFFCBB1E927C6D91E382 /* [CP] Check Pods Manifest.lock */,
 				5DA58EF71C696EFD00CB062D /* Sources */,
 				5DA58EF81C696EFD00CB062D /* Frameworks */,
 				5DA58EF91C696EFD00CB062D /* Resources */,
+				71581E0D12304460A7702EF8 /* [CP] Embed Pods Frameworks */,
+				A99FBCF5DB2DD4843D5607AF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,6 +224,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		54E2DFFCBB1E927C6D91E382 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		71581E0D12304460A7702EF8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PughCenterApp/Pods-PughCenterApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A99FBCF5DB2DD4843D5607AF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PughCenterApp/Pods-PughCenterApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5DA58EF71C696EFD00CB062D /* Sources */ = {
@@ -323,6 +398,7 @@
 		};
 		5DA58F0E1C696EFD00CB062D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE906F218BFF8DC16FB1CD16 /* Pods-PughCenterApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -340,6 +416,7 @@
 		};
 		5DA58F0F1C696EFD00CB062D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8667E8350F8A7F20B9EF259C /* Pods-PughCenterApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
