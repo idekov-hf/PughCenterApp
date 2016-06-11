@@ -638,7 +638,7 @@ pughcenter@colby.edu</string>
                                 <color key="textColor" red="0.19215686269999999" green="0.28235294119999998" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyL-Pe-CzE">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyL-Pe-CzE">
                                 <rect key="frame" x="20" y="103" width="560" height="477"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.098039215690000001" green="0.26274509800000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -670,6 +670,7 @@ pughcenter@colby.edu</string>
                         <outlet property="activityIndicator" destination="HHu-3s-MYd" id="DEi-ne-pJo"/>
                         <outlet property="menuButton" destination="G7B-eW-OcU" id="3PO-bh-reK"/>
                         <outlet property="textView" destination="yyL-Pe-CzE" id="pvr-ad-nr3"/>
+                        <outlet property="titleLabel" destination="7mg-Jg-9UM" id="esf-eL-h1j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igl-Fr-v5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -944,6 +945,6 @@ pughcenter@colby.edu</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zq6-bt-r2g"/>
+        <segue reference="yML-CC-HYj"/>
     </inferredMetricsTieBreakers>
 </document>

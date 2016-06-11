@@ -13,6 +13,7 @@ class AboutViewController: UIViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var screenWidth: CGFloat = 0
     
@@ -30,6 +31,7 @@ class AboutViewController: UIViewController {
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        titleLabel.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -91,6 +93,7 @@ class AboutViewController: UIViewController {
             
             dispatch_async(dispatch_get_main_queue()) {
                 self.activityIndicator.stopAnimating()
+                self.titleLabel.hidden = false
                 self.textView.text = text
                 self.textView.textColor = UIColor(red: 0.1, green: 0.3, blue: 0.5, alpha: 1)
             }

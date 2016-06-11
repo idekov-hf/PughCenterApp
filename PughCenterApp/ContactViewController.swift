@@ -97,7 +97,7 @@ class ContactViewController: UIViewController {
     func displayContactInfo(contactsArray: [[String : AnyObject]]) {
         
         // Attributed string that is currently in the textView in the IB
-        let currentString = NSMutableAttributedString(attributedString: textView.attributedText)
+        let existingText = NSMutableAttributedString(attributedString: textView.attributedText)
         
         // String which all the contact info will be appended to
         let contactsString = NSMutableAttributedString(string: "\n\n")
@@ -130,12 +130,12 @@ class ContactViewController: UIViewController {
         }
         
         // Concatenate pre-existing text (in the IB textView) with the contactsString
-        currentString.appendAttributedString(contactsString)
+        existingText.appendAttributedString(contactsString)
         
         // Update the UI on main queue (turn off indicator, set textView.attributedText)
         dispatch_async(dispatch_get_main_queue()) {
             self.activityIndicator.stopAnimating()
-            self.textView.attributedText = currentString
+            self.textView.attributedText = existingText
             self.textView.textAlignment = NSTextAlignment.Center
             self.textView.hidden = false
         }
