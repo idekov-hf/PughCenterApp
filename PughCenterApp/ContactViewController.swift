@@ -12,10 +12,11 @@ class ContactViewController: UIViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var screenWidth: CGFloat = 0
     
-    let url = NSURL(string: "http://www.colby.edu/pugh/wp-json/colby-rest/v0/acf-options?additional_contacts=1")!
+    let url = NSURL(string: "https://www.colby.edu/pugh/wp-json/colby-rest/v0/acf-options?additional_contacts=1")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,21 +80,57 @@ class ContactViewController: UIViewController {
                 return
             }
             
-            guard let text = parsedResult["additional_contacts"] as? [[String : AnyObject]] else {
+            guard let contactsArray = parsedResult["additional_contacts"] as? [[String : AnyObject]] else {
                 print("Contact info not succesfully extracted")
                 return
             }
             
-            print(text)
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                
-            }
+            self.displayContactInfo(contactsArray)
             
         }
         
         // start the task
         task.resume()
+    }
+    
+    func displayContactInfo(contactsArray: [[String : AnyObject]]) {
+        
+        let currentString = NSMutableAttributedString(attributedString: textView.attributedText)
+        
+        let contactsString = NSMutableAttributedString(string: "\n\n")
+        
+        let boldTextAttribute = [NSFontAttributeName: UIFont.boldSystemFontOfSize(14), ]
+        let regularTextAttribute = [NSFontAttributeName: UIFont.systemFontOfSize(14)]
+        
+        let phoneTitle = NSAttributedString(string: "Phone: ", attributes: boldTextAttribute)
+        let emailTitle = NSAttributedString(string: "E-mail: ", attributes: boldTextAttribute)
+        
+        for contact in contactsArray {
+            let name = NSAttributedString(string: "\(contact["name"] as! String)\n", attributes: boldTextAttribute)
+            contactsString.appendAttributedString(name)
+            
+            let title = NSAttributedString(string: "\(contact["title"] as! String)\n", attributes: regularTextAttribute)
+            contactsString.appendAttributedString(title)
+            
+            contactsString.appendAttributedString(phoneTitle)
+            
+            let phone = NSAttributedString(string: "\(contact["phone"] as! String)\n", attributes: regularTextAttribute)
+            contactsString.appendAttributedString(phone)
+            
+            contactsString.appendAttributedString(emailTitle)
+            
+            let email = NSAttributedString(string: "\(contact["email"] as! String)\n\n", attributes: regularTextAttribute)
+            contactsString.appendAttributedString(email)
+        }
+        
+        currentString.appendAttributedString(contactsString)
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            self.activityIndicator.stopAnimating()
+            self.textView.attributedText = currentString
+            self.textView.textAlignment = NSTextAlignment.Center
+            self.textView.hidden = false
+        }
     }
 
 }

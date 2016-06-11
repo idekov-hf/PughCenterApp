@@ -12,6 +12,8 @@ class ClubsTableViewController: UITableViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
     
+    var activityIndicator: UIActivityIndicatorView!
+    
     var screenWidth: CGFloat = 0
     
     var clubs = [Club]()
@@ -33,6 +35,14 @@ class ClubsTableViewController: UITableViewController {
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        // Loading indicator is displayed before event data has loaded
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        activityIndicator.center = CGPointMake(view.center.x, view.center.y - 50)
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+        
+        // request club info from WordPress API
         loadClubs()
     }
     
@@ -140,6 +150,8 @@ class ClubsTableViewController: UITableViewController {
             
             // update the table view
             dispatch_async(dispatch_get_main_queue()) {
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.removeFromSuperview()
                 self.tableView.reloadData()
             }
         

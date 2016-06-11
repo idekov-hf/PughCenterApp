@@ -12,6 +12,7 @@ class AboutViewController: UIViewController {
     
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var screenWidth: CGFloat = 0
     
@@ -89,6 +90,7 @@ class AboutViewController: UIViewController {
             }
             
             dispatch_async(dispatch_get_main_queue()) {
+                self.activityIndicator.stopAnimating()
                 self.textView.text = text
                 self.textView.textColor = UIColor(red: 0.1, green: 0.3, blue: 0.5, alpha: 1)
             }

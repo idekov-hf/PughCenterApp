@@ -61,6 +61,7 @@ class EventsTableViewController: UITableViewController {
         
         addLocalNotifications()
         activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
         tableView.reloadData()
     }
     
