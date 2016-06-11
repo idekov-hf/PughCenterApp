@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,9 +16,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Sound, .Alert ], categories: nil))
+        
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "NVPRIp61qbH3LXvJ9pPn"
+            $0.server = "https://pughcenterapp.herokuapp.com/parse"
+        }
+        Parse.initializeWithConfiguration(configuration)
+        
+        // 1
+        if application.applicationState != .Background {
+            
+            // 2
+            let preBackgroundPush = !application.respondsToSelector(Selector("backgroundRefreshStatus"))
+            let oldPushHandlerOnly = !self.respondsToSelector(.didReceiveRemoteNotification)
+            var pushPayload = false
+            if let options = launchOptions {
+                pushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil
+            }
+            if (preBackgroundPush || oldPushHandlerOnly || pushPayload) {
+                PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+            }
+        }
+        
+        // 3
+        let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
+        let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
+        
         return true
+    }
+    
+    // 1
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken
+        deviceToken: NSData) {
+        let installation = PFInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+    }
+    // 2
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError
+        error: NSError) {
+        if error.code == 3010 {
+            print("Push notifications are not supported in the iOS Simulator.")
+        } else {
+            print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
+        }
+    }
+    // 3
+    func application(application: UIApplication, didReceiveRemoteNotification
+        userInfo: [NSObject : AnyObject]) {
+        PFPush.handlePush(userInfo)
+        if case(.Inactive) = application.applicationState {
+            PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -42,6 +94,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+}
 
+// 1
+private extension Selector {
+    // 2
+    static let didReceiveRemoteNotification = #selector(
+        UIApplicationDelegate.application(_:didReceiveRemoteNotification:fetchCompletionHandler:))
 }
 
