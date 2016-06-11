@@ -31,6 +31,7 @@ class ContactViewController: UIViewController {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        // Make a request to the WordPress API for the contact info and then display it in a separate method (displayContactInfo())
         loadContactInfo()
     }
     
@@ -95,16 +96,21 @@ class ContactViewController: UIViewController {
     
     func displayContactInfo(contactsArray: [[String : AnyObject]]) {
         
+        // Attributed string that is currently in the textView in the IB
         let currentString = NSMutableAttributedString(attributedString: textView.attributedText)
         
+        // String which all the contact info will be appended to
         let contactsString = NSMutableAttributedString(string: "\n\n")
         
+        // Attributes for the attributed text
         let boldTextAttribute = [NSFontAttributeName: UIFont.boldSystemFontOfSize(14), ]
         let regularTextAttribute = [NSFontAttributeName: UIFont.systemFontOfSize(14)]
         
+        // Title text (will be bold)
         let phoneTitle = NSAttributedString(string: "Phone: ", attributes: boldTextAttribute)
         let emailTitle = NSAttributedString(string: "E-mail: ", attributes: boldTextAttribute)
         
+        // Loop through contacts array and concatenate all the text into 1 string (contactsString)
         for contact in contactsArray {
             let name = NSAttributedString(string: "\(contact["name"] as! String)\n", attributes: boldTextAttribute)
             contactsString.appendAttributedString(name)
@@ -123,8 +129,10 @@ class ContactViewController: UIViewController {
             contactsString.appendAttributedString(email)
         }
         
+        // Concatenate pre-existing text (in the IB textView) with the contactsString
         currentString.appendAttributedString(contactsString)
         
+        // Update the UI on main queue (turn off indicator, set textView.attributedText)
         dispatch_async(dispatch_get_main_queue()) {
             self.activityIndicator.stopAnimating()
             self.textView.attributedText = currentString
