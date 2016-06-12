@@ -24,6 +24,7 @@
 		5DCBD46F1C72C15200A6E09D /* ClubsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */; };
 		5DCBD4711C72DE1F00A6E09D /* ClubDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */; };
 		5DCC00C01C760C8200B29657 /* FacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */; };
+		5DE04BC91D0DF4EA00FD0634 /* SWRevealViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE04BC81D0DF4EA00FD0634 /* SWRevealViewControllerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubsTableViewController.swift; sourceTree = "<group>"; };
 		5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailViewController.swift; sourceTree = "<group>"; };
 		5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookViewController.swift; sourceTree = "<group>"; };
+		5DE04BC81D0DF4EA00FD0634 /* SWRevealViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWRevealViewControllerTest.swift; sourceTree = "<group>"; };
 		8667E8350F8A7F20B9EF259C /* Pods-PughCenterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PughCenterApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PughCenterApp/Pods-PughCenterApp.release.xcconfig"; sourceTree = "<group>"; };
 		BE906F218BFF8DC16FB1CD16 /* Pods-PughCenterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PughCenterApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PughCenterApp/Pods-PughCenterApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 		5D41D2421CBC7B7800F21991 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5DE04BC81D0DF4EA00FD0634 /* SWRevealViewControllerTest.swift */,
 				5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */,
 				5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */,
 				5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */,
@@ -284,6 +287,7 @@
 				5DCC00C01C760C8200B29657 /* FacebookViewController.swift in Sources */,
 				5D16578B1C6AAD73005D2229 /* EventsTableViewCell.swift in Sources */,
 				5DA58EFF1C696EFD00CB062D /* AppDelegate.swift in Sources */,
+				5DE04BC91D0DF4EA00FD0634 /* SWRevealViewControllerTest.swift in Sources */,
 				5D0B79531CA495F000CE2E94 /* EventParser.swift in Sources */,
 				5D1657871C6AA24A005D2229 /* SWRevealViewController.m in Sources */,
 				5D644C2B1C6AFD0C002FC8E9 /* AboutViewController.swift in Sources */,
