@@ -44,6 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         
+        // Reset badge count
+//        UIApplication.sharedApplication().applicationIconBadgeNumber
+        
         return true
     }
     
@@ -88,6 +91,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        let installation = PFInstallation.currentInstallation()
+        if installation.badge != 0 {
+            installation.badge = 0
+            installation.saveEventually()
+        }
     }
 
     func applicationWillTerminate(application: UIApplication) {
