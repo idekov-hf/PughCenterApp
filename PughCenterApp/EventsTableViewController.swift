@@ -20,7 +20,6 @@ class EventsTableViewController: UITableViewController {
         return formatter
     }()
     
-    var screenWidth: CGFloat = 0
     var events = [Event]()
     var selectedIndexPath: NSIndexPath?
     var deSelectedIndexPath: NSIndexPath?
@@ -34,14 +33,13 @@ class EventsTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        self.viewDidLayoutSubviews()
-        
         // Loading indicator is displayed before event data has loaded
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         activityIndicator.center = CGPointMake(view.center.x, view.center.y - 50)
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
         
+        let screenWidth = UIScreen.mainScreen().bounds.width
         if revealViewController() != nil {
             revealViewController().rearViewRevealWidth = screenWidth / 2
             menuButton.target = revealViewController()
@@ -74,10 +72,6 @@ class EventsTableViewController: UITableViewController {
             notification.soundName = UILocalNotificationDefaultSoundName
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        self.screenWidth = self.view.frame.size.width
     }
 
     // MARK: - Table view data source

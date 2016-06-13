@@ -14,8 +14,6 @@ class ClubsTableViewController: UITableViewController {
     
     var activityIndicator: UIActivityIndicatorView!
     
-    var screenWidth: CGFloat = 0
-    
     var clubs = [Club]()
     
     let url = NSURL(string: "https://www.colby.edu/pugh/wp-json/colby-rest/v0/acf-options?clubs=1")!
@@ -23,11 +21,10 @@ class ClubsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.viewDidLayoutSubviews()
-        
         tableView.estimatedRowHeight = 46.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        let screenWidth = UIScreen.mainScreen().bounds.width
         if revealViewController() != nil {
             revealViewController().rearViewRevealWidth = screenWidth / 2
             menuButton.target = revealViewController()
@@ -44,10 +41,6 @@ class ClubsTableViewController: UITableViewController {
         
         // request club info from WordPress API
         loadClubs()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        self.screenWidth = self.view.frame.size.width
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

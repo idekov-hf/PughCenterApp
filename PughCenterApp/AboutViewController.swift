@@ -15,15 +15,12 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var screenWidth: CGFloat = 0
-    
     let url = NSURL(string: "https://www.colby.edu/pugh/wp-json/colby-rest/v0/acf-options?about_page=1")!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewDidLayoutSubviews()
-        
+        let screenWidth = UIScreen.mainScreen().bounds.width
         if revealViewController() != nil {
             revealViewController().rearViewRevealWidth = screenWidth / 2
             menuButton.target = revealViewController()
@@ -37,12 +34,6 @@ class AboutViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         loadAboutText()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        screenWidth = view.frame.size.width
-        textView.setContentOffset(CGPointMake(0, 0), animated: false)
     }
 
     func loadAboutText() {

@@ -14,15 +14,12 @@ class ContactViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var screenWidth: CGFloat = 0
-    
     let url = NSURL(string: "https://www.colby.edu/pugh/wp-json/colby-rest/v0/acf-options?additional_contacts=1")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.viewDidLayoutSubviews()
-        
+        let screenWidth = UIScreen.mainScreen().bounds.width
         if revealViewController() != nil {
             revealViewController().rearViewRevealWidth = screenWidth / 2
             menuButton.target = revealViewController()
@@ -33,11 +30,6 @@ class ContactViewController: UIViewController {
         
         // Make a request to the WordPress API for the contact info and then display it in a separate method (displayContactInfo())
         loadContactInfo()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        self.screenWidth = self.view.frame.size.width
     }
     
     func loadContactInfo() {

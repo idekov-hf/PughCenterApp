@@ -53,6 +53,8 @@ class EventParser: NSObject, NSXMLParserDelegate {
             case "ev:startdate":
                 eventDate = EventParser.inDateFormatter.dateFromString(elementValue)!
             case "item":
+                eventDescription = eventDescription.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+                // trim description string (remove whitespace from beginning and end)
                 events += [Event(title: eventTitle, description: eventDescription, startDate: eventDate!)]
             default: break
             
