@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         let configuration = ParseClientConfiguration {
@@ -47,12 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Check if launched from notification
         // 1
         if let notification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [String: AnyObject] {
+            
             // 2
             let aps = notification["aps"] as! [String: AnyObject]
             print(aps)
 //            createNewNewsItem(aps)
             // 3
-            window?.rootViewController
+            (window?.rootViewController as? SWRevealViewControllerTest)?.notificationReceived = true
         }
         
         return true

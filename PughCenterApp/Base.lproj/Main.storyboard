@@ -9,7 +9,7 @@
         <!--Reveal View Controller Test-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SWRevealViewControllerTest" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RevealViewController" id="BYZ-38-t0r" customClass="SWRevealViewControllerTest" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -481,7 +481,7 @@ pughcenter@colby.edu</string>
         <!--Events Navigation Controller-->
         <scene sceneID="gH6-pv-qOE">
             <objects>
-                <navigationController storyboardIdentifier="EventsViewController" title="Events Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="bh5-X1-j3R" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="EventsNavigationController" title="Events Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="bh5-X1-j3R" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vsE-B2-Zhf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -664,7 +664,7 @@ pughcenter@colby.edu</string>
         <!--NotificationsViewController-->
         <scene sceneID="n4J-I4-GyT">
             <objects>
-                <viewController title="NotificationsViewController" id="L2O-DP-tIC" customClass="NotificationsViewController" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotificationsViewController" title="NotificationsViewController" id="L2O-DP-tIC" customClass="NotificationsViewController" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OHV-2Z-yBe"/>
                         <viewControllerLayoutGuide type="bottom" id="pJU-0h-mRE"/>
@@ -771,7 +771,7 @@ pughcenter@colby.edu</string>
         <!--NotificationsNavigationController-->
         <scene sceneID="rgb-dz-aRz">
             <objects>
-                <navigationController title="NotificationsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="9JQ-ch-D2n" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NotificationsNavigationController" title="NotificationsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="9JQ-ch-D2n" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZnB-I4-858">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

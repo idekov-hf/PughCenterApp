@@ -10,10 +10,17 @@ import UIKit
 
 class SWRevealViewControllerTest: SWRevealViewController {
     
+    var notificationReceived = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         rearViewController = storyboard?.instantiateViewControllerWithIdentifier("MenuViewController")
-        frontViewController = storyboard?.instantiateViewControllerWithIdentifier("EventsViewController")
+        if notificationReceived {
+            frontViewController = storyboard?.instantiateViewControllerWithIdentifier("NotificationsNavigationController")
+        }
+        else {
+            frontViewController = storyboard?.instantiateViewControllerWithIdentifier("EventsNavigationController")
+        }
     }
     
 }
