@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '630F348D09B1D0793C620ACF48441F9C'
-               BlueprintName = 'Pods-PughCenterApp'
+               BlueprintIdentifier = '866674DC9DD03779B0ADD2965C306E2D'
+               BlueprintName = 'Bolts-Swift'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods-PughCenterApp.framework'>
+               BuildableName = 'Bolts-Swift.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

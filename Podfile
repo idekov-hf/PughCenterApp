@@ -7,5 +7,6 @@ target 'PughCenterApp' do
 
   # Pods for PughCenterApp
   pod 'Parse'
+  pod ‘ParseLiveQuery’
 
 end
