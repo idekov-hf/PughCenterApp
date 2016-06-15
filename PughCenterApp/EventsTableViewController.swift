@@ -47,9 +47,12 @@ class EventsTableViewController: UITableViewController {
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EventsTableViewController.reloadData), name: "reloadData", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         // Parse and set events field
         // cellForRowAtIndexPath uses the data 
         // from the events data field when the data is reloaded
@@ -60,7 +63,14 @@ class EventsTableViewController: UITableViewController {
         addLocalNotifications()
         activityIndicator.stopAnimating()
         activityIndicator.removeFromSuperview()
-        tableView.reloadData()
+        
+//        tableView.reloadData()
+    }
+    
+    func reloadData(notification: NSNotification) {
+        if notification.name == "reloadData" {
+            tableView.reloadData()
+        }
     }
     
     func addLocalNotifications() {

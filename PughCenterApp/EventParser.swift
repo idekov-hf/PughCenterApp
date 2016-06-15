@@ -10,10 +10,11 @@ import Foundation
 
 class EventParser: NSObject, NSXMLParserDelegate {
     
-    var parser: NSXMLParser
-    var elementValue: String = ""
+    let url = NSURL(string: "https://www.colby.edu/pugh/events-feed/")!
+    
+    var currentValue: String = ""
     var events = [Event]()
-    var event: Event?
+    
     var eventTitle: String = ""
     var eventDescription: String = ""
     var eventDate: NSDate?
@@ -25,33 +26,45 @@ class EventParser: NSObject, NSXMLParserDelegate {
         return formatter
     }()
     
-    override init() {
-        let url = NSURL(string: "https://www.colby.edu/pugh/events-feed/")!
-        self.parser = NSXMLParser(contentsOfURL: url)!
-        super.init()
-        self.parser.delegate = self
-    }
-    
     func beginParsing() {
-        self.parser.parse()
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url) { data, response, error in
+            guard error == nil else {
+                print(error)
+                return
+            }
+            
+            guard let data = data else {
+                print("Data not received")
+                return
+            }
+            
+            let parser = NSXMLParser(data: data)
+            parser.delegate = self
+            parser.parse()
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                NSNotificationCenter.defaultCenter().postNotificationName("reloadData", object: self)
+            }
+        }
+        task.resume()
     }
     
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        self.elementValue = ""
+        currentValue = ""
     }
     
     func parser(parser: NSXMLParser, foundCharacters string: String) {
-        self.elementValue += string
+        currentValue += string
     }
     
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         switch elementName {
             case "title":
-                eventTitle = elementValue
+                eventTitle = currentValue
             case "description":
-                eventDescription = elementValue
+                eventDescription = currentValue
             case "ev:startdate":
-                eventDate = EventParser.inDateFormatter.dateFromString(elementValue)!
+                eventDate = EventParser.inDateFormatter.dateFromString(currentValue)!
             case "item":
                 eventDescription = eventDescription.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
                 // trim description string (remove whitespace from beginning and end)
