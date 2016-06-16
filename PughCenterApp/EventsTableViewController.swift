@@ -12,7 +12,6 @@ class EventsTableViewController: UITableViewController {
     
     @IBOutlet var menuButton: UIBarButtonItem!
     
-    var activityIndicator: UIActivityIndicatorView!
     static var outDateFormatter: NSDateFormatter = {
         var formatter = NSDateFormatter()
         formatter.dateFormat = "EEEE, MMMM dd, 'at' h:mm a"
@@ -20,6 +19,9 @@ class EventsTableViewController: UITableViewController {
         return formatter
     }()
     
+    let eventParser = EventParser()
+    
+    var activityIndicator: UIActivityIndicatorView!
     var events = [Event]()
     var selectedIndexPath: NSIndexPath?
     var deSelectedIndexPath: NSIndexPath?
@@ -48,28 +50,23 @@ class EventsTableViewController: UITableViewController {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EventsTableViewController.reloadData), name: "reloadData", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTableData), name: "reloadData", object: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        // Parse and set events field
-        // cellForRowAtIndexPath uses the data 
-        // from the events data field when the data is reloaded
-        let eventParser = EventParser()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // get XML data, initialize NSXMLParser object with data as parameter & parse the data
         eventParser.beginParsing()
-        events = eventParser.events
-        
-        addLocalNotifications()
-        activityIndicator.stopAnimating()
-        activityIndicator.removeFromSuperview()
-        
-//        tableView.reloadData()
     }
     
-    func reloadData(notification: NSNotification) {
+    func reloadTableData(notification: NSNotification) {
         if notification.name == "reloadData" {
-            tableView.reloadData()
+            events = eventParser.events
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+                self.activityIndicator.stopAnimating()
+            }
+            addLocalNotifications()
         }
     }
     
@@ -102,13 +99,15 @@ class EventsTableViewController: UITableViewController {
             cellID = "UnselectedCell"
         }
         
+        let event = events[indexPath.row]
+        
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! EventsTableViewCell
-        let dateAsString = EventsTableViewController.outDateFormatter.stringFromDate(events[indexPath.row].startDate!)
-        cell.titleLabel.text = events[indexPath.row].title
+        let dateAsString = EventsTableViewController.outDateFormatter.stringFromDate(event.startDate!)
+        cell.titleLabel.text = event.title
         cell.dateLabel.text = dateAsString
         
-        if indexPath == selectedIndexPath && eventSelected == true {
-            cell.descriptionLabel.text = events[indexPath.row].eventDescription
+        if cellID == "SelectedCell" {
+            cell.descriptionLabel.text = event.eventDescription
         }
         
         return cell

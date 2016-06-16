@@ -12,11 +12,12 @@ class EventParser: NSObject, NSXMLParserDelegate {
     
     let url = NSURL(string: "https://www.colby.edu/pugh/events-feed/")!
     
-    var currentValue: String = ""
     var events = [Event]()
     
-    var eventTitle: String = ""
-    var eventDescription: String = ""
+    let validElements = ["title", "description", "ev:startdate"]
+    var currentValue: String?
+    var eventTitle: String?
+    var eventDescription: String?
     var eventDate: NSDate?
     
     static var inDateFormatter: NSDateFormatter = {
@@ -42,19 +43,23 @@ class EventParser: NSObject, NSXMLParserDelegate {
             parser.delegate = self
             parser.parse()
             
-            dispatch_async(dispatch_get_main_queue()) {
-                NSNotificationCenter.defaultCenter().postNotificationName("reloadData", object: self)
-            }
+            NSNotificationCenter.defaultCenter().postNotificationName("reloadData", object: self)
+            
         }
         task.resume()
     }
     
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        currentValue = ""
+        if validElements.contains(elementName) {
+            currentValue = String()
+        }
     }
     
+    // found characters
+    // if this is an element we care about, append those characters.
+    // if currentValue is still nil, then do nothing.
     func parser(parser: NSXMLParser, foundCharacters string: String) {
-        currentValue += string
+        currentValue? += string
     }
     
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
@@ -64,14 +69,17 @@ class EventParser: NSObject, NSXMLParserDelegate {
             case "description":
                 eventDescription = currentValue
             case "ev:startdate":
-                eventDate = EventParser.inDateFormatter.dateFromString(currentValue)!
+                eventDate = EventParser.inDateFormatter.dateFromString(currentValue!)!
             case "item":
-                eventDescription = eventDescription.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+                
                 // trim description string (remove whitespace from beginning and end)
-                events += [Event(title: eventTitle, description: eventDescription, startDate: eventDate!)]
-            default: break
+                eventDescription = eventDescription!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+                
+                events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!)]
             
+            default: break
         }
+        currentValue = nil
     }
     
 }
