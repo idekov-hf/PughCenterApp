@@ -124,10 +124,10 @@
 		5DA58EFD1C696EFD00CB062D /* PughCenterApp */ = {
 			isa = PBXGroup;
 			children = (
+				5D1657831C6AA1AD005D2229 /* SWRevealViewController */,
 				5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */,
 				5D0B79511CA495F000CE2E94 /* EventParser.swift */,
 				5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */,
-				5D1657831C6AA1AD005D2229 /* SWRevealViewController */,
 				5D41D2401CBC7B6D00F21991 /* Model */,
 				5D41D2421CBC7B7800F21991 /* Controller */,
 				5DA58F021C696EFD00CB062D /* Main.storyboard */,

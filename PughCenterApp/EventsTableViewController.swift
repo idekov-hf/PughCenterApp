@@ -12,13 +12,6 @@ class EventsTableViewController: UITableViewController {
     
     @IBOutlet var menuButton: UIBarButtonItem!
     
-    static var outDateFormatter: NSDateFormatter = {
-        var formatter = NSDateFormatter()
-        formatter.dateFormat = "EEEE, MMMM dd, 'at' h:mm a"
-        formatter.locale = NSLocale.currentLocale()
-        return formatter
-    }()
-    
     let eventParser = EventParser()
     
     var activityIndicator: UIActivityIndicatorView!
@@ -102,7 +95,7 @@ class EventsTableViewController: UITableViewController {
         let event = events[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! EventsTableViewCell
-        let dateAsString = EventsTableViewController.outDateFormatter.stringFromDate(event.startDate!)
+        let dateAsString = DateFormatters.outDateFormatter.stringFromDate(event.startDate!)
         cell.titleLabel.text = event.title
         cell.dateLabel.text = dateAsString
         

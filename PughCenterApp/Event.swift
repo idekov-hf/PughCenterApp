@@ -8,24 +8,13 @@
 
 import Foundation
 
-class Event: NSObject, NSCoding {
+class Event {
     
     // MARK: Properties
-    
-    static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("event")
     
     var title: String
     var eventDescription: String
     var startDate: NSDate?
-    
-    // MARK: Types
-    
-    struct PropertyKey {
-        static let titleKey = "title"
-        static let descriptionKey = "description"
-        static let startDateKey = "startDate"
-    }
     
     // Mark: Initialization
     
@@ -34,27 +23,24 @@ class Event: NSObject, NSCoding {
         self.title = title
         self.eventDescription = description
         self.startDate = startDate
-        super.init()
     }
     
-    // MARK: NSCoding
+}
+
+struct DateFormatters {
+    // Static Properties
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(title, forKey: PropertyKey.titleKey)
-        aCoder.encodeObject(description, forKey: PropertyKey.descriptionKey)
-        aCoder.encodeObject(startDate, forKey: PropertyKey.startDateKey)
-    }
+    static var inDateFormatter: NSDateFormatter = {
+        var formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        return formatter
+    }()
     
-    required convenience init?(coder aDecoder: NSCoder) {
-        let title = aDecoder.decodeObjectForKey(PropertyKey.titleKey) as! String
-        
-        // Because photo is an optional property of Meal, use conditional cast.
-        let description = aDecoder.decodeObjectForKey(PropertyKey.descriptionKey) as! String
-        
-        let startDate = aDecoder.decodeObjectForKey(PropertyKey.startDateKey) as! NSDate
-        
-        // Must call designated initializer.
-        self.init(title: title, description: description, startDate: startDate)
-    }
-    
+    static var outDateFormatter: NSDateFormatter = {
+        var formatter = NSDateFormatter()
+        formatter.dateFormat = "EEEE, MMMM dd, 'at' h:mm a"
+        formatter.locale = NSLocale.currentLocale()
+        return formatter
+    }()
 }

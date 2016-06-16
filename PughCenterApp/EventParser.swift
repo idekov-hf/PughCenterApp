@@ -20,13 +20,6 @@ class EventParser: NSObject, NSXMLParserDelegate {
     var eventDescription: String?
     var eventDate: NSDate?
     
-    static var inDateFormatter: NSDateFormatter = {
-        var formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        return formatter
-    }()
-    
     func beginParsing() {
         let task = NSURLSession.sharedSession().dataTaskWithURL(url) { data, response, error in
             guard error == nil else {
@@ -69,7 +62,7 @@ class EventParser: NSObject, NSXMLParserDelegate {
             case "description":
                 eventDescription = currentValue
             case "ev:startdate":
-                eventDate = EventParser.inDateFormatter.dateFromString(currentValue!)!
+                eventDate = DateFormatters.inDateFormatter.dateFromString(currentValue!)!
             case "item":
                 
                 // trim description string (remove whitespace from beginning and end)
