@@ -37,7 +37,6 @@ class EventParser: NSObject, NSXMLParserDelegate {
             parser.parse()
             
             NSNotificationCenter.defaultCenter().postNotificationName("reloadData", object: self)
-            
         }
         task.resume()
     }

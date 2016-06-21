@@ -42,12 +42,11 @@ class EventsTableViewController: UITableViewController {
             
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTableData), name: "reloadData", object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTableData), name: "reloadData", object: nil)
         // get XML data, initialize NSXMLParser object with data as parameter & parse the data
         eventParser.beginParsing()
     }
@@ -60,6 +59,7 @@ class EventsTableViewController: UITableViewController {
                 self.activityIndicator.stopAnimating()
             }
             addLocalNotifications()
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "reloadData", object: nil)
         }
     }
     
@@ -129,5 +129,4 @@ class EventsTableViewController: UITableViewController {
             tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
         }
     }
-
 }
