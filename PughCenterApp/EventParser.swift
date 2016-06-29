@@ -76,14 +76,13 @@ class EventParser: NSObject, NSXMLParserDelegate {
                 eventDate = DateFormatters.inDateFormatter.dateFromString(currentValue!)!
             case "link":
                 eventLink = currentValue
-                addLinkToDictionary(eventLink!)
             case "item":
                 
                 // trim description string (remove whitespace from beginning and end)
                 eventDescription = eventDescription!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-                
                 events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!, link: eventLink!)]
-            
+                
+                addLinkToDictionary(eventLink!)
             default: break
         }
         currentValue = nil
