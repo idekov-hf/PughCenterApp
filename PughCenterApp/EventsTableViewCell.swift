@@ -15,18 +15,6 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var attendanceLabel: UILabel!
     @IBOutlet weak var attendanceButton: UIButton!
-    
-    @IBAction func attendanceButtonPressed(sender: UIButton) {
-        if attendanceButton.currentTitle == "Going" {
-        attendanceLabel.text = "1"
-        attendanceButton.setTitle("Can't go", forState: .Normal)
-        }
-        else {
-            attendanceLabel.text = "0"
-            attendanceButton.setTitle("Going", forState: .Normal)
-        }
-        
-    }
-    
+      
     
 }

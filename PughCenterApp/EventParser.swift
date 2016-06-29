@@ -11,14 +11,26 @@ import Foundation
 class EventParser: NSObject, NSXMLParserDelegate {
     
     let url = NSURL(string: "https://www.colby.edu/pugh/events-feed/")!
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     var events = [Event]()
     
-    let validElements = ["title", "description", "ev:startdate"]
+    var newLinkDictionary = [String: String]()
+    var oldLinkDictionary = [String: String]()
+    
+    // Parsing variables
+    let validElements = ["title", "description", "ev:startdate", "link"]
     var currentValue: String?
     var eventTitle: String?
     var eventDescription: String?
     var eventDate: NSDate?
+    var eventLink: String?
+    
+    override init() {
+        if let dictionary = defaults.dictionaryForKey("linkDictionary") as? [String: String] {
+            oldLinkDictionary = dictionary
+        }
+    }
     
     func beginParsing() {
         let task = NSURLSession.sharedSession().dataTaskWithURL(url) { data, response, error in
@@ -62,16 +74,36 @@ class EventParser: NSObject, NSXMLParserDelegate {
                 eventDescription = currentValue
             case "ev:startdate":
                 eventDate = DateFormatters.inDateFormatter.dateFromString(currentValue!)!
+            case "link":
+                eventLink = currentValue
+                addLinkToDictionary(eventLink!)
             case "item":
                 
                 // trim description string (remove whitespace from beginning and end)
                 eventDescription = eventDescription!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
                 
-                events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!)]
+                events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!, link: eventLink!)]
             
             default: break
         }
         currentValue = nil
+    }
+    
+    // Persist new dictionary
+    func parserDidEndDocument(parser: NSXMLParser) {
+        defaults.setObject(newLinkDictionary, forKey: "linkDictionary")
+    }
+    
+    func addLinkToDictionary(eventLink: String) {
+        newLinkDictionary[eventLink] = getButtonStateFromOldDictionary(eventLink)
+        
+    }
+    
+    func getButtonStateFromOldDictionary(eventLink: String) -> String {
+        if let buttonState = oldLinkDictionary[eventLink] {
+            return buttonState
+        }
+        return "RSVP"
     }
     
 }

@@ -129,4 +129,10 @@ class EventsTableViewController: UITableViewController {
             tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
         }
     }
+    
+    @IBAction func attendanceButtonPressed(sender: UIButton) {
+        
+        
+        
+    }
 }

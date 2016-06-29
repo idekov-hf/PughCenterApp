@@ -56,7 +56,7 @@
                                             <rect key="frame" x="14" y="80" width="41" height="30"/>
                                             <state key="normal" title="Going"/>
                                             <connections>
-                                                <action selector="attendanceButtonPressed:" destination="fmh-dF-Oaa" eventType="touchUpInside" id="Iau-c7-mXc"/>
+                                                <action selector="attendanceButtonPressed:" destination="08v-8T-YcL" eventType="touchUpInside" id="Kx7-cO-oAJ"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeD-vP-ENn">

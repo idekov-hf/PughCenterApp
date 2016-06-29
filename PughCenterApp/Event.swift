@@ -15,14 +15,16 @@ class Event {
     var title: String
     var eventDescription: String
     var startDate: NSDate?
+    var link: String
     
     // Mark: Initialization
     
-    init(title: String, description: String, startDate: NSDate) {
+    init(title: String, description: String, startDate: NSDate, link: String) {
         // Initializes stored properties.
         self.title = title
         self.eventDescription = description
         self.startDate = startDate
+        self.link = link
     }
 }
 
