@@ -17,6 +17,7 @@ class Event {
     var startDate: NSDate?
     var link: String
     var buttonStatus: String
+    var parseObjectID: String?
     
     // Mark: Initialization
     

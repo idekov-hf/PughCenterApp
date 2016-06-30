@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class EventsTableViewController: UITableViewController {
     
@@ -140,18 +141,70 @@ class EventsTableViewController: UITableViewController {
     }
     
     @IBAction func attendanceButtonPressed(sender: UIButton) {
-        if let selectedIndex = selectedIndexPath {
+        if let selectedRow = selectedIndexPath?.row {
             let buttonTitle = sender.titleLabel?.text
             let newTitle = buttonTitle == "RSVP" ? "Cancel" : "RSVP"
             // Set the button's new title
             sender.setTitle(newTitle, forState: .Normal)
+            
+            adjustAttendanceCount(buttonTitle!, row: selectedRow)
+            
             // Update the title of the button associated with the selected Event
-            events[selectedIndex.row].buttonStatus = newTitle
+            events[selectedRow].buttonStatus = newTitle
             // Update the title associated with the Events link field in the button title dictionary
-            buttonTitleDictionary[events[selectedIndex.row].link] = newTitle
+            buttonTitleDictionary[events[selectedRow].link] = newTitle
             // Persist the button title dictionary
             defaults.setObject(buttonTitleDictionary, forKey: "linkDictionary")
             defaults.synchronize()
         }
+    }
+    
+    func adjustAttendanceCount(eventTitle: String, row: Int) {
+        
+        // If the event has a parseObjectID, adjust the attendance count
+        if let objectID = events[row].parseObjectID {
+            let query = PFQuery(className: "Event")
+            query.getObjectInBackgroundWithId(objectID) {
+                (eventObject: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                } else if let event = eventObject {
+                    if eventTitle == "RSVP" {
+                        event.incrementKey("attendance")
+                    }
+                    else {
+                        event.incrementKey("attendance", byAmount: -1)
+                    }
+                    event.saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            // The score key has been incremented
+                            print("Succesfully incremented attendance counter")
+                        } else {
+                            // There was a problem, check error.description
+                            print(error?.description)
+                        }
+                    }
+                }
+            }
+        }
+        // If it doesn't, create a new PFObject and set the attendance to 1
+        else {
+            
+            let eventObject = PFObject(className: "Event")
+            eventObject["attendance"] = 1
+            eventObject.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    // The object has been saved. Save the objectId
+                    self.events[row].parseObjectID = eventObject.objectId
+                } else {
+                    // There was a problem, check error.description
+                    print("Did not save object in background because: \(error?.description)")
+                }
+            }
+            
+        }
+        
     }
 }

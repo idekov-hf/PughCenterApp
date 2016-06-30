@@ -80,13 +80,13 @@ class EventParser: NSObject, NSXMLParserDelegate {
                 eventDescription = eventDescription!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
                 
                 // Get the button state from the old dictionary
-                let buttonState = getButtonStateFromOldDictionary(eventLink!)
+                let buttonTitle = getButtonTitleFromOldDictionary(eventLink!)
                 
                 // Add the event to the array of Event objects
-                events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!, link: eventLink!, buttonStatus: buttonState)]
+                events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!, link: eventLink!, buttonStatus: buttonTitle)]
                 
                 // Add the button state to the new dictionary
-                newLinkDictionary[eventLink!] = buttonState
+                newLinkDictionary[eventLink!] = buttonTitle
             
             default: break
         }
@@ -99,7 +99,7 @@ class EventParser: NSObject, NSXMLParserDelegate {
     }
     
     // Obtain the button state from persistent dictionary; return default state otherwise
-    func getButtonStateFromOldDictionary(eventLink: String) -> String {
+    func getButtonTitleFromOldDictionary(eventLink: String) -> String {
         if let buttonState = oldLinkDictionary[eventLink] {
             return buttonState
         }
