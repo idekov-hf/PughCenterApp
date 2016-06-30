@@ -96,9 +96,6 @@ class EventParser: NSObject, NSXMLParserDelegate {
     // Persist new dictionary once parsing has finished
     func parserDidEndDocument(parser: NSXMLParser) {
         defaults.setObject(newLinkDictionary, forKey: "linkDictionary")
-        for (key, value) in newLinkDictionary {
-            print("\(key): \(value)")
-        }
     }
     
     // Obtain the button state from persistent dictionary; return default state otherwise

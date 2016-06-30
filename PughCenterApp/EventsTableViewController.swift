@@ -141,16 +141,10 @@ class EventsTableViewController: UITableViewController {
     
     @IBAction func attendanceButtonPressed(sender: UIButton) {
         if let selectedIndex = selectedIndexPath {
-            let cell = tableView.cellForRowAtIndexPath(selectedIndex) as! EventsTableViewCell
-            let buttonTitle = cell.attendanceButton.titleLabel?.text
-            let newTitle: String
-            if buttonTitle == "RSVP" {
-                newTitle = "Cancel"
-                cell.attendanceButton.setTitle(newTitle, forState: .Normal)
-            } else {
-                newTitle = "RSVP"
-                cell.attendanceButton.setTitle(newTitle, forState: .Normal)
-            }
+            let buttonTitle = sender.titleLabel?.text
+            let newTitle = buttonTitle == "RSVP" ? "Cancel" : "RSVP"
+            // Set the button's new title
+            sender.setTitle(newTitle, forState: .Normal)
             // Update the title of the button associated with the selected Event
             events[selectedIndex.row].buttonStatus = newTitle
             // Update the title associated with the Events link field in the button title dictionary
