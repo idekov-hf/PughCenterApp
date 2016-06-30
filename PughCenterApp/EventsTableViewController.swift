@@ -13,15 +13,19 @@ class EventsTableViewController: UITableViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
     
     let eventParser = EventParser()
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     var activityIndicator: UIActivityIndicatorView!
     var events = [Event]()
+    var buttonTitleDictionary: [String: String]!
     var selectedIndexPath: NSIndexPath?
     var deSelectedIndexPath: NSIndexPath?
     var eventSelected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        buttonTitleDictionary = eventParser.newLinkDictionary
         
         // Enables self sizing cells
         // http://www.appcoda.com/self-sizing-cells/
@@ -101,6 +105,7 @@ class EventsTableViewController: UITableViewController {
         
         if cellID == "SelectedCell" {
             cell.descriptionLabel.text = event.eventDescription
+            cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
         }
         
         return cell
@@ -131,8 +136,21 @@ class EventsTableViewController: UITableViewController {
     }
     
     @IBAction func attendanceButtonPressed(sender: UIButton) {
-        
-        
-        
+        if let selectedIndex = selectedIndexPath {
+            let cell = tableView.cellForRowAtIndexPath(selectedIndex) as! EventsTableViewCell
+            let buttonTitle = cell.attendanceButton.titleLabel?.text
+            let newTitle: String
+            if buttonTitle == "RSVP" {
+                newTitle = "Cancel"
+                cell.attendanceButton.setTitle(newTitle, forState: .Normal)
+            } else {
+                newTitle = "RSVP"
+                cell.attendanceButton.setTitle(newTitle, forState: .Normal)
+            }
+            buttonTitleDictionary[events[selectedIndex.row].link] = newTitle
+            events[selectedIndex.row].buttonStatus = newTitle
+            defaults.setObject(buttonTitleDictionary, forKey: "linkDictionary")
+            defaults.synchronize()
+        }
     }
 }

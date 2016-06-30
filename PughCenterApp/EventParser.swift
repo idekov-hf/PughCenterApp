@@ -78,26 +78,29 @@ class EventParser: NSObject, NSXMLParserDelegate {
                 eventLink = currentValue
             case "item":
                 
-                // trim description string (remove whitespace from beginning and end)
+                // Trim description string (remove whitespace from beginning and end)
                 eventDescription = eventDescription!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-                events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!, link: eventLink!)]
                 
-                addLinkToDictionary(eventLink!)
+                // Get the button state from the old dictionary
+                let buttonState = getButtonStateFromOldDictionary(eventLink!)
+                
+                // Add the event to the array of Event objects
+                events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!, link: eventLink!, buttonStatus: buttonState)]
+                
+                // Add the button state to the new dictionary
+                newLinkDictionary[eventLink!] = buttonState
+            
             default: break
         }
         currentValue = nil
     }
     
-    // Persist new dictionary
+    // Persist new dictionary once parsing has finished
     func parserDidEndDocument(parser: NSXMLParser) {
         defaults.setObject(newLinkDictionary, forKey: "linkDictionary")
     }
     
-    func addLinkToDictionary(eventLink: String) {
-        newLinkDictionary[eventLink] = getButtonStateFromOldDictionary(eventLink)
-        
-    }
-    
+    // Obtain the button state from saved dictionary; return default state otherwise
     func getButtonStateFromOldDictionary(eventLink: String) -> String {
         if let buttonState = oldLinkDictionary[eventLink] {
             return buttonState
