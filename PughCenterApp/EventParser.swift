@@ -10,7 +10,8 @@ import Foundation
 
 class EventParser: NSObject, NSXMLParserDelegate {
     
-    let url = NSURL(string: "https://www.colby.edu/pugh/events-feed/")!
+//    let url = NSURL(string: "https://www.colby.edu/pugh/events-feed/")!
+    let url = NSBundle.mainBundle().URLForResource("TestData", withExtension: "xml")!
     let defaults = NSUserDefaults.standardUserDefaults()
     
     var events = [Event]()
@@ -26,13 +27,10 @@ class EventParser: NSObject, NSXMLParserDelegate {
     var eventDate: NSDate?
     var eventLink: String?
     
-    override init() {
+    func beginParsing() {
         if let dictionary = defaults.dictionaryForKey("linkDictionary") as? [String: String] {
             oldLinkDictionary = dictionary
         }
-    }
-    
-    func beginParsing() {
         let task = NSURLSession.sharedSession().dataTaskWithURL(url) { data, response, error in
             guard error == nil else {
                 print(error)
@@ -98,9 +96,12 @@ class EventParser: NSObject, NSXMLParserDelegate {
     // Persist new dictionary once parsing has finished
     func parserDidEndDocument(parser: NSXMLParser) {
         defaults.setObject(newLinkDictionary, forKey: "linkDictionary")
+        for (key, value) in newLinkDictionary {
+            print("\(key): \(value)")
+        }
     }
     
-    // Obtain the button state from saved dictionary; return default state otherwise
+    // Obtain the button state from persistent dictionary; return default state otherwise
     func getButtonStateFromOldDictionary(eventLink: String) -> String {
         if let buttonState = oldLinkDictionary[eventLink] {
             return buttonState

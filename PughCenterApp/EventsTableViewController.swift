@@ -25,8 +25,6 @@ class EventsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        buttonTitleDictionary = eventParser.newLinkDictionary
-        
         // Enables self sizing cells
         // http://www.appcoda.com/self-sizing-cells/
         tableView.estimatedRowHeight = 80
@@ -57,12 +55,18 @@ class EventsTableViewController: UITableViewController {
     
     func reloadTableData(notification: NSNotification) {
         if notification.name == "reloadData" {
+            // Transfer the dictionary containing the button title for each unique Event link from the eventParser object to the EventsTableViewController
+            buttonTitleDictionary = eventParser.newLinkDictionary
+            // Transfer the array of events from the eventParser object to the EventsTableViewController
             events = eventParser.events
+            // Reload the table contents in the main queue
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
                 self.activityIndicator.stopAnimating()
             }
+            // Add local notifications for each event
             addLocalNotifications()
+            // Remove the observer for the reloadData notification call
             NSNotificationCenter.defaultCenter().removeObserver(self, name: "reloadData", object: nil)
         }
     }
@@ -147,8 +151,11 @@ class EventsTableViewController: UITableViewController {
                 newTitle = "RSVP"
                 cell.attendanceButton.setTitle(newTitle, forState: .Normal)
             }
-            buttonTitleDictionary[events[selectedIndex.row].link] = newTitle
+            // Update the title of the button associated with the selected Event
             events[selectedIndex.row].buttonStatus = newTitle
+            // Update the title associated with the Events link field in the button title dictionary
+            buttonTitleDictionary[events[selectedIndex.row].link] = newTitle
+            // Persist the button title dictionary
             defaults.setObject(buttonTitleDictionary, forKey: "linkDictionary")
             defaults.synchronize()
         }

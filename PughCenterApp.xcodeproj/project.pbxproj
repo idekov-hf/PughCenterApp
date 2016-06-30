@@ -21,6 +21,7 @@
 		5DA58F041C696EFD00CB062D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F021C696EFD00CB062D /* Main.storyboard */; };
 		5DA58F061C696EFD00CB062D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F051C696EFD00CB062D /* Assets.xcassets */; };
 		5DA58F091C696EFD00CB062D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F071C696EFD00CB062D /* LaunchScreen.storyboard */; };
+		5DC470CD1D25642700105D29 /* TestData.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5DC470CC1D25642700105D29 /* TestData.xml */; };
 		5DCBD46F1C72C15200A6E09D /* ClubsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */; };
 		5DCBD4711C72DE1F00A6E09D /* ClubDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */; };
 		5DCC00C01C760C8200B29657 /* FacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */; };
@@ -47,6 +48,7 @@
 		5DA58F051C696EFD00CB062D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DA58F081C696EFD00CB062D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DA58F0A1C696EFD00CB062D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DC470CC1D25642700105D29 /* TestData.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TestData.xml; sourceTree = "<group>"; };
 		5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubsTableViewController.swift; sourceTree = "<group>"; };
 		5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailViewController.swift; sourceTree = "<group>"; };
 		5DCC00BF1C760C8200B29657 /* FacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				5DA58F051C696EFD00CB062D /* Assets.xcassets */,
 				5DA58F071C696EFD00CB062D /* LaunchScreen.storyboard */,
 				5DA58F0A1C696EFD00CB062D /* Info.plist */,
+				5DC470CC1D25642700105D29 /* TestData.xml */,
 			);
 			path = PughCenterApp;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				5D644C2F1C6B0BFC002FC8E9 /* Sliding Menu Tutorial in Resources */,
 				5DA58F091C696EFD00CB062D /* LaunchScreen.storyboard in Resources */,
 				5DA58F061C696EFD00CB062D /* Assets.xcassets in Resources */,
+				5DC470CD1D25642700105D29 /* TestData.xml in Resources */,
 				5DA58F041C696EFD00CB062D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
