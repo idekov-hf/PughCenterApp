@@ -18,7 +18,7 @@ class EventsTableViewController: UITableViewController {
     
     var activityIndicator: UIActivityIndicatorView!
     var events = [Event]()
-    var buttonTitleDictionary: [String: String]!
+    var linkDictionary: [String: [String: String]]!
     var selectedIndexPath: NSIndexPath?
     var deSelectedIndexPath: NSIndexPath?
     var eventSelected = false
@@ -57,7 +57,7 @@ class EventsTableViewController: UITableViewController {
     func reloadTableData(notification: NSNotification) {
         if notification.name == "reloadData" {
             // Transfer the dictionary containing the button title for each unique Event link from the eventParser object to the EventsTableViewController
-            buttonTitleDictionary = eventParser.newLinkDictionary
+            linkDictionary = eventParser.newLinkDictionary
             // Transfer the array of events from the eventParser object to the EventsTableViewController
             events = eventParser.events
             // Reload the table contents in the main queue
@@ -151,10 +151,11 @@ class EventsTableViewController: UITableViewController {
             
             // Update the title of the button associated with the selected Event
             events[selectedRow].buttonStatus = newTitle
-            // Update the title associated with the Events link field in the button title dictionary
-            buttonTitleDictionary[events[selectedRow].link] = newTitle
+            // Update the title associated with the Events link field in the link dictionary
+            linkDictionary[events[selectedRow].link]!["buttonTitle"] = newTitle
+            
             // Persist the button title dictionary
-            defaults.setObject(buttonTitleDictionary, forKey: "linkDictionary")
+            defaults.setObject(linkDictionary, forKey: "linkDictionary")
             defaults.synchronize()
         }
     }
@@ -162,7 +163,8 @@ class EventsTableViewController: UITableViewController {
     func adjustAttendanceCount(eventTitle: String, row: Int) {
         
         // If the event has a parseObjectID, adjust the attendance count
-        if let objectID = events[row].parseObjectID {
+        if !events[row].parseObjectID?.isEmpty {
+            let objectID = events[row].parseObjectID
             let query = PFQuery(className: "Event")
             query.getObjectInBackgroundWithId(objectID) {
                 (eventObject: PFObject?, error: NSError?) -> Void in
@@ -197,7 +199,9 @@ class EventsTableViewController: UITableViewController {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
                     // The object has been saved. Save the objectId
-                    self.events[row].parseObjectID = eventObject.objectId
+                    let objectID = eventObject.objectId
+                    self.events[row].parseObjectID = objectID
+                    self.linkDictionary[self.events[row].link]!["parseObjectID"] = objectID
                 } else {
                     // There was a problem, check error.description
                     print("Did not save object in background because: \(error?.description)")

@@ -16,8 +16,8 @@ class EventParser: NSObject, NSXMLParserDelegate {
     
     var events = [Event]()
     
-    var newLinkDictionary = [String: String]()
-    var oldLinkDictionary = [String: String]()
+    var newLinkDictionary = [String: [String: String]]()
+    var oldLinkDictionary = [String: [String: String]]()
     
     // Parsing variables
     let validElements = ["title", "description", "ev:startdate", "link"]
@@ -28,7 +28,8 @@ class EventParser: NSObject, NSXMLParserDelegate {
     var eventLink: String?
     
     func beginParsing() {
-        if let dictionary = defaults.dictionaryForKey("linkDictionary") as? [String: String] {
+
+        if let dictionary = defaults.objectForKey("linkDictionary") as? [String: [String: String]] {
             oldLinkDictionary = dictionary
         }
         let task = NSURLSession.sharedSession().dataTaskWithURL(url) { data, response, error in
@@ -79,14 +80,18 @@ class EventParser: NSObject, NSXMLParserDelegate {
                 // Trim description string (remove whitespace from beginning and end)
                 eventDescription = eventDescription!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
                 
-                // Get the button state from the old dictionary
+                // Set the buttonTitle
                 let buttonTitle = getButtonTitleFromOldDictionary(eventLink!)
+                // Set the parseObjectID
+                let parseObjectID = getObjectIDFromOldDictionary(eventLink!)
                 
                 // Add the event to the array of Event objects
-                events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!, link: eventLink!, buttonStatus: buttonTitle)]
+                events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!, link: eventLink!, buttonStatus: buttonTitle, parseObjectID: parseObjectID)]
                 
-                // Add the button state to the new dictionary
-                newLinkDictionary[eventLink!] = buttonTitle
+                let newData = ["buttonTitle": buttonTitle, "parseObjectID": parseObjectID]
+                
+                // Add button title and Parse object ID to the new dictionary
+                newLinkDictionary.updateValue(newData, forKey: eventLink!)
             
             default: break
         }
@@ -98,12 +103,20 @@ class EventParser: NSObject, NSXMLParserDelegate {
         defaults.setObject(newLinkDictionary, forKey: "linkDictionary")
     }
     
-    // Obtain the button state from persistent dictionary; return default state otherwise
+    // Obtain the button title from persistent dictionary; return default state otherwise
     func getButtonTitleFromOldDictionary(eventLink: String) -> String {
-        if let buttonState = oldLinkDictionary[eventLink] {
-            return buttonState
+        if let buttonTitle = oldLinkDictionary[eventLink]?["buttonTitle"] {
+            return buttonTitle
         }
         return "RSVP"
+    }
+    
+    // Obtain the Parse object ID from persistent dictionary; return nil otherwise
+    func getObjectIDFromOldDictionary(eventLink: String) -> String {
+        if let parseObjectID = oldLinkDictionary[eventLink]?["parseObjectID"] {
+            return parseObjectID
+        }
+        return ""
     }
     
 }
