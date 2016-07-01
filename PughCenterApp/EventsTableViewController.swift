@@ -137,9 +137,9 @@ class EventsTableViewController: UITableViewController {
         selectedIndexPath = indexPath
         indexPathArray.append(indexPath)
         
-        tableView.reloadRowsAtIndexPaths(indexPathArray, withRowAnimation: UITableViewRowAnimation.Automatic)
+        tableView.reloadRowsAtIndexPaths(indexPathArray, withRowAnimation: .Automatic)
         if eventSelected {
-            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
         }
         
     }
@@ -172,10 +172,8 @@ class EventsTableViewController: UITableViewController {
             if error != nil {
                 print(error)
             } else if let event = eventObject {
-                dispatch_async(dispatch_get_main_queue()) {
-                    let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
-                    cell.attendanceLabel?.text = "\(event["attendance"])"
-                }
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
+                cell.attendanceLabel?.text = "\(event["attendance"])"
             }
         }
     }
@@ -231,6 +229,11 @@ class EventsTableViewController: UITableViewController {
             }
             
         }
+    }
+    
+    func adjustAttendanceData2() {
+        
+        // Query the Parse database using the link of the selected cell
         
     }
 }
