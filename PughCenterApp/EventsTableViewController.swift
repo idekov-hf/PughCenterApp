@@ -145,7 +145,7 @@ class EventsTableViewController: UITableViewController {
     }
     
     @IBAction func attendanceButtonPressed(sender: UIButton) {
-        if let selectedRow = selectedIndexPath?.row {
+        if let selectedRow = selectedIndexPath?.row {           
             let buttonTitle = sender.titleLabel?.text
             let newTitle = buttonTitle == "RSVP" ? "Cancel" : "RSVP"
             // Set the button's new title
@@ -164,6 +164,8 @@ class EventsTableViewController: UITableViewController {
         }
     }
     
+    /*
+    // TODO: Use event link instead of parseObject ID to query Parse database
     func adjustAttendanceCount(indexPath: NSIndexPath) {
         // Get the attendance number for the selected row
         let query = PFQuery(className: "Event")
@@ -177,7 +179,29 @@ class EventsTableViewController: UITableViewController {
             }
         }
     }
+    */
+    
+    func adjustAttendanceCount(indexPath: NSIndexPath) {
+        let query = PFQuery(className: "Event")
+        query.whereKey("link", equalTo: events[indexPath.row].link)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            // If the object exists, update the attendanceLabel.text value of the appropriate cell
+            if error == nil, let event = objects?[0] {
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
+                cell.attendanceLabel?.text = "\(event["attendance"])"
+            } else {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    func adjustCountOnPress(count: Int) {
+        let cell = self.tableView.cellForRowAtIndexPath(selectedIndexPath!) as! EventsTableViewCell
+        cell.attendanceLabel?.text = "\(count)"
+    }
 
+    /*
     func adjustAttendanceData(eventTitle: String, row: Int) {
         
         // If the event has a parseObjectID, adjust the attendance count
@@ -230,10 +254,61 @@ class EventsTableViewController: UITableViewController {
             
         }
     }
+    */
     
-    func adjustAttendanceData2() {
+    func adjustAttendanceData(eventTitle: String, row: Int) {
         
-        // Query the Parse database using the link of the selected cell
-        
+        // Query the Parse database in order to find a PFObject using the link of the event associated with the selected cell
+        let query = PFQuery(className: "Event")
+        query.whereKey("link", equalTo: events[row].link)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            // If there is an error, print it out
+            if error != nil {
+                print("Error: \(error!)")
+            }
+            // If the array contains more than 0 objects, increment/decrement the attendance counter
+            if let objects = objects where objects.count > 0 {
+                let event = objects[0]
+                var count = event["attendance"] as! Int
+                if eventTitle == "RSVP" {
+                    event.incrementKey("attendance")
+                    count += 1
+                }
+                else {
+                    event.incrementKey("attendance", byAmount: -1)
+                    count -= 1
+                }
+                event.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        // The score key has been incremented
+//                        self.adjustAttendanceCount(self.selectedIndexPath!)
+                        self.adjustCountOnPress(count)
+                    } else {
+                        // There was a problem, check error.description
+                        print("Save not successful because: \(error?.description)")
+                    }
+                }
+            }
+            // If it doesn't, create a new PFObject, set the attendance field to 1 and set the link field as well
+            else {
+                let eventObject = PFObject(className: "Event")
+                eventObject["attendance"] = 1
+                eventObject["link"] = self.events[row].link
+                eventObject.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        // The object has been saved, update the attendance count of the event cell
+//                        self.adjustAttendanceCount(self.selectedIndexPath!)
+                        self.adjustCountOnPress(1)
+                    } else {
+                        // There was a problem, check error.description
+                        print("Did not save object in background because: \(error?.description)")
+                    }
+                }
+            }
+            
+        }
     }
 }
