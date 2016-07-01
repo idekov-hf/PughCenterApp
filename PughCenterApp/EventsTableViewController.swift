@@ -144,22 +144,6 @@ class EventsTableViewController: UITableViewController {
         
     }
     
-    func adjustAttendanceCount(indexPath: NSIndexPath) {
-        // Get the attendance number for the selected row
-        let query = PFQuery(className: "Event")
-        query.getObjectInBackgroundWithId(events[indexPath.row].parseObjectID) {
-            (eventObject: PFObject?, error: NSError?) -> Void in
-            if error != nil {
-                print(error)
-            } else if let event = eventObject {
-                dispatch_async(dispatch_get_main_queue()) {
-                    let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
-                    cell.attendanceLabel?.text = "\(event["attendance"])"
-                }
-            }
-        }
-    }
-    
     @IBAction func attendanceButtonPressed(sender: UIButton) {
         if let selectedRow = selectedIndexPath?.row {
             let buttonTitle = sender.titleLabel?.text
@@ -177,6 +161,22 @@ class EventsTableViewController: UITableViewController {
             // Persist the button title dictionary
             defaults.setObject(linkDictionary, forKey: "linkDictionary")
             defaults.synchronize()
+        }
+    }
+    
+    func adjustAttendanceCount(indexPath: NSIndexPath) {
+        // Get the attendance number for the selected row
+        let query = PFQuery(className: "Event")
+        query.getObjectInBackgroundWithId(events[indexPath.row].parseObjectID) {
+            (eventObject: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let event = eventObject {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
+                    cell.attendanceLabel?.text = "\(event["attendance"])"
+                }
+            }
         }
     }
 
