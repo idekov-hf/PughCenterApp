@@ -26,6 +26,8 @@ class EventsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         // Enables self sizing cells
         // http://www.appcoda.com/self-sizing-cells/
         tableView.estimatedRowHeight = 80
@@ -129,6 +131,7 @@ class EventsTableViewController: UITableViewController {
             if let deSelectedIndexPath = deSelectedIndexPath {
                 indexPathArray.append(deSelectedIndexPath)
             }
+            adjustAttendanceCount(indexPath)
         }
         
         selectedIndexPath = indexPath
@@ -137,6 +140,23 @@ class EventsTableViewController: UITableViewController {
         tableView.reloadRowsAtIndexPaths(indexPathArray, withRowAnimation: UITableViewRowAnimation.Automatic)
         if eventSelected {
             tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+        }
+        
+    }
+    
+    func adjustAttendanceCount(indexPath: NSIndexPath) {
+        // Get the attendance number for the selected row
+        let query = PFQuery(className: "Event")
+        query.getObjectInBackgroundWithId(events[indexPath.row].parseObjectID) {
+            (eventObject: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let event = eventObject {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
+                    cell.attendanceLabel?.text = "\(event["attendance"])"
+                }
+            }
         }
     }
     
@@ -147,7 +167,7 @@ class EventsTableViewController: UITableViewController {
             // Set the button's new title
             sender.setTitle(newTitle, forState: .Normal)
             
-            adjustAttendanceCount(buttonTitle!, row: selectedRow)
+            adjustAttendanceData(buttonTitle!, row: selectedRow)
             
             // Update the title of the button associated with the selected Event
             events[selectedRow].buttonStatus = newTitle
@@ -159,11 +179,11 @@ class EventsTableViewController: UITableViewController {
             defaults.synchronize()
         }
     }
-    
-    func adjustAttendanceCount(eventTitle: String, row: Int) {
+
+    func adjustAttendanceData(eventTitle: String, row: Int) {
         
         // If the event has a parseObjectID, adjust the attendance count
-        if !events[row].parseObjectID?.isEmpty {
+        if !events[row].parseObjectID.isEmpty {
             let objectID = events[row].parseObjectID
             let query = PFQuery(className: "Event")
             query.getObjectInBackgroundWithId(objectID) {
@@ -181,7 +201,7 @@ class EventsTableViewController: UITableViewController {
                         (success: Bool, error: NSError?) -> Void in
                         if (success) {
                             // The score key has been incremented
-                            print("Succesfully incremented attendance counter")
+                            self.adjustAttendanceCount(self.selectedIndexPath!)
                         } else {
                             // There was a problem, check error.description
                             print(error?.description)
@@ -199,9 +219,11 @@ class EventsTableViewController: UITableViewController {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
                     // The object has been saved. Save the objectId
-                    let objectID = eventObject.objectId
-                    self.events[row].parseObjectID = objectID
-                    self.linkDictionary[self.events[row].link]!["parseObjectID"] = objectID
+                    if let objectID = eventObject.objectId {
+                        self.events[row].parseObjectID = objectID
+                        self.linkDictionary[self.events[row].link]!["parseObjectID"] = objectID
+                        self.adjustAttendanceCount(self.selectedIndexPath!)
+                    }
                 } else {
                     // There was a problem, check error.description
                     print("Did not save object in background because: \(error?.description)")

@@ -103,6 +103,18 @@
         <ev:location>Cotter Union / 130 Pugh Center Commons Room</ev:location>
         <ev:organizer>Chemistry</ev:organizer>
     </item>
+    
+    <item>
+        <title>Test Event 7</title>
+        <link>http://www.colby.edu/events/viewevent/7</link>
+        <description> Public event.</description>
+        <guid isPermaLink="false">{0BCB76D3-9BE9-0BA1-9CDD-F06B208B5631}</guid>
+        
+        <ev:startdate>2016-07-05T17:30:00-04:00</ev:startdate>
+        <ev:enddate>2016-07-05T21:00:00-04:00</ev:enddate>
+        <ev:location>Cotter Union / 130 Pugh Center Commons Room</ev:location>
+        <ev:organizer>Chemistry</ev:organizer>
+    </item>
 
 </channel>
 </rss>

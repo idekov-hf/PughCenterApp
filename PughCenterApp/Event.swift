@@ -17,11 +17,11 @@ class Event {
     var startDate: NSDate?
     var link: String
     var buttonStatus: String
-    var parseObjectID: String?
+    var parseObjectID: String
     
     // Mark: Initialization
     
-    init(title: String, description: String, startDate: NSDate, link: String, buttonStatus: String, parseObjectID: String?) {
+    init(title: String, description: String, startDate: NSDate, link: String, buttonStatus: String, parseObjectID: String) {
         // Initializes stored properties.
         self.title = title
         self.eventDescription = description
