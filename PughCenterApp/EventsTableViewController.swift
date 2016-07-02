@@ -170,12 +170,17 @@ class EventsTableViewController: UITableViewController {
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             // If the object exists, update the attendanceLabel.text value of the appropriate cell
-            if error == nil, let event = objects?[0] {
-                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
-                cell.attendanceLabel?.text = "\(event["attendance"])"
-            } else {
-                print("Error: \(error)")
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
+            guard error == nil else {
+                print(error)
+                return
             }
+            guard let pfObjects = objects where pfObjects.count > 0 else {
+                cell.attendanceLabel?.text = "0"
+                return
+            }
+            let event = pfObjects[0]
+            cell.attendanceLabel?.text = "\(event["attendance"])"
         }
     }
     
@@ -196,7 +201,7 @@ class EventsTableViewController: UITableViewController {
                 print("Error: \(error!)")
             }
             // If the array contains more than 0 objects, increment/decrement the attendance counter
-            if let objects = objects where objects.count > 0 {
+            else if let objects = objects where objects.count > 0 {
                 let event = objects[0]
                 var count = event["attendance"] as! Int
                 if eventTitle == "RSVP" {
@@ -207,11 +212,10 @@ class EventsTableViewController: UITableViewController {
                     event.incrementKey("attendance", byAmount: -1)
                     count -= 1
                 }
+                self.adjustCountOnPress(count)
                 event.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
-                        // The score key has been incremented
-                        self.adjustCountOnPress(count)
                     } else {
                         // There was a problem, check error.description
                         print("Save not successful because: \(error?.description)")
@@ -221,20 +225,19 @@ class EventsTableViewController: UITableViewController {
             // If it doesn't, create a new PFObject, set the attendance field to 1 and set the link field as well
             else {
                 let eventObject = PFObject(className: "Event")
+                self.adjustCountOnPress(1)
                 eventObject["attendance"] = 1
                 eventObject["link"] = self.events[row].link
                 eventObject.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
                         // The object has been saved, update the attendance count of the event cell
-                        self.adjustCountOnPress(1)
                     } else {
                         // There was a problem, check error.description
                         print("Did not save object in background because: \(error?.description)")
                     }
                 }
             }
-            
         }
     }
 }
