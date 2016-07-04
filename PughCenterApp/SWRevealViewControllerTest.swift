@@ -16,7 +16,8 @@ class SWRevealViewControllerTest: SWRevealViewController {
         super.viewDidLoad()
         rearViewController = storyboard?.instantiateViewControllerWithIdentifier("MenuViewController")
         if notificationReceived {
-            frontViewController = storyboard?.instantiateViewControllerWithIdentifier("NotificationsNavigationController")
+            let navigationController = storyboard?.instantiateViewControllerWithIdentifier("NotificationsNavigationController") as! UINavigationController
+            frontViewController = navigationController
         }
         else {
             frontViewController = storyboard?.instantiateViewControllerWithIdentifier("EventsNavigationController")

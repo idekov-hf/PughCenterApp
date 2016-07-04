@@ -12,6 +12,7 @@ class EventParser: NSObject, NSXMLParserDelegate {
     
 //    let url = NSURL(string: "https://www.colby.edu/pugh/events-feed/")!
     let url = NSBundle.mainBundle().URLForResource("TestData", withExtension: "xml")!
+    
     let defaults = NSUserDefaults.standardUserDefaults()
     
     var events = [Event]()
@@ -85,8 +86,6 @@ class EventParser: NSObject, NSXMLParserDelegate {
                 
                 // Add the event to the array of Event objects
                 events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!, link: eventLink!, buttonStatus: buttonTitle)]
-                
-//                let newData = ["buttonTitle": buttonTitle]
                 
                 // Add button title to the new dictionary
                 newLinkDictionary[eventLink!] = buttonTitle

@@ -22,50 +22,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initializeWithConfiguration(configuration)
         
-        // 1
-        if application.applicationState != .Background {
-            
-            // 2
-            let preBackgroundPush = !application.respondsToSelector(Selector("backgroundRefreshStatus"))
-            let oldPushHandlerOnly = !self.respondsToSelector(.didReceiveRemoteNotification)
-            var pushPayload = false
-            if let options = launchOptions {
-                pushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil
-            }
-            if (preBackgroundPush || oldPushHandlerOnly || pushPayload) {
-                PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-            }
-        }
-        
-        // 3
         let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
         let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         
-        // Check if launched from notification
-        // 1
-        if let notification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [String: AnyObject] {
-            
-            // 2
-            let aps = notification["aps"] as! [String: AnyObject]
-            print(aps)
-//            createNewNewsItem(aps)
-            // 3
-            (window?.rootViewController as? SWRevealViewControllerTest)?.notificationReceived = true
+        if (launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary) != nil {
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("RevealViewController") as! SWRevealViewControllerTest
+                viewController.notificationReceived = true
+                window?.rootViewController = viewController
+                window?.makeKeyWindow()
         }
         
         return true
     }
     
-    // 1
+    
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken
         deviceToken: NSData) {
         let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
         installation.saveInBackground()
     }
-    // 2
+    
+    // Failed to register for remote notifications
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError
         error: NSError) {
         if error.code == 3010 {
@@ -74,12 +55,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
         }
     }
-    // 3
-    func application(application: UIApplication, didReceiveRemoteNotification
-        userInfo: [NSObject : AnyObject]) {
-        PFPush.handlePush(userInfo)
-        if case(.Inactive) = application.applicationState {
-            PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
+        if let aps = userInfo["aps"] as? NSDictionary, alertMessage = aps["alert"] as? String {
+            
+            let alert = UIAlertController(title: "New Notification!", message: alertMessage, preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .Cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "View", style: UIAlertActionStyle.Default, handler: {(UIAlertAction) -> Void in
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("RevealViewController") as! SWRevealViewControllerTest
+                viewController.notificationReceived = true
+                self.window?.rootViewController = viewController
+                self.window?.makeKeyWindow()
+                }
+                ))
+            window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+            completionHandler(UIBackgroundFetchResult.NewData)
         }
     }
 
@@ -111,11 +103,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
-// 1
-private extension Selector {
-    // 2
-    static let didReceiveRemoteNotification = #selector(
-        UIApplicationDelegate.application(_:didReceiveRemoteNotification:fetchCompletionHandler:))
-}
-

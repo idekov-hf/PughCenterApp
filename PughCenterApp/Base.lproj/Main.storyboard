@@ -664,7 +664,7 @@ pughcenter@colby.edu</string>
         <!--NotificationsViewController-->
         <scene sceneID="n4J-I4-GyT">
             <objects>
-                <viewController storyboardIdentifier="NotificationsViewController" title="NotificationsViewController" id="L2O-DP-tIC" customClass="NotificationsViewController" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotificationsViewController" title="NotificationsViewController" automaticallyAdjustsScrollViewInsets="NO" id="L2O-DP-tIC" customClass="NotificationsViewController" customModule="PughCenterApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OHV-2Z-yBe"/>
                         <viewControllerLayoutGuide type="bottom" id="pJU-0h-mRE"/>
@@ -672,7 +672,54 @@ pughcenter@colby.edu</string>
                     <view key="view" contentMode="scaleToFill" id="bib-KM-26q">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="155" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Lu-cN-NcY">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" rowHeight="155" id="3QQ-Xb-3FU" customClass="NotificationTableViewCell" customModule="PughCenterApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="155"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3QQ-Xb-3FU" id="LU3-6p-6hY">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ol5-La-nl4">
+                                                    <rect key="frame" x="8" y="37" width="584" height="80"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaM-6s-tdx">
+                                                    <rect key="frame" x="8" y="8" width="107" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dad-63-C7A">
+                                                    <rect key="frame" x="556" y="125" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="L2O-DP-tIC" id="JRk-c4-zLb"/>
+                                    <outlet property="delegate" destination="L2O-DP-tIC" id="hAM-Lm-cyF"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8Lu-cN-NcY" firstAttribute="leading" secondItem="bib-KM-26q" secondAttribute="leading" id="Acx-nq-j3y"/>
+                            <constraint firstItem="8Lu-cN-NcY" firstAttribute="top" secondItem="OHV-2Z-yBe" secondAttribute="bottom" id="E1o-01-UAH"/>
+                            <constraint firstAttribute="trailing" secondItem="8Lu-cN-NcY" secondAttribute="trailing" id="UUF-g1-xzF"/>
+                            <constraint firstItem="pJU-0h-mRE" firstAttribute="top" secondItem="8Lu-cN-NcY" secondAttribute="bottom" id="V01-Ww-lNn"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Notifications Feed" id="zMs-5E-G0g">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="Npt-qv-lE5"/>
