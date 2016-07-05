@@ -33,9 +33,9 @@ class NotificationsViewController: UIViewController {
     }
     
     func loadData() {
-        let date = NSDate(timeIntervalSinceNow: -1209600)
         let query = PFQuery(className: "Notification")
-        query.whereKey("createdAt", greaterThan: date)
+        query.orderByDescending("createdAt")
+        query.limit = 10
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
