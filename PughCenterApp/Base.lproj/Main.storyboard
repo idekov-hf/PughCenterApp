@@ -673,38 +673,67 @@ pughcenter@colby.edu</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="155" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Lu-cN-NcY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="177" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Lu-cN-NcY">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" rowHeight="155" id="3QQ-Xb-3FU" customClass="NotificationTableViewCell" customModule="PughCenterApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="155"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" rowHeight="177" id="3QQ-Xb-3FU" customClass="NotificationTableViewCell" customModule="PughCenterApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="177"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3QQ-Xb-3FU" id="LU3-6p-6hY">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="177"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ol5-La-nl4">
-                                                    <rect key="frame" x="8" y="37" width="584" height="80"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2o-EX-Wnv">
+                                                    <rect key="frame" x="8" y="8" width="584" height="156"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaM-6s-tdx">
+                                                            <rect key="frame" x="8" y="8" width="568" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ol5-La-nl4">
+                                                            <rect key="frame" x="8" y="37" width="568" height="85"/>
+                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dad-63-C7A">
+                                                            <rect key="frame" x="8" y="130" width="568" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaM-6s-tdx">
-                                                    <rect key="frame" x="8" y="8" width="107" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dad-63-C7A">
-                                                    <rect key="frame" x="556" y="125" width="36" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="xaM-6s-tdx" secondAttribute="trailing" constant="8" id="J1s-IB-upL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="dad-63-C7A" secondAttribute="bottom" constant="8" id="KXs-6B-Yjd"/>
+                                                        <constraint firstAttribute="trailing" secondItem="dad-63-C7A" secondAttribute="trailing" constant="8" id="bZf-9M-lJB"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ol5-La-nl4" secondAttribute="trailing" constant="8" id="fpG-XP-REn"/>
+                                                        <constraint firstItem="Ol5-La-nl4" firstAttribute="leading" secondItem="c2o-EX-Wnv" secondAttribute="leading" constant="8" id="hYO-Ew-sOq"/>
+                                                        <constraint firstItem="dad-63-C7A" firstAttribute="top" secondItem="Ol5-La-nl4" secondAttribute="bottom" constant="8" id="mo0-g2-lm0"/>
+                                                        <constraint firstItem="xaM-6s-tdx" firstAttribute="leading" secondItem="c2o-EX-Wnv" secondAttribute="leading" constant="8" id="qvB-nb-7NW"/>
+                                                        <constraint firstItem="Ol5-La-nl4" firstAttribute="top" secondItem="xaM-6s-tdx" secondAttribute="bottom" constant="8" id="u1y-tM-KiU"/>
+                                                        <constraint firstItem="xaM-6s-tdx" firstAttribute="top" secondItem="c2o-EX-Wnv" secondAttribute="top" constant="8" id="ujU-CQ-fcV"/>
+                                                        <constraint firstItem="dad-63-C7A" firstAttribute="leading" secondItem="c2o-EX-Wnv" secondAttribute="leading" constant="8" id="xsp-e2-wcO"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="c2o-EX-Wnv" secondAttribute="bottom" constant="5" id="Jke-dE-DUh"/>
+                                                <constraint firstItem="c2o-EX-Wnv" firstAttribute="top" secondItem="LU3-6p-6hY" secondAttribute="topMargin" id="cZE-6K-ztH"/>
+                                                <constraint firstItem="c2o-EX-Wnv" firstAttribute="leading" secondItem="LU3-6p-6hY" secondAttribute="leadingMargin" id="sjp-OE-We4"/>
+                                                <constraint firstItem="c2o-EX-Wnv" firstAttribute="trailing" secondItem="LU3-6p-6hY" secondAttribute="trailingMargin" id="xye-sg-8w9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="containerView" destination="c2o-EX-Wnv" id="PIh-pz-dv1"/>
+                                            <outlet property="dateLabel" destination="dad-63-C7A" id="mig-Wr-SIG"/>
+                                            <outlet property="messageTextView" destination="Ol5-La-nl4" id="KVh-TJ-1TD"/>
+                                            <outlet property="titleLabel" destination="xaM-6s-tdx" id="TEL-Ha-KYP"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -715,10 +744,10 @@ pughcenter@colby.edu</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8Lu-cN-NcY" firstAttribute="leading" secondItem="bib-KM-26q" secondAttribute="leading" id="Acx-nq-j3y"/>
-                            <constraint firstItem="8Lu-cN-NcY" firstAttribute="top" secondItem="OHV-2Z-yBe" secondAttribute="bottom" id="E1o-01-UAH"/>
-                            <constraint firstAttribute="trailing" secondItem="8Lu-cN-NcY" secondAttribute="trailing" id="UUF-g1-xzF"/>
-                            <constraint firstItem="pJU-0h-mRE" firstAttribute="top" secondItem="8Lu-cN-NcY" secondAttribute="bottom" id="V01-Ww-lNn"/>
+                            <constraint firstItem="8Lu-cN-NcY" firstAttribute="bottom" secondItem="pJU-0h-mRE" secondAttribute="top" id="0Jg-QD-CPL"/>
+                            <constraint firstItem="8Lu-cN-NcY" firstAttribute="top" secondItem="OHV-2Z-yBe" secondAttribute="bottom" id="3KF-X1-Qmk"/>
+                            <constraint firstAttribute="trailing" secondItem="8Lu-cN-NcY" secondAttribute="trailing" id="ZV7-WD-qMp"/>
+                            <constraint firstItem="8Lu-cN-NcY" firstAttribute="leading" secondItem="bib-KM-26q" secondAttribute="leading" id="jaF-QM-bML"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Notifications Feed" id="zMs-5E-G0g">
@@ -726,6 +755,7 @@ pughcenter@colby.edu</string>
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="Npt-qv-lE5" id="JcP-wh-Lmr"/>
+                        <outlet property="tableView" destination="8Lu-cN-NcY" id="D0e-4m-3iu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCF-h1-zkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
