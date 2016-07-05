@@ -685,7 +685,7 @@ pughcenter@colby.edu</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2o-EX-Wnv">
-                                                    <rect key="frame" x="8" y="8" width="584" height="156"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="161"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaM-6s-tdx">
                                                             <rect key="frame" x="8" y="8" width="568" height="21"/>
@@ -694,13 +694,13 @@ pughcenter@colby.edu</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ol5-La-nl4">
-                                                            <rect key="frame" x="8" y="37" width="568" height="85"/>
+                                                            <rect key="frame" x="8" y="37" width="568" height="90"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dad-63-C7A">
-                                                            <rect key="frame" x="8" y="130" width="568" height="18"/>
+                                                            <rect key="frame" x="8" y="135" width="568" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
@@ -722,7 +722,7 @@ pughcenter@colby.edu</string>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="c2o-EX-Wnv" secondAttribute="bottom" constant="5" id="Jke-dE-DUh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="c2o-EX-Wnv" secondAttribute="bottom" id="Jke-dE-DUh"/>
                                                 <constraint firstItem="c2o-EX-Wnv" firstAttribute="top" secondItem="LU3-6p-6hY" secondAttribute="topMargin" id="cZE-6K-ztH"/>
                                                 <constraint firstItem="c2o-EX-Wnv" firstAttribute="leading" secondItem="LU3-6p-6hY" secondAttribute="leadingMargin" id="sjp-OE-We4"/>
                                                 <constraint firstItem="c2o-EX-Wnv" firstAttribute="trailing" secondItem="LU3-6p-6hY" secondAttribute="trailingMargin" id="xye-sg-8w9"/>
