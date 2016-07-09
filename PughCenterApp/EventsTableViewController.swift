@@ -26,7 +26,7 @@ class EventsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        eventParser.delegate = self
         
         // Enables self sizing cells
         // http://www.appcoda.com/self-sizing-cells/
@@ -51,27 +51,8 @@ class EventsTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadTableData), name: "reloadData", object: nil)
         // get XML data, initialize NSXMLParser object with data as parameter & parse the data
         eventParser.beginParsing()
-    }
-    
-    func reloadTableData(notification: NSNotification) {
-        if notification.name == "reloadData" {
-            // Transfer the dictionary containing the button title for each unique Event link from the eventParser object to the EventsTableViewController
-            linkDictionary = eventParser.newLinkDictionary
-            // Transfer the array of events from the eventParser object to the EventsTableViewController
-            events = eventParser.events
-            // Reload the table contents in the main queue
-            dispatch_async(dispatch_get_main_queue()) {
-                self.tableView.reloadData()
-                self.activityIndicator.stopAnimating()
-            }
-            // Add local notifications for each event
-            addLocalNotifications()
-            // Remove the observer for the reloadData notification call
-            NSNotificationCenter.defaultCenter().removeObserver(self, name: "reloadData", object: nil)
-        }
     }
     
     func addLocalNotifications() {
@@ -239,5 +220,24 @@ class EventsTableViewController: UITableViewController {
                 }
             }
         }
+    }
+}
+
+extension EventsTableViewController: EventParserDelegate {
+    func didFinishParsing(sender: EventParser) {
+        // Transfer the dictionary containing the button title for each unique Event link from the eventParser object to the EventsTableViewController
+        linkDictionary = sender.newLinkDictionary
+        
+        // Transfer the array of events from the eventParser object to the EventsTableViewController
+        events = sender.events
+        
+        // Reload the table contents in the main queue
+        dispatch_async(dispatch_get_main_queue()) {
+            self.tableView.reloadData()
+            self.activityIndicator.stopAnimating()
+        }
+        
+        // Add local notifications for each event
+        addLocalNotifications()
     }
 }

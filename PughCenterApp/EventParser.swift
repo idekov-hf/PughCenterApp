@@ -8,7 +8,13 @@
 
 import Foundation
 
+protocol EventParserDelegate: class {
+    func didFinishParsing(sender: EventParser)
+}
+
 class EventParser: NSObject, NSXMLParserDelegate {
+    
+    weak var delegate: EventParserDelegate?
     
 //    let url = NSURL(string: "https://www.colby.edu/pugh/events-feed/")!
     let url = NSBundle.mainBundle().URLForResource("TestData", withExtension: "xml")!
@@ -48,7 +54,7 @@ class EventParser: NSObject, NSXMLParserDelegate {
             parser.delegate = self
             parser.parse()
             
-            NSNotificationCenter.defaultCenter().postNotificationName("reloadData", object: self)
+            self.delegate?.didFinishParsing(self)
         }
         task.resume()
     }

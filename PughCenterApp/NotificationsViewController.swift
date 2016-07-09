@@ -15,12 +15,19 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var notificationData: [PFObject]?
+    var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.estimatedRowHeight = 155.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // Loading indicator is displayed before event data has loaded
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        activityIndicator.center = CGPointMake(view.center.x, view.center.y)
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
         
         let screenWidth = UIScreen.mainScreen().bounds.width
         if revealViewController() != nil {
@@ -41,6 +48,7 @@ class NotificationsViewController: UIViewController {
             if error == nil {
                 // Do something with the found objects
                 self.notificationData = objects
+                self.activityIndicator.stopAnimating()
                 self.tableView.reloadData()
             } else {
                 // Log details of the failure
