@@ -10,6 +10,7 @@ import Foundation
 
 protocol EventParserDelegate: class {
     func didFinishParsing(sender: EventParser)
+    func didParseEvent(event: Event)
 }
 
 class EventParser: NSObject, NSXMLParserDelegate {
@@ -54,7 +55,7 @@ class EventParser: NSObject, NSXMLParserDelegate {
             parser.delegate = self
             parser.parse()
             
-            self.delegate?.didFinishParsing(self)
+//            self.delegate?.didFinishParsing(self)
         }
         task.resume()
     }
@@ -90,11 +91,15 @@ class EventParser: NSObject, NSXMLParserDelegate {
                 // Set the buttonTitle
                 let buttonTitle = getButtonTitleFromOldDictionary(eventLink!)
                 
-                // Add the event to the array of Event objects
-                events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!, link: eventLink!, buttonStatus: buttonTitle)]
-                
                 // Add button title to the new dictionary
                 newLinkDictionary[eventLink!] = buttonTitle
+                
+                let event = Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!, link: eventLink!, buttonStatus: buttonTitle)
+            
+                delegate?.didParseEvent(event)
+            
+                // Add the event to the array of Event objects
+//                events += [Event(title: eventTitle!, description: eventDescription!, startDate: eventDate!, link: eventLink!, buttonStatus: buttonTitle)]
             
             default: break
         }

@@ -240,4 +240,16 @@ extension EventsTableViewController: EventParserDelegate {
         // Add local notifications for each event
         addLocalNotifications()
     }
+    
+    func didParseEvent(event: Event) {
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            self.events.append(event)
+            let indexPath = NSIndexPath(forRow: self.events.count - 1, inSection: 0)
+            
+            self.tableView.beginUpdates()
+            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.tableView.endUpdates()
+        }
+    }
 }
