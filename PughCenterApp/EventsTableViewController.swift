@@ -30,7 +30,7 @@ class EventsTableViewController: UITableViewController {
         
         // Enables self sizing cells
         // http://www.appcoda.com/self-sizing-cells/
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         
         // Loading indicator is displayed before event data has loaded
@@ -128,10 +128,14 @@ class EventsTableViewController: UITableViewController {
     @IBAction func attendanceButtonPressed(sender: UIButton) {
         if let selectedRow = selectedIndexPath?.row {           
             let buttonTitle = sender.titleLabel?.text
+//			let greenColor = UIColor(red: 133, green: 253, blue: 137, alpha: 1)
+//			let redColor = UIColor(red: 255, green: 154, blue: 134, alpha: 1)
             let newTitle = buttonTitle == "RSVP" ? "Cancel" : "RSVP"
+//			let buttonBackgroundColor = buttonTitle == "RSVP" ? redColor : greenColor
             // Set the button's new title
             sender.setTitle(newTitle, forState: .Normal)
-            
+//			sender.backgroundColor = buttonBackgroundColor
+			
             adjustAttendanceData(buttonTitle!, row: selectedRow)
             
             // Update the title of the button associated with the selected Event
