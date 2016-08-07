@@ -27,9 +27,17 @@ extension WordpressClient {
     
     struct ParameterKeys {
         static let Clubs = "clubs"
+        static let AboutPage = "about_page"
+        static let Contacts = "additional_contacts"
     }
     
     struct ParameterValues {
         static let Show = "1"
+    }
+    
+    struct JSONResponseKeys {
+        static let Clubs = "clubs"
+        static let About = "about_page"
+        static let Contacts = "additional_contacts"
     }
 }

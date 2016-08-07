@@ -14,8 +14,6 @@ class ContactViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let url = NSURL(string: "https://www.colby.edu/pugh/wp-json/colby-rest/v0/acf-options?additional_contacts=1")!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,61 +27,13 @@ class ContactViewController: UIViewController {
         }
         
         // Make a request to the WordPress API for the contact info and then display it in a separate method (displayContactInfo())
-        loadContactInfo()
-    }
-    
-    func loadContactInfo() {
-        
-        // create request
-        let session = NSURLSession.sharedSession()
-        let request = NSURLRequest(URL: url)
-        
-        // create network request
-        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+        WordpressClient.sharedInstance.getContactInformation { (result, error) in
             
-            // if an error occurs, print it
-            func displayError(error: String) {
-                print(error)
+            if error == nil {
+                
+                self.displayContactInfo(result)
             }
-            
-            /* GUARD: Was there an error? */
-            guard (error == nil) else {
-                displayError("There was an error with your request: \(error)")
-                return
-            }
-            
-            /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                displayError("Your request returned a status code other than 2xx!")
-                return
-            }
-            
-            /* GUARD: Was there any data returned? */
-            guard let data = data else {
-                displayError("No data was returned by the request!")
-                return
-            }
-            
-            // parse the data
-            let parsedResult: AnyObject!
-            do {
-                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-            } catch {
-                displayError("Could not parse the data as JSON: '\(data)'")
-                return
-            }
-            
-            guard let contactsArray = parsedResult["additional_contacts"] as? [[String : AnyObject]] else {
-                print("Contact info not succesfully extracted")
-                return
-            }
-            
-            self.displayContactInfo(contactsArray)
-            
         }
-        
-        // start the task
-        task.resume()
     }
     
     func displayContactInfo(contactsArray: [[String : AnyObject]]) {
@@ -132,5 +82,4 @@ class ContactViewController: UIViewController {
             self.textView.hidden = false
         }
     }
-
 }

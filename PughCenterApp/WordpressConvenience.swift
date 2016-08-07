@@ -10,7 +10,7 @@ import Foundation
 
 extension WordpressClient {
     
-    func getClubs(completionHandler: (clubs: [Club]?, error: String?) -> Void) {
+    func getClubsList(completionHandler: (clubs: [Club]?, error: String?) -> Void) {
         
         let parameters = [
             ParameterKeys.Clubs: ParameterValues.Show
@@ -24,7 +24,7 @@ extension WordpressClient {
             }
             
             // Get list of club dictionaries
-            guard let clubsList = result["clubs"] as? [[String: AnyObject]] else {
+            guard let clubsList = result[JSONResponseKeys.Clubs] as? [[String: AnyObject]] else {
                 print("clubList was not succesfully parsed")
                 return
             }
@@ -48,6 +48,40 @@ extension WordpressClient {
             }
             
             completionHandler(clubs: clubs, error: nil)
+        }
+    }
+    
+    func getAboutText(completionHandler: (result: String!, error: String?) -> Void) {
+        
+        let parameters = [
+            ParameterKeys.AboutPage: ParameterValues.Show
+        ]
+        
+        taskForGETMethod(parameters) { (result, error) in
+            
+            guard let aboutText = result[JSONResponseKeys.About] as? String else {
+                print("About text not successfully extracted")
+                return
+            }
+            
+            completionHandler(result: aboutText, error: nil)
+        }
+    }
+    
+    func getContactInformation(completionHandler: (result: [[String: AnyObject]]!, error: String?) -> Void) {
+        
+        let parameters = [
+            ParameterKeys.Contacts: ParameterValues.Show
+        ]
+        
+        taskForGETMethod(parameters) { (result, error) in
+            
+            guard let contactsArray = result[JSONResponseKeys.Contacts] as? [[String : AnyObject]] else {
+                print("Contact info not succesfully extracted")
+                return
+            }
+            
+            completionHandler(result: contactsArray, error: nil)
         }
     }
 }

@@ -35,7 +35,7 @@ class ClubsTableViewController: UIViewController {
         }
         
         // Get club info from Pugh Wordpress API
-        WordpressClient.sharedInstance.getClubs { (clubs, error) in
+        WordpressClient.sharedInstance.getClubsList { (clubs, error) in
             
             dispatch_async(dispatch_get_main_queue()) {
                 
