@@ -599,12 +599,17 @@ pughcenter@colby.edu</string>
                                     <outlet property="delegate" destination="OLQ-4T-gGf" id="xf2-zF-d5c"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hwp-HR-wmD">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qWB-QB-cEn" firstAttribute="top" secondItem="BbN-QK-cnz" secondAttribute="bottom" id="NR8-ij-JsY"/>
                             <constraint firstItem="BbN-QK-cnz" firstAttribute="leading" secondItem="2Dl-74-LhD" secondAttribute="leading" id="Xec-eE-PGz"/>
                             <constraint firstAttribute="trailing" secondItem="BbN-QK-cnz" secondAttribute="trailing" id="bZ4-mZ-fyA"/>
+                            <constraint firstItem="hwp-HR-wmD" firstAttribute="centerX" secondItem="2Dl-74-LhD" secondAttribute="centerX" id="f84-Ia-Pam"/>
+                            <constraint firstItem="hwp-HR-wmD" firstAttribute="centerY" secondItem="2Dl-74-LhD" secondAttribute="centerY" id="tkf-bN-84M"/>
                             <constraint firstItem="BbN-QK-cnz" firstAttribute="top" secondItem="pFo-c3-Xi1" secondAttribute="bottom" id="wvF-d2-xLf"/>
                         </constraints>
                     </view>
@@ -612,6 +617,7 @@ pughcenter@colby.edu</string>
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="QCg-tg-3X4"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="hwp-HR-wmD" id="OhY-wu-WRN"/>
                         <outlet property="menuButton" destination="QCg-tg-3X4" id="EoI-Y8-bcT"/>
                         <outlet property="tableView" destination="BbN-QK-cnz" id="y1E-so-IAv"/>
                         <segue destination="fBe-BE-PM9" kind="show" identifier="showClubDetails" id="4gb-CN-TfY"/>
@@ -639,7 +645,7 @@ pughcenter@colby.edu</string>
                                 <color key="textColor" red="0.098039215690000001" green="0.26274509800000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="URL" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PjD-mw-jIN">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" editable="NO" text="URL" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PjD-mw-jIN">
                                 <rect key="frame" x="20" y="133" width="560" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
