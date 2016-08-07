@@ -50,10 +50,7 @@ class ClubsTableViewController: UITableViewController {
             
             let detailsController = segue.destinationViewController as! ClubDetailViewController
             
-            detailsController.clubNameString = clubs[indexPath.row].name
-            detailsController.clubDescriptionString = clubs[indexPath.row].description
-            detailsController.urlString = clubs[indexPath.row].url
-            detailsController.imageURL = clubs[indexPath.row].imageURL
+            detailsController.club = clubs[indexPath.row]
         }
     }
     
@@ -147,12 +144,9 @@ class ClubsTableViewController: UITableViewController {
                 self.activityIndicator.removeFromSuperview()
                 self.tableView.reloadData()
             }
-        
         }
         
         // start the task!
         task.resume()
-        
     }
-    
 }

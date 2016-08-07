@@ -95,6 +95,7 @@
 		5D41D2401CBC7B6D00F21991 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5D7054A71D56E48100B22946 /* Networking */,
 				5D0B79501CA495F000CE2E94 /* Event.swift */,
 				5D57D6F91CDD93D600FF0D0E /* Club.swift */,
 			);
@@ -114,6 +115,29 @@
 				5D644C2A1C6AFD0C002FC8E9 /* AboutViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		5D7054A61D56E23F00B22946 /* WordpressClient */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = WordpressClient;
+			sourceTree = "<group>";
+		};
+		5D7054A71D56E48100B22946 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5D7054A81D56E48B00B22946 /* ParseClient */,
+				5D7054A61D56E23F00B22946 /* WordpressClient */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		5D7054A81D56E48B00B22946 /* ParseClient */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ParseClient;
 			sourceTree = "<group>";
 		};
 		5DA58EF21C696EFD00CB062D = {

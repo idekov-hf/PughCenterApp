@@ -11,13 +11,13 @@ import Foundation
 class Club {
     
     var name: String
-    var description: String
+    var clubDescription: String
     var url: String
     var imageURL: String
     
     init(name: String, description: String, url: String, imageURL: String) {
         self.name = name
-        self.description = description
+        self.clubDescription = description
         self.url = url
         self.imageURL = imageURL
     }
