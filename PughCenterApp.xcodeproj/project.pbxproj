@@ -19,8 +19,8 @@
 		5D644C2D1C6B0899002FC8E9 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D644C2C1C6B0899002FC8E9 /* ContactViewController.swift */; };
 		5D644C2F1C6B0BFC002FC8E9 /* Sliding Menu Tutorial in Resources */ = {isa = PBXBuildFile; fileRef = 5D644C2E1C6B0BFC002FC8E9 /* Sliding Menu Tutorial */; };
 		5D7054AA1D56EEB500B22946 /* WordpressClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7054A91D56EEB500B22946 /* WordpressClient.swift */; };
-		5D7054AC1D56F5DA00B22946 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7054AB1D56F5DA00B22946 /* Constants.swift */; };
-		5D7054AE1D5700A900B22946 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7054AD1D5700A900B22946 /* Convenience.swift */; };
+		5D7054AC1D56F5DA00B22946 /* WordpressConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7054AB1D56F5DA00B22946 /* WordpressConstants.swift */; };
+		5D7054AE1D5700A900B22946 /* WordpressConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7054AD1D5700A900B22946 /* WordpressConvenience.swift */; };
 		5DA58EFF1C696EFD00CB062D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */; };
 		5DA58F041C696EFD00CB062D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F021C696EFD00CB062D /* Main.storyboard */; };
 		5DA58F061C696EFD00CB062D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F051C696EFD00CB062D /* Assets.xcassets */; };
@@ -48,8 +48,8 @@
 		5D644C2C1C6B0899002FC8E9 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		5D644C2E1C6B0BFC002FC8E9 /* Sliding Menu Tutorial */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Sliding Menu Tutorial"; sourceTree = "<group>"; };
 		5D7054A91D56EEB500B22946 /* WordpressClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordpressClient.swift; sourceTree = "<group>"; };
-		5D7054AB1D56F5DA00B22946 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		5D7054AD1D5700A900B22946 /* Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
+		5D7054AB1D56F5DA00B22946 /* WordpressConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordpressConstants.swift; sourceTree = "<group>"; };
+		5D7054AD1D5700A900B22946 /* WordpressConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordpressConvenience.swift; sourceTree = "<group>"; };
 		5DA58EFB1C696EFD00CB062D /* PughCenterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PughCenterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DA58F031C696EFD00CB062D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -127,8 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				5D7054A91D56EEB500B22946 /* WordpressClient.swift */,
-				5D7054AD1D5700A900B22946 /* Convenience.swift */,
-				5D7054AB1D56F5DA00B22946 /* Constants.swift */,
+				5D7054AD1D5700A900B22946 /* WordpressConvenience.swift */,
+				5D7054AB1D56F5DA00B22946 /* WordpressConstants.swift */,
 			);
 			name = WordpressClient;
 			sourceTree = "<group>";
@@ -333,13 +333,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DCBD46F1C72C15200A6E09D /* ClubsTableViewController.swift in Sources */,
-				5D7054AC1D56F5DA00B22946 /* Constants.swift in Sources */,
+				5D7054AC1D56F5DA00B22946 /* WordpressConstants.swift in Sources */,
 				5D0B79521CA495F000CE2E94 /* Event.swift in Sources */,
 				5DCBD4711C72DE1F00A6E09D /* ClubDetailViewController.swift in Sources */,
 				5DCC00C01C760C8200B29657 /* FacebookViewController.swift in Sources */,
 				5D16578B1C6AAD73005D2229 /* EventsTableViewCell.swift in Sources */,
 				5DE04BCB1D0E350900FD0634 /* NotificationsViewController.swift in Sources */,
-				5D7054AE1D5700A900B22946 /* Convenience.swift in Sources */,
+				5D7054AE1D5700A900B22946 /* WordpressConvenience.swift in Sources */,
 				5D3824221D2A89540057097F /* NotificationTableViewCell.swift in Sources */,
 				5DA58EFF1C696EFD00CB062D /* AppDelegate.swift in Sources */,
 				5D7054AA1D56EEB500B22946 /* WordpressClient.swift in Sources */,
