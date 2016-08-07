@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -663,12 +664,14 @@ pughcenter@colby.edu</string>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jMo-2a-U77">
                                 <rect key="frame" x="20" y="175" width="560" height="417"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jMo-2a-U77" secondAttribute="height" multiplier="560:417" id="lON-qt-AEP"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PjD-mw-jIN" firstAttribute="leading" secondItem="gz0-T0-SlB" secondAttribute="leadingMargin" id="Kf6-FG-YJT"/>
-                            <constraint firstItem="f5m-Hg-MQN" firstAttribute="top" secondItem="jMo-2a-U77" secondAttribute="bottom" constant="8" id="RvY-ni-4oR"/>
                             <constraint firstItem="PjD-mw-jIN" firstAttribute="top" secondItem="Ymf-x7-Cku" secondAttribute="bottom" constant="8" id="S4T-o7-GFR"/>
                             <constraint firstItem="Ymf-x7-Cku" firstAttribute="top" secondItem="KH6-mr-8F4" secondAttribute="bottom" constant="8" id="WPO-ee-Qfg"/>
                             <constraint firstItem="KH6-mr-8F4" firstAttribute="leading" secondItem="gz0-T0-SlB" secondAttribute="leadingMargin" id="aXe-Up-hpf"/>

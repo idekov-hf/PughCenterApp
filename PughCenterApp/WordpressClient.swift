@@ -47,7 +47,7 @@ class WordpressClient {
                 return
             }
             
-            // Parse the data
+            // Parse data
             let parsedResult: AnyObject!
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
@@ -56,7 +56,7 @@ class WordpressClient {
                 return
             }
             
-            // Call the completion handler
+            // Call completion handler
             completionHandlerForGET(result: parsedResult, error: nil)
         }
         

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let configuration = ParseClientConfiguration {
             $0.applicationId = "NVPRIp61qbH3LXvJ9pPn"
-            $0.server = "http://parseserver-482yy-env.us-east-1.elasticbeanstalk.com/parse"
+//            $0.server = "http://parseserver-482yy-env.us-east-1.elasticbeanstalk.com/parse"
         }
         Parse.initializeWithConfiguration(configuration)
         
