@@ -8,16 +8,20 @@
 
 import UIKit
 
+// MARK: - ClubDetailViewController
 class ClubDetailViewController: UIViewController {
     
+    // MARK: Outlets
     @IBOutlet var clubName: UILabel!
     @IBOutlet var clubDescription: UILabel!
     @IBOutlet var urlTextView: UITextView!
     @IBOutlet var urlHeightConstaint: NSLayoutConstraint!
     @IBOutlet var imageView: UIImageView!
     
+    // MARK: Properties
     var club: Club!
-
+    
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,10 +33,12 @@ class ClubDetailViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         let size = urlTextView.contentSize
         urlHeightConstaint.constant = size.height
     }
     
+    // MARK: Helper
     func loadImage(imageURL: String) {
         
         if imageURL != "" {

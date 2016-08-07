@@ -8,16 +8,19 @@
 
 import UIKit
 
-class ClubsTableViewController: UITableViewController {
-
+// MARK: - ClubsTableViewController
+class ClubsTableViewController: UIViewController {
+    
+    // MARK: Outlets
     @IBOutlet var menuButton: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
     
+    // MARK: Properties
     var activityIndicator: UIActivityIndicatorView!
-    
     var clubs = [Club]()
-    
     let url = NSURL(string: "https://www.colby.edu/pugh/wp-json/colby-rest/v0/acf-options?clubs=1")!
     
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,35 +49,12 @@ class ClubsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showClubDetails" {
             
-            let indexPath: NSIndexPath = tableView.indexPathForSelectedRow!
+            let indexPath = tableView.indexPathForSelectedRow!
             
             let detailsController = segue.destinationViewController as! ClubDetailViewController
             
             detailsController.club = clubs[indexPath.row]
         }
-    }
-    
-    // MARK: - UITableView DataSource and Delegate Methods
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clubs.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("ClubNameCell")!
-        
-        cell.textLabel!.text = clubs[indexPath.row].name
-        
-        return cell
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("showClubDetails", sender: self)
     }
     
     // MARK: - Wordpress JSON Parsing Methods
@@ -148,5 +128,30 @@ class ClubsTableViewController: UITableViewController {
         
         // start the task!
         task.resume()
+    }
+}
+
+// MARK: - ClubsTableViewController DataSource Methods
+extension ClubsTableViewController: UITableViewDataSource {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return clubs.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("ClubCell")!
+        
+        cell.textLabel!.text = clubs[indexPath.row].name
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("showClubDetails", sender: self)
     }
 }
