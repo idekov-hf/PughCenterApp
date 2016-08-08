@@ -18,7 +18,8 @@ class NotificationTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        containerView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 250/255, alpha: 1.0)
+//        containerView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 250/255, alpha: 1.0)
+//		containerView.backgroundColor = UIColor(red: 255, green: 236, blue: 225, alpha: 1.0)
         containerView.layer.cornerRadius = 20.0
     }
     

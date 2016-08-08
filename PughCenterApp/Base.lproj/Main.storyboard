@@ -772,7 +772,7 @@ pughcenter@colby.edu</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="1" green="0.92549019610000005" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="xaM-6s-tdx" secondAttribute="trailing" constant="8" id="J1s-IB-upL"/>
                                                         <constraint firstAttribute="bottom" secondItem="dad-63-C7A" secondAttribute="bottom" constant="8" id="KXs-6B-Yjd"/>
@@ -807,19 +807,25 @@ pughcenter@colby.edu</string>
                                     <outlet property="delegate" destination="L2O-DP-tIC" id="hAM-Lm-cyF"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WCV-q7-dk6">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8Lu-cN-NcY" firstAttribute="bottom" secondItem="pJU-0h-mRE" secondAttribute="top" id="0Jg-QD-CPL"/>
                             <constraint firstItem="8Lu-cN-NcY" firstAttribute="top" secondItem="OHV-2Z-yBe" secondAttribute="bottom" id="3KF-X1-Qmk"/>
                             <constraint firstAttribute="trailing" secondItem="8Lu-cN-NcY" secondAttribute="trailing" id="ZV7-WD-qMp"/>
+                            <constraint firstItem="WCV-q7-dk6" firstAttribute="centerX" secondItem="bib-KM-26q" secondAttribute="centerX" id="eUr-Jx-yp0"/>
                             <constraint firstItem="8Lu-cN-NcY" firstAttribute="leading" secondItem="bib-KM-26q" secondAttribute="leading" id="jaF-QM-bML"/>
+                            <constraint firstItem="WCV-q7-dk6" firstAttribute="centerY" secondItem="bib-KM-26q" secondAttribute="centerY" id="r4b-4c-mLS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Notifications Feed" id="zMs-5E-G0g">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="Npt-qv-lE5"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="WCV-q7-dk6" id="2Lr-YS-Qt7"/>
                         <outlet property="menuButton" destination="Npt-qv-lE5" id="JcP-wh-Lmr"/>
                         <outlet property="tableView" destination="8Lu-cN-NcY" id="D0e-4m-3iu"/>
                     </connections>

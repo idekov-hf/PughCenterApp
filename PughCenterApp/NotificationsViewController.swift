@@ -13,21 +13,17 @@ class NotificationsViewController: UIViewController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
+	@IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var notificationData: [PFObject]?
-    var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.estimatedRowHeight = 155.0
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        // Loading indicator is displayed before event data has loaded
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        activityIndicator.center = CGPointMake(view.center.x, view.center.y)
+		
         activityIndicator.startAnimating()
-        view.addSubview(activityIndicator)
         
         let screenWidth = UIScreen.mainScreen().bounds.width
         if revealViewController() != nil {
@@ -82,14 +78,5 @@ extension NotificationsViewController: UITableViewDataSource {
 
         return cell
     }
-    
-}
-
-// MARK: Table View Delegate Methods
-extension NotificationsViewController: UITableViewDelegate {
-    
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        <#code#>
-//    }
     
 }
