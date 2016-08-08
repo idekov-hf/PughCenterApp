@@ -9,22 +9,27 @@
 import UIKit
 import Parse
 
-class EventsTableViewController: UITableViewController {
-    
+// MARK: - EventsTableViewController
+class EventsTableViewController: UIViewController {
+	
+	// MARK: Outlets
     @IBOutlet var menuButton: UIBarButtonItem!
-    
+	@IBOutlet var tableView: UITableView!
+	@IBOutlet var activityIndicator: UIActivityIndicatorView!
+	
+	// MARK: Properties
     let eventParser = EventParser()
     let defaults = NSUserDefaults.standardUserDefaults()
 	let greenColor = UIColor(red: 133, green: 253, blue: 137, alpha: 1)
 	let redColor = UIColor(red: 255, green: 154, blue: 134, alpha: 1)
 	
-    var activityIndicator: UIActivityIndicatorView!
     var events = [Event]()
     var linkDictionary: [String: String]!
     var selectedIndexPath: NSIndexPath?
     var deSelectedIndexPath: NSIndexPath?
     var eventSelected = false
-    
+	
+	// MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,12 +39,8 @@ class EventsTableViewController: UITableViewController {
         // http://www.appcoda.com/self-sizing-cells/
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        // Loading indicator is displayed before event data has loaded
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        activityIndicator.center = CGPointMake(view.center.x, view.center.y - 50)
+		
         activityIndicator.startAnimating()
-        view.addSubview(activityIndicator)
         
         let screenWidth = UIScreen.mainScreen().bounds.width
         if revealViewController() != nil {
@@ -66,66 +67,6 @@ class EventsTableViewController: UITableViewController {
             notification.soundName = UILocalNotificationDefaultSoundName
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
-    }
-
-    // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cellID: String
-        if indexPath == selectedIndexPath && eventSelected == true {
-            cellID = "SelectedCell"
-        }
-        else {
-            cellID = "UnselectedCell"
-        }
-        
-        let event = events[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! EventsTableViewCell
-        let dateAsString = DateFormatters.outDateFormatter.stringFromDate(event.startDate!)
-        cell.titleLabel.text = event.title
-        cell.dateLabel.text = dateAsString
-        
-        if cellID == "SelectedCell" {
-            cell.descriptionLabel.text = event.eventDescription
-            cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
-//			cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
-        }
-        
-        return cell
-    }
-
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        var indexPathArray = [NSIndexPath]()
-        
-        if indexPath == selectedIndexPath && eventSelected {
-            eventSelected = false
-        }
-        else {
-            eventSelected = true
-            deSelectedIndexPath = selectedIndexPath
-            if let deSelectedIndexPath = deSelectedIndexPath {
-                indexPathArray.append(deSelectedIndexPath)
-            }
-            adjustAttendanceCount(indexPath)
-        }
-        
-        selectedIndexPath = indexPath
-        indexPathArray.append(indexPath)
-        
-        tableView.reloadRowsAtIndexPaths(indexPathArray, withRowAnimation: .Automatic)
-        if eventSelected {
-            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
-        }
-        
     }
     
     @IBAction func attendanceButtonPressed(sender: UIButton) {
@@ -229,11 +170,75 @@ class EventsTableViewController: UITableViewController {
     }
 }
 
+// MARK: - UITableView Data Source
+extension EventsTableViewController: UITableViewDataSource {
+	
+	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return events.count
+	}
+	
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		var cellID: String
+		if indexPath == selectedIndexPath && eventSelected == true {
+			cellID = "SelectedCell"
+		}
+		else {
+			cellID = "UnselectedCell"
+		}
+		
+		let event = events[indexPath.row]
+		
+		let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! EventsTableViewCell
+		let dateAsString = DateFormatters.outDateFormatter.stringFromDate(event.startDate!)
+		cell.titleLabel.text = event.title
+		cell.dateLabel.text = dateAsString
+		
+		if cellID == "SelectedCell" {
+			cell.descriptionLabel.text = event.eventDescription
+			cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
+			//			cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
+		}
+		
+		return cell
+	}
+	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		
+		var indexPathArray = [NSIndexPath]()
+		
+		if indexPath == selectedIndexPath && eventSelected {
+			eventSelected = false
+		}
+		else {
+			eventSelected = true
+			deSelectedIndexPath = selectedIndexPath
+			if let deSelectedIndexPath = deSelectedIndexPath {
+				indexPathArray.append(deSelectedIndexPath)
+			}
+			adjustAttendanceCount(indexPath)
+		}
+		
+		selectedIndexPath = indexPath
+		indexPathArray.append(indexPath)
+		
+		tableView.reloadRowsAtIndexPaths(indexPathArray, withRowAnimation: .Automatic)
+		if eventSelected {
+			tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
+		}
+		
+	}
+}
+
+// MARK: - EventParserDelegate
 extension EventsTableViewController: EventParserDelegate {
     func didFinishParsing(sender: EventParser) {
         // Transfer the dictionary containing the button title for each unique Event link from the eventParser object to the EventsTableViewController
         linkDictionary = sender.newLinkDictionary
-        
+		
         // Transfer the array of events from the eventParser object to the EventsTableViewController
         events = sender.events
         
