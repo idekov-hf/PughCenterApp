@@ -73,7 +73,7 @@ class EventsTableViewController: UIViewController {
         if let selectedRow = selectedIndexPath?.row {           
             let buttonTitle = sender.titleLabel?.text
 			
-			let buttonBackgroundColor = buttonTitle == "RSVP" ? redColor : greenColor
+			let buttonBackgroundColor = buttonTitle == Attendance.RSVP.rawValue ? redColor : greenColor
 			sender.backgroundColor = buttonBackgroundColor
 			
 			let newTitle = buttonTitle == Attendance.RSVP.rawValue ? Attendance.Cancel.rawValue : Attendance.RSVP.rawValue
@@ -200,7 +200,7 @@ extension EventsTableViewController: UITableViewDataSource {
 		if cellID == "SelectedCell" {
 			cell.descriptionLabel.text = event.eventDescription
 			cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
-			//			cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
+			cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
 		}
 		
 		return cell
