@@ -15,7 +15,9 @@ class EventsTableViewController: UITableViewController {
     
     let eventParser = EventParser()
     let defaults = NSUserDefaults.standardUserDefaults()
-    
+	let greenColor = UIColor(red: 133, green: 253, blue: 137, alpha: 1)
+	let redColor = UIColor(red: 255, green: 154, blue: 134, alpha: 1)
+	
     var activityIndicator: UIActivityIndicatorView!
     var events = [Event]()
     var linkDictionary: [String: String]!
@@ -94,6 +96,7 @@ class EventsTableViewController: UITableViewController {
         if cellID == "SelectedCell" {
             cell.descriptionLabel.text = event.eventDescription
             cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
+//			cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
         }
         
         return cell
@@ -128,13 +131,12 @@ class EventsTableViewController: UITableViewController {
     @IBAction func attendanceButtonPressed(sender: UIButton) {
         if let selectedRow = selectedIndexPath?.row {           
             let buttonTitle = sender.titleLabel?.text
-//			let greenColor = UIColor(red: 133, green: 253, blue: 137, alpha: 1)
-//			let redColor = UIColor(red: 255, green: 154, blue: 134, alpha: 1)
-            let newTitle = buttonTitle == "RSVP" ? "Cancel" : "RSVP"
-//			let buttonBackgroundColor = buttonTitle == "RSVP" ? redColor : greenColor
-            // Set the button's new title
+			
+			let buttonBackgroundColor = buttonTitle == "RSVP" ? redColor : greenColor
+			sender.backgroundColor = buttonBackgroundColor
+			
+			let newTitle = buttonTitle == Attendance.RSVP.rawValue ? Attendance.Cancel.rawValue : Attendance.RSVP.rawValue
             sender.setTitle(newTitle, forState: .Normal)
-//			sender.backgroundColor = buttonBackgroundColor
 			
             adjustAttendanceData(buttonTitle!, row: selectedRow)
             

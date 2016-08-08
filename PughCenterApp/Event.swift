@@ -46,3 +46,7 @@ struct DateFormatters {
         return formatter
     }()
 }
+
+enum Attendance: String {
+	case RSVP, Cancel
+}

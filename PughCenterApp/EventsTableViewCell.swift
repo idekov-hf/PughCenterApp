@@ -15,5 +15,5 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var attendanceLabel: UILabel!
     @IBOutlet weak var attendanceButton: UIButton!
-
+	
 }
