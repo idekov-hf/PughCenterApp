@@ -23,6 +23,11 @@ class NotificationsViewController: UIViewController {
         tableView.estimatedRowHeight = 155.0
         tableView.rowHeight = UITableViewAutomaticDimension
 		
+		let imageView = UIImageView(image: UIImage(named: "PughCenterLogo"))
+		imageView.contentMode = .Center
+		
+		tableView.backgroundView = imageView
+		
         activityIndicator.startAnimating()
         
         let screenWidth = UIScreen.mainScreen().bounds.width
@@ -78,5 +83,8 @@ extension NotificationsViewController: UITableViewDataSource {
 
         return cell
     }
-    
+	
+	func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+		cell.backgroundColor = .clearColor()
+	}
 }
