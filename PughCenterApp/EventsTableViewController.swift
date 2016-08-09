@@ -194,10 +194,6 @@ extension EventsTableViewController: UITableViewDataSource {
 		cell.titleLabel.text = event.title
 		cell.dateLabel.text = dateAsString
 		
-//		cell.descriptionLabel.text = event.eventDescription
-//		cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
-//		cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
-		
 		return cell
 	}
 }
@@ -210,16 +206,19 @@ extension EventsTableViewController: UITableViewDelegate {
 		let cell = tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
 		
 		let event = events[indexPath.row]
-		event.isExpanded = !event.isExpanded
 		
-		cell.descriptionLabel.text = event.isExpanded ? event.eventDescription : moreInfoText
-		cell.descriptionLabel.textColor = event.isExpanded ? UIColor.blackColor() : UIColor.grayColor()
+		let isExpanded = !event.isExpanded
 		
-		cell.attendanceButton.hidden = event.isExpanded ? false : true
-		cell.attendanceLabel.hidden = event.isExpanded ? false : true
+		event.isExpanded = isExpanded
+		
+		cell.descriptionLabel.text = isExpanded ? event.eventDescription : moreInfoText
+		cell.descriptionLabel.textColor = isExpanded ? UIColor.blackColor() : UIColor.grayColor()
+		
+		cell.attendanceButton.hidden = isExpanded ? false : true
+		cell.attendanceLabel.hidden = isExpanded ? false : true
 		
 		UIView.animateWithDuration(0.3) {
-			cell.adjustConstraints(event.isExpanded)
+			cell.adjustConstraints(isExpanded)
 			cell.contentView.layoutIfNeeded()
 		}
 		
