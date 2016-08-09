@@ -65,6 +65,7 @@ class EventsTableViewController: UIViewController {
             notification.fireDate = event.startDate?.dateByAddingTimeInterval(-1800)
             notification.alertBody = event.title + " is starting in 30 minutes."
             notification.soundName = UILocalNotificationDefaultSoundName
+//            notification.userInfo[]
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
     }
@@ -98,7 +99,7 @@ class EventsTableViewController: UIViewController {
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             // If the object exists, update the attendanceLabel.text value of the appropriate cell
-            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! SelectedEventsTableViewCell
             guard error == nil else {
                 print(error)
                 return
@@ -113,7 +114,7 @@ class EventsTableViewController: UIViewController {
     }
     
     func adjustCountOnPress(count: Int) {
-        let cell = self.tableView.cellForRowAtIndexPath(selectedIndexPath!) as! EventsTableViewCell
+        let cell = self.tableView.cellForRowAtIndexPath(selectedIndexPath!) as! SelectedEventsTableViewCell
         cell.attendanceLabel?.text = "\(count)"
     }
     
@@ -183,27 +184,27 @@ extension EventsTableViewController: UITableViewDataSource {
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		var cellID: String
+        
+        let event = events[indexPath.row]
 		if indexPath == selectedIndexPath && eventSelected == true {
 			cellID = "SelectedCell"
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! SelectedEventsTableViewCell
+            let dateAsString = DateFormatters.outDateFormatter.stringFromDate(event.startDate!)
+            cell.titleLabel.text = event.title
+            cell.dateLabel.text = dateAsString
+            cell.descriptionLabel.text = event.eventDescription
+            cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
+            cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
+            return cell
 		}
 		else {
 			cellID = "UnselectedCell"
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! UnselectedEventsTableViewCell
+            let dateAsString = DateFormatters.outDateFormatter.stringFromDate(event.startDate!)
+            cell.titleLabel.text = event.title
+            cell.dateLabel.text = dateAsString
+            return cell
 		}
-		
-		let event = events[indexPath.row]
-		
-		let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! EventsTableViewCell
-		let dateAsString = DateFormatters.outDateFormatter.stringFromDate(event.startDate!)
-		cell.titleLabel.text = event.title
-		cell.dateLabel.text = dateAsString
-		
-		if cellID == "SelectedCell" {
-			cell.descriptionLabel.text = event.eventDescription
-			cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
-			cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
-		}
-		
-		return cell
 	}
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
