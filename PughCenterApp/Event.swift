@@ -17,6 +17,7 @@ class Event {
     var startDate: NSDate?
     var link: String
     var buttonStatus: String
+	var isExpanded: Bool
     
     // Mark: Initialization
     
@@ -27,6 +28,7 @@ class Event {
         self.startDate = startDate
         self.link = link
         self.buttonStatus = buttonStatus
+		isExpanded = false
     }
 }
 
