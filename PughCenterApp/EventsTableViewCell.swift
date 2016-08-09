@@ -23,8 +23,10 @@ class EventsTableViewCell: UITableViewCell {
         attendanceButton.backgroundColor = UIColor.greenColor()
     }
 	
-	func adjustConstraints(cellExpanded: Bool) {
+	func showAttendanceViews(cellExpanded: Bool) {
 		
+		attendanceButton.hidden = !cellExpanded
+		attendanceLabel.hidden = !cellExpanded
 		descriptionToSuperviewConstraint.priority = cellExpanded ? 500 : 999
 		buttonToSuperviewConstraint.priority = cellExpanded ? 999 : 500
 	}

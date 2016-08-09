@@ -22,7 +22,7 @@ class EventsTableViewController: UIViewController {
     let defaults = NSUserDefaults.standardUserDefaults()
 	let greenColor = UIColor(red: 133, green: 253, blue: 137, alpha: 1)
 	let redColor = UIColor(red: 255, green: 154, blue: 134, alpha: 1)
-	let moreInfoText = "Press for event description >"
+	let eventDescriptionText = "Press for event description >"
 	
     var events = [Event]()
     var linkDictionary: [String: String]!
@@ -193,6 +193,8 @@ extension EventsTableViewController: UITableViewDataSource {
 		
 		cell.titleLabel.text = event.title
 		cell.dateLabel.text = dateAsString
+		cell.descriptionLabel.text = event.isExpanded ? event.eventDescription : eventDescriptionText
+		cell.showAttendanceViews(event.isExpanded)
 		
 		return cell
 	}
@@ -216,14 +218,12 @@ extension EventsTableViewController: UITableViewDelegate {
 		
 		cell.contentView.backgroundColor = isExpanded ? highlightedColor : whiteColor
 		
-		cell.descriptionLabel.text = isExpanded ? event.eventDescription : moreInfoText
+		cell.descriptionLabel.text = isExpanded ? event.eventDescription : eventDescriptionText
 		cell.descriptionLabel.textColor = isExpanded ? UIColor.blackColor() : UIColor.grayColor()
 		
-		cell.attendanceButton.hidden = isExpanded ? false : true
-		cell.attendanceLabel.hidden = isExpanded ? false : true
+		cell.showAttendanceViews(isExpanded)
 		
 		UIView.animateWithDuration(0.3) {
-			cell.adjustConstraints(isExpanded)
 			cell.contentView.layoutIfNeeded()
 		}
 		
