@@ -205,11 +205,16 @@ extension EventsTableViewController: UITableViewDelegate {
 		
 		let cell = tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
 		
+		let highlightedColor = UIColor(red: 236/255, green: 255/255, blue: 253/255, alpha: 1)
+		let whiteColor = UIColor.whiteColor()
+		
 		let event = events[indexPath.row]
 		
 		let isExpanded = !event.isExpanded
 		
 		event.isExpanded = isExpanded
+		
+		cell.contentView.backgroundColor = isExpanded ? highlightedColor : whiteColor
 		
 		cell.descriptionLabel.text = isExpanded ? event.eventDescription : moreInfoText
 		cell.descriptionLabel.textColor = isExpanded ? UIColor.blackColor() : UIColor.grayColor()
