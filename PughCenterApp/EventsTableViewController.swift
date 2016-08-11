@@ -195,7 +195,9 @@ extension EventsTableViewController: UITableViewDataSource {
 		
 		cell.titleLabel.text = event.title
 		cell.dateLabel.text = dateAsString
+		
 		cell.descriptionLabel.text = event.isExpanded ? event.eventDescription : eventDescriptionText
+		cell.descriptionLabel.textColor = event.isExpanded ? UIColor.blackColor() : UIColor.grayColor()
         cell.contentView.backgroundColor = event.isExpanded ? highlightedColor : whiteColor
 		cell.showAttendanceViews(event.isExpanded)
 		
@@ -208,31 +210,35 @@ extension EventsTableViewController: UITableViewDelegate {
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		
-		let cell = tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
+		// Array that will store the indexPaths to be reloaded
+		var paths = [NSIndexPath]()
 		
-		let event = events[indexPath.row]
+		// Check if there is a previously selected index path
+		if let previouslySelectedPath = selectedIndexPath {
+			deSelectedIndexPath = previouslySelectedPath
+			selectedIndexPath = indexPath
+			
+			// Check if the previously selected index path is the same as the currently selected index path
+			if deSelectedIndexPath == indexPath {
+				events[indexPath.row].isExpanded = !events[indexPath.row].isExpanded
+				paths = [indexPath]
+			} else {
+				events[indexPath.row].isExpanded = true
+				events[deSelectedIndexPath!.row].isExpanded = false
+				paths = [indexPath, deSelectedIndexPath!]
+			}
+			
+		} else {
 		
-		let isExpanded = !event.isExpanded
-		
-		event.isExpanded = isExpanded
-		
-		cell.contentView.backgroundColor = isExpanded ? highlightedColor : whiteColor
-		
-		cell.descriptionLabel.text = isExpanded ? event.eventDescription : eventDescriptionText
-		cell.descriptionLabel.textColor = isExpanded ? UIColor.blackColor() : UIColor.grayColor()
-		
-		cell.showAttendanceViews(isExpanded)
-		
-		UIView.animateWithDuration(0.3) {
-			cell.contentView.layoutIfNeeded()
+			selectedIndexPath = indexPath
+			events[indexPath.row].isExpanded = true
+			paths = [selectedIndexPath!]
 		}
 		
-		tableView.beginUpdates()
-		tableView.endUpdates()
+		tableView.reloadRowsAtIndexPaths(paths, withRowAnimation: .Automatic)
 		
 		tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
 	}
-	
 }
 
 // MARK: - EventParserDelegate
