@@ -23,6 +23,8 @@ class EventsTableViewController: UIViewController {
 	let greenColor = UIColor(red: 133, green: 253, blue: 137, alpha: 1)
 	let redColor = UIColor(red: 255, green: 154, blue: 134, alpha: 1)
 	let eventDescriptionText = "Press for event description >"
+    let highlightedColor = UIColor(red: 236/255, green: 255/255, blue: 253/255, alpha: 1)
+    let whiteColor = UIColor.whiteColor()
 	
     var events = [Event]()
     var linkDictionary: [String: String]!
@@ -38,7 +40,7 @@ class EventsTableViewController: UIViewController {
         
         // Enables self sizing cells
         // http://www.appcoda.com/self-sizing-cells/
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 122
         tableView.rowHeight = UITableViewAutomaticDimension
 		
         activityIndicator.startAnimating()
@@ -194,6 +196,7 @@ extension EventsTableViewController: UITableViewDataSource {
 		cell.titleLabel.text = event.title
 		cell.dateLabel.text = dateAsString
 		cell.descriptionLabel.text = event.isExpanded ? event.eventDescription : eventDescriptionText
+        cell.contentView.backgroundColor = event.isExpanded ? highlightedColor : whiteColor
 		cell.showAttendanceViews(event.isExpanded)
 		
 		return cell
@@ -206,9 +209,6 @@ extension EventsTableViewController: UITableViewDelegate {
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		
 		let cell = tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
-		
-		let highlightedColor = UIColor(red: 236/255, green: 255/255, blue: 253/255, alpha: 1)
-		let whiteColor = UIColor.whiteColor()
 		
 		let event = events[indexPath.row]
 		
