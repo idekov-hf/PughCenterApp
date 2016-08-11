@@ -202,6 +202,7 @@ extension EventsTableViewController: UITableViewDataSource {
 		cell.descriptionLabel.textColor = eventIsExpanded ? UIColor.blackColor() : UIColor.grayColor()
         cell.contentView.backgroundColor = eventIsExpanded ? highlightedColor : whiteColor
 		cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
+		cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
 		cell.showAttendanceViews(eventIsExpanded)
 		
 		return cell
