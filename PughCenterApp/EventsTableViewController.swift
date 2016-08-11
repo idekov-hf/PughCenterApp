@@ -20,8 +20,8 @@ class EventsTableViewController: UIViewController {
 	// MARK: Properties
     let eventParser = EventParser()
     let defaults = NSUserDefaults.standardUserDefaults()
-	let greenColor = UIColor(red: 133, green: 253, blue: 137, alpha: 1)
-	let redColor = UIColor(red: 255, green: 154, blue: 134, alpha: 1)
+	let greenColor = UIColor(red: 133/255, green: 253/255, blue: 137/255, alpha: 1)
+	let redColor = UIColor(red: 255/255, green: 154/255, blue: 134/255, alpha: 1)
 	let eventDescriptionText = "Press for event description >"
     let highlightedColor = UIColor(red: 236/255, green: 255/255, blue: 253/255, alpha: 1)
     let whiteColor = UIColor.whiteColor()
@@ -74,7 +74,7 @@ class EventsTableViewController: UIViewController {
     }
     
     @IBAction func attendanceButtonPressed(sender: UIButton) {
-        if let selectedRow = selectedIndexPath?.row {           
+        if let selectedRow = selectedIndexPath?.row {
             let buttonTitle = sender.titleLabel?.text
 			
 			let buttonBackgroundColor = buttonTitle == Attendance.RSVP.rawValue ? redColor : greenColor
@@ -191,15 +191,18 @@ extension EventsTableViewController: UITableViewDataSource {
 		let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! EventsTableViewCell
 		
 		let event = events[indexPath.row]
+		let eventIsExpanded = event.isExpanded
+		
 		let dateAsString = DateFormatters.outDateFormatter.stringFromDate(event.startDate!)
 		
 		cell.titleLabel.text = event.title
 		cell.dateLabel.text = dateAsString
 		
-		cell.descriptionLabel.text = event.isExpanded ? event.eventDescription : eventDescriptionText
-		cell.descriptionLabel.textColor = event.isExpanded ? UIColor.blackColor() : UIColor.grayColor()
-        cell.contentView.backgroundColor = event.isExpanded ? highlightedColor : whiteColor
-		cell.showAttendanceViews(event.isExpanded)
+		cell.descriptionLabel.text = eventIsExpanded ? event.eventDescription : eventDescriptionText
+		cell.descriptionLabel.textColor = eventIsExpanded ? UIColor.blackColor() : UIColor.grayColor()
+        cell.contentView.backgroundColor = eventIsExpanded ? highlightedColor : whiteColor
+		cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
+		cell.showAttendanceViews(eventIsExpanded)
 		
 		return cell
 	}

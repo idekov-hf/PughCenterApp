@@ -20,7 +20,7 @@ class EventsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        attendanceButton.backgroundColor = UIColor.greenColor()
+//        attendanceButton.backgroundColor = UIColor.greenColor()
     }
 	
 	func showAttendanceViews(cellExpanded: Bool) {
