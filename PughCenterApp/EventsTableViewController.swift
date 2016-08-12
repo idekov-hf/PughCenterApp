@@ -218,7 +218,8 @@ extension EventsTableViewController: UITableViewDataSource {
     
     func setAttendanceEnabled(bool: Bool, cell: EventsTableViewCell) {
         cell.attendanceButton.enabled = bool
-        
+		cell.attendanceLabel.hidden = !bool
+		
         if bool {
             cell.activityIndicator.stopAnimating()
         } else {
