@@ -179,11 +179,11 @@
 				5D41D2401CBC7B6D00F21991 /* Model */,
 				5D3824231D2A89D80057097F /* View */,
 				5D41D2421CBC7B7800F21991 /* Controller */,
-				5DA58F021C696EFD00CB062D /* Main.storyboard */,
 				5DA58F051C696EFD00CB062D /* Assets.xcassets */,
 				5DA58F071C696EFD00CB062D /* LaunchScreen.storyboard */,
 				5DA58F0A1C696EFD00CB062D /* Info.plist */,
 				5DC470CC1D25642700105D29 /* TestData.xml */,
+				5DA58F021C696EFD00CB062D /* Main.storyboard */,
 			);
 			path = PughCenterApp;
 			sourceTree = "<group>";

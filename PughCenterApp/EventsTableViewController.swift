@@ -72,7 +72,8 @@ class EventsTableViewController: UIViewController {
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
     }
-    
+	
+	// MARK: Actions
     @IBAction func attendanceButtonPressed(sender: UIButton) {
         if let selectedRow = selectedIndexPath?.row {
             let buttonTitle = sender.titleLabel?.text
@@ -122,7 +123,8 @@ class EventsTableViewController: UIViewController {
     }
     
     func adjustAttendanceData(eventTitle: String, row: Int) {
-        
+		
+		setAttendanceEnabled(false, cell: tableView.cellForRowAtIndexPath(selectedIndexPath!) as! EventsTableViewCell)
         // Query the Parse database in order to find a PFObject using the link of the event associated with the selected cell
         let query = PFQuery(className: "Event")
         query.whereKey("link", equalTo: events[row].link)
@@ -134,6 +136,7 @@ class EventsTableViewController: UIViewController {
             }
             // If the array contains more than 0 objects, increment/decrement the attendance counter
             else if let objects = objects where objects.count > 0 {
+				
                 let event = objects[0]
                 var count = event["attendance"] as! Int
                 if eventTitle == Attendance.RSVP.rawValue {
@@ -153,6 +156,8 @@ class EventsTableViewController: UIViewController {
                         print("Save not successful because: \(error?.description)")
                     }
                 }
+				
+				self.setAttendanceEnabled(true, cell: self.tableView.cellForRowAtIndexPath(self.selectedIndexPath!) as! EventsTableViewCell)
             }
             // If it doesn't, create a new PFObject, set the attendance field to 1 and set the link field as well
             else {
