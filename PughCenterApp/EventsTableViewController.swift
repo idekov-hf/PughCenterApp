@@ -204,9 +204,27 @@ extension EventsTableViewController: UITableViewDataSource {
 		cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
 		cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
 		cell.showAttendanceViews(eventIsExpanded)
+        
+        if eventIsExpanded {
+            setAttendanceEnabled(false, cell: cell)
+            ParseClient.sharedInstance.getAttendanceCountForEvent(event.link, completionHandler: { (attendanceCount) in
+                self.setAttendanceEnabled(true, cell: cell)
+                cell.attendanceLabel.text = "\(attendanceCount)"
+            })
+        }
 		
 		return cell
 	}
+    
+    func setAttendanceEnabled(bool: Bool, cell: EventsTableViewCell) {
+        cell.attendanceButton.enabled = bool
+        
+        if bool {
+            cell.activityIndicator.stopAnimating()
+        } else {
+            cell.activityIndicator.startAnimating()
+        }
+    }
 }
 
 // MARK: - UITableView Delegate

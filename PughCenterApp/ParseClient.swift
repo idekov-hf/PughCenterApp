@@ -15,12 +15,25 @@ class ParseClient {
     // MARK: Shared Instance
     static var sharedInstance = ParseClient()
     
-    func getAttendanceCountForEvent(url: String) {
+    func getAttendanceCountForEvent(url: String, completionHandler: (attendanceCount: Int) -> Void) {
         let query = PFQuery(className: ClassNames.Event)
-        query.whereKey(Fields.URL, equalTo: url)
+        query.whereKey(Keys.URL, equalTo: url)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
+            guard error == nil else {
+                print(error)
+                return
+            }
+            
+            guard let eventObjects = objects where eventObjects.count > 0 else {
+                print("Could not find pfObjects with the specified URL value")
+                return
+            }
+            
+            let event = eventObjects[0]
+            let attendance = event[Keys.Attendance] as! Int
+            completionHandler(attendanceCount: attendance)
         }
     }
 }
@@ -32,7 +45,7 @@ extension ParseClient {
         static let Event = "Event"
     }
     
-    struct Fields {
+    struct Keys {
         
         static let Attendance = "attendance"
         static let URL = "link"
