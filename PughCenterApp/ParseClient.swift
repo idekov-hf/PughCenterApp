@@ -16,6 +16,7 @@ class ParseClient {
     static var sharedInstance = ParseClient()
     
     func getAttendanceCountForEvent(url: String, completionHandler: (attendanceCount: Int) -> Void) {
+		
         let query = PFQuery(className: ClassNames.Event)
         query.whereKey(Keys.URL, equalTo: url)
         query.findObjectsInBackgroundWithBlock {
@@ -28,6 +29,8 @@ class ParseClient {
             
             guard let eventObjects = objects where eventObjects.count > 0 else {
                 print("Could not find pfObjects with the specified URL value")
+				self.createNewEventObject(url)
+				completionHandler(attendanceCount: 0)
                 return
             }
             
@@ -36,17 +39,25 @@ class ParseClient {
             completionHandler(attendanceCount: attendance)
         }
     }
+	
+	func createNewEventObject(url: String) {
+		
+		let eventObject = PFObject(className: "Event")
+		eventObject["attendance"] = 0
+		eventObject["link"] = url
+		eventObject.saveInBackground()
+	}
 }
 
 extension ParseClient {
-    
+	
     struct ClassNames {
-        
+		
         static let Event = "Event"
     }
-    
+	
     struct Keys {
-        
+		
         static let Attendance = "attendance"
         static let URL = "link"
     }
