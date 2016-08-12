@@ -206,7 +206,7 @@ extension EventsTableViewController: UITableViewDataSource {
 		cell.descriptionLabel.text = eventIsExpanded ? event.eventDescription : eventDescriptionText
 		cell.descriptionLabel.textColor = eventIsExpanded ? UIColor.blackColor() : UIColor.grayColor()
         cell.contentView.backgroundColor = eventIsExpanded ? highlightedColor : whiteColor
-		cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
+//		cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
 		cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
 		cell.showAttendanceViews(eventIsExpanded)
         
@@ -236,37 +236,91 @@ extension EventsTableViewController: UITableViewDataSource {
 // MARK: - UITableView Delegate
 extension EventsTableViewController: UITableViewDelegate {
 	
+//	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//		
+//		// Array that will store the indexPaths to be reloaded
+//		var paths = [NSIndexPath]()
+//		
+//		// Check if there is a previously selected index path
+//		if let previouslySelectedPath = selectedIndexPath {
+//			deSelectedIndexPath = previouslySelectedPath
+//			selectedIndexPath = indexPath
+//			
+//			// Check if the previously selected index path is the same as the currently selected index path
+//			if deSelectedIndexPath == indexPath {
+//				events[indexPath.row].isExpanded = !events[indexPath.row].isExpanded
+//				paths = [indexPath]
+//			} else {
+//				events[indexPath.row].isExpanded = true
+//				events[deSelectedIndexPath!.row].isExpanded = false
+//				paths = [indexPath, deSelectedIndexPath!]
+//			}
+//			
+//		} else {
+//		
+//			selectedIndexPath = indexPath
+//			events[indexPath.row].isExpanded = true
+//			paths = [selectedIndexPath!]
+//		}
+//		
+//		tableView.reloadRowsAtIndexPaths(paths, withRowAnimation: .Automatic)
+//		
+//		tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
+//	}
+	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		
-		// Array that will store the indexPaths to be reloaded
-		var paths = [NSIndexPath]()
+		var cellArray = [EventsTableViewCell]()
+		
+		let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
 		
 		// Check if there is a previously selected index path
 		if let previouslySelectedPath = selectedIndexPath {
 			deSelectedIndexPath = previouslySelectedPath
+			let deselectedCell = tableView.cellForRowAtIndexPath(deSelectedIndexPath!) as! EventsTableViewCell
+			
 			selectedIndexPath = indexPath
 			
 			// Check if the previously selected index path is the same as the currently selected index path
 			if deSelectedIndexPath == indexPath {
 				events[indexPath.row].isExpanded = !events[indexPath.row].isExpanded
-				paths = [indexPath]
+				cellArray = [selectedCell]
+				
 			} else {
 				events[indexPath.row].isExpanded = true
 				events[deSelectedIndexPath!.row].isExpanded = false
-				paths = [indexPath, deSelectedIndexPath!]
+				cellArray = [selectedCell, deselectedCell]
 			}
 			
 		} else {
-		
+			
 			selectedIndexPath = indexPath
 			events[indexPath.row].isExpanded = true
-			paths = [selectedIndexPath!]
+			cellArray = [selectedCell]
 		}
 		
-		tableView.reloadRowsAtIndexPaths(paths, withRowAnimation: .Automatic)
+		
+		UIView.animateWithDuration(0.3) {
+			for cell in cellArray {
+				cell.contentView.layoutIfNeeded()
+			}
+		}
+		
+		tableView.beginUpdates()
+		tableView.endUpdates()
 		
 		tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
 	}
+	
+	func expandEventTableViewCell(expand: Bool, cell: EventsTableViewCell, row: Int) {
+		
+		cell.descriptionLabel.text = expand ? events[row].eventDescription : eventDescriptionText
+		cell.descriptionLabel.textColor = expand ? UIColor.blackColor() : UIColor.grayColor()
+		cell.contentView.backgroundColor = expand ? highlightedColor : whiteColor
+		cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
+		cell.showAttendanceViews(eventIsExpanded)
+	}
+	
 }
 
 // MARK: - EventParserDelegate

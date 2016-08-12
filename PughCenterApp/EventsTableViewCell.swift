@@ -18,11 +18,16 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet var descriptionToSuperviewConstraint: NSLayoutConstraint!
 	@IBOutlet var buttonToSuperviewConstraint: NSLayoutConstraint!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-//        attendanceButton.backgroundColor = UIColor.greenColor()
-    }
+	
+	let greenColor = UIColor(red: 133/255, green: 253/255, blue: 137/255, alpha: 1)
+	let redColor = UIColor(red: 255/255, green: 154/255, blue: 134/255, alpha: 1)
+	
+	var buttonTitle: Attendance! {
+		didSet {
+			attendanceButton.setTitle(buttonTitle.rawValue, forState: .Normal)
+			attendanceButton.backgroundColor = buttonTitle == Attendance.RSVP ? greenColor : redColor
+		}
+	}
 	
 	func showAttendanceViews(cellExpanded: Bool) {
 		
