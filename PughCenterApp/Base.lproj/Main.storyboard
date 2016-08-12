@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -87,10 +87,14 @@
                                                     <color key="textColor" red="0.098039215690000001" green="0.26274509800000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xya-Pj-GjR">
+                                                    <rect key="frame" x="84" y="113" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="A8o-Aw-au4" firstAttribute="top" secondItem="rtn-cz-t4S" secondAttribute="bottom" constant="2" id="0Vc-YE-bE4"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="fV3-O5-WbW" secondAttribute="bottom" priority="500" constant="8" id="7vu-Qy-6d3"/>
+                                                <constraint firstItem="xya-Pj-GjR" firstAttribute="top" secondItem="efv-p1-yqA" secondAttribute="bottom" constant="8" id="89e-9j-oGc"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="A8o-Aw-au4" secondAttribute="trailing" constant="8" id="97o-Nq-Yyb"/>
                                                 <constraint firstItem="fV3-O5-WbW" firstAttribute="leading" secondItem="nBT-2c-GGY" secondAttribute="leadingMargin" constant="8" id="9wC-aF-qzL"/>
                                                 <constraint firstItem="A8o-Aw-au4" firstAttribute="leading" secondItem="nBT-2c-GGY" secondAttribute="leadingMargin" constant="8" id="A44-qz-TMT"/>
@@ -102,12 +106,14 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="rtn-cz-t4S" secondAttribute="trailing" constant="8" id="a7g-wQ-5gk"/>
                                                 <constraint firstItem="aD6-E4-XEy" firstAttribute="top" secondItem="efv-p1-yqA" secondAttribute="bottom" constant="8" id="cVW-aY-5Ff"/>
                                                 <constraint firstItem="efv-p1-yqA" firstAttribute="leading" secondItem="nBT-2c-GGY" secondAttribute="leadingMargin" constant="8" id="eS9-DB-UnX"/>
+                                                <constraint firstItem="xya-Pj-GjR" firstAttribute="leading" secondItem="fV3-O5-WbW" secondAttribute="trailing" constant="8" id="ec2-Ia-3nc"/>
                                                 <constraint firstItem="efv-p1-yqA" firstAttribute="top" secondItem="A8o-Aw-au4" secondAttribute="bottom" constant="2" id="qNK-mw-OPm"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="efv-p1-yqA" secondAttribute="bottom" priority="999" constant="8" id="w3v-Qu-xGW"/>
                                                 <constraint firstItem="fV3-O5-WbW" firstAttribute="top" secondItem="efv-p1-yqA" secondAttribute="bottom" constant="8" id="wf3-Bw-9n0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="xya-Pj-GjR" id="M5z-GU-pvB"/>
                                             <outlet property="attendanceButton" destination="fV3-O5-WbW" id="LTI-5G-a3x"/>
                                             <outlet property="attendanceLabel" destination="aD6-E4-XEy" id="B4z-V5-mmg"/>
                                             <outlet property="buttonToSuperviewConstraint" destination="7vu-Qy-6d3" id="n0s-bT-29B"/>

@@ -14,6 +14,7 @@
 		5D1657891C6AAA18005D2229 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */; };
 		5D16578B1C6AAD73005D2229 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */; };
 		5D3824221D2A89540057097F /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3824211D2A89540057097F /* NotificationTableViewCell.swift */; };
+		5D465FF41D5D4D62001FAA16 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D465FF31D5D4D62001FAA16 /* ParseClient.swift */; };
 		5D57D6FA1CDD93D600FF0D0E /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D57D6F91CDD93D600FF0D0E /* Club.swift */; };
 		5D644C2B1C6AFD0C002FC8E9 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D644C2A1C6AFD0C002FC8E9 /* AboutViewController.swift */; };
 		5D644C2D1C6B0899002FC8E9 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D644C2C1C6B0899002FC8E9 /* ContactViewController.swift */; };
@@ -43,6 +44,7 @@
 		5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		5D3824211D2A89540057097F /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		5D465FF31D5D4D62001FAA16 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		5D57D6F91CDD93D600FF0D0E /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		5D644C2A1C6AFD0C002FC8E9 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5D644C2C1C6B0899002FC8E9 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		5D7054A81D56E48B00B22946 /* ParseClient */ = {
 			isa = PBXGroup;
 			children = (
+				5D465FF31D5D4D62001FAA16 /* ParseClient.swift */,
 			);
 			name = ParseClient;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DCBD46F1C72C15200A6E09D /* ClubsTableViewController.swift in Sources */,
+				5D465FF41D5D4D62001FAA16 /* ParseClient.swift in Sources */,
 				5D7054AC1D56F5DA00B22946 /* WordpressConstants.swift in Sources */,
 				5D0B79521CA495F000CE2E94 /* Event.swift in Sources */,
 				5DCBD4711C72DE1F00A6E09D /* ClubDetailViewController.swift in Sources */,

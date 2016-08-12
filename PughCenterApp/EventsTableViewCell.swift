@@ -15,6 +15,7 @@ class EventsTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var attendanceLabel: UILabel!
     @IBOutlet weak var attendanceButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet var descriptionToSuperviewConstraint: NSLayoutConstraint!
 	@IBOutlet var buttonToSuperviewConstraint: NSLayoutConstraint!
     

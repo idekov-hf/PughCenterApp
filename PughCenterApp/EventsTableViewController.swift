@@ -136,7 +136,7 @@ class EventsTableViewController: UIViewController {
             else if let objects = objects where objects.count > 0 {
                 let event = objects[0]
                 var count = event["attendance"] as! Int
-                if eventTitle == "RSVP" {
+                if eventTitle == Attendance.RSVP.rawValue {
                     event.incrementKey("attendance")
                     count += 1
                 }
