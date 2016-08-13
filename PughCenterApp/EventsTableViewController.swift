@@ -206,7 +206,7 @@ extension EventsTableViewController: UITableViewDataSource {
 		cell.descriptionLabel.text = eventIsExpanded ? event.eventDescription : eventDescriptionText
 		cell.descriptionLabel.textColor = eventIsExpanded ? UIColor.blackColor() : UIColor.grayColor()
         cell.contentView.backgroundColor = eventIsExpanded ? highlightedColor : whiteColor
-//		cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
+		cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
 		cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
 		cell.showAttendanceViews(eventIsExpanded)
         
@@ -270,41 +270,33 @@ extension EventsTableViewController: UITableViewDelegate {
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		
-		var cellArray = [EventsTableViewCell]()
+		var indexPathArray = [NSIndexPath]()
 		
-		let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
 		
 		// Check if there is a previously selected index path
 		if let previouslySelectedPath = selectedIndexPath {
 			deSelectedIndexPath = previouslySelectedPath
-			let deselectedCell = tableView.cellForRowAtIndexPath(deSelectedIndexPath!) as! EventsTableViewCell
-			
 			selectedIndexPath = indexPath
 			
 			// Check if the previously selected index path is the same as the currently selected index path
 			if deSelectedIndexPath == indexPath {
-				events[indexPath.row].isExpanded = !events[indexPath.row].isExpanded
-				cellArray = [selectedCell]
-				
+                let shouldExpand = !events[indexPath.row].isExpanded
+				events[indexPath.row].isExpanded = shouldExpand
+				indexPathArray = [indexPath]
 			} else {
 				events[indexPath.row].isExpanded = true
 				events[deSelectedIndexPath!.row].isExpanded = false
-				cellArray = [selectedCell, deselectedCell]
+				indexPathArray = [indexPath, deSelectedIndexPath!]
 			}
 			
 		} else {
 			
 			selectedIndexPath = indexPath
 			events[indexPath.row].isExpanded = true
-			cellArray = [selectedCell]
+			indexPathArray = [indexPath]
 		}
 		
-		
-		UIView.animateWithDuration(0.3) {
-			for cell in cellArray {
-				cell.contentView.layoutIfNeeded()
-			}
-		}
+        expandCellsAtIndexPaths(indexPathArray)
 		
 		tableView.beginUpdates()
 		tableView.endUpdates()
@@ -312,15 +304,26 @@ extension EventsTableViewController: UITableViewDelegate {
 		tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
 	}
 	
-	func expandEventTableViewCell(expand: Bool, cell: EventsTableViewCell, row: Int) {
+    func expandCellsAtIndexPaths(indexPathArray: [NSIndexPath]) {
 		
-		cell.descriptionLabel.text = expand ? events[row].eventDescription : eventDescriptionText
-		cell.descriptionLabel.textColor = expand ? UIColor.blackColor() : UIColor.grayColor()
-		cell.contentView.backgroundColor = expand ? highlightedColor : whiteColor
-		cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
-		cell.showAttendanceViews(eventIsExpanded)
+        for path in indexPathArray {
+        
+            guard let cell = tableView.cellForRowAtIndexPath(path) as? EventsTableViewCell else {
+                return
+            }
+            let event = events[path.row]
+            let isExpanded = event.isExpanded
+            cell.descriptionLabel.text = isExpanded ? event.eventDescription : eventDescriptionText
+            cell.descriptionLabel.textColor = isExpanded ? UIColor.blackColor() : UIColor.grayColor()
+            cell.contentView.backgroundColor = isExpanded ? highlightedColor : whiteColor
+            cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
+            cell.showAttendanceViews(isExpanded)
+            
+            UIView.animateWithDuration(0.3) {
+                cell.contentView.layoutIfNeeded()
+            }
+        }
 	}
-	
 }
 
 // MARK: - EventParserDelegate
