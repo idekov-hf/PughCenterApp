@@ -40,7 +40,7 @@ class EventsTableViewController: UIViewController {
         
         // Enables self sizing cells
         // http://www.appcoda.com/self-sizing-cells/
-        tableView.estimatedRowHeight = 122
+        tableView.estimatedRowHeight = 125
         tableView.rowHeight = UITableViewAutomaticDimension
 		
         activityIndicator.startAnimating()
@@ -268,61 +268,100 @@ extension EventsTableViewController: UITableViewDelegate {
 //		tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
 //	}
 	
+//	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//		
+//		var indexPathArray = [NSIndexPath]()
+//		
+//		// Check if there is a previously selected index path
+//		if let previouslySelectedPath = selectedIndexPath {
+//			deSelectedIndexPath = previouslySelectedPath
+//			selectedIndexPath = indexPath
+//			
+//			// Check if the previously selected index path is the same as the currently selected index path
+//			if deSelectedIndexPath == indexPath {
+//                let shouldExpand = !events[indexPath.row].isExpanded
+//				events[indexPath.row].isExpanded = shouldExpand
+//				indexPathArray = [indexPath]
+//			} else {
+//				events[indexPath.row].isExpanded = true
+//				events[deSelectedIndexPath!.row].isExpanded = false
+//				indexPathArray = [indexPath, deSelectedIndexPath!]
+//			}
+//			
+//		} else {
+//			
+//			selectedIndexPath = indexPath
+//			events[indexPath.row].isExpanded = true
+//			indexPathArray = [indexPath]
+//		}
+//		
+//        expandCellsAtIndexPaths(indexPathArray)
+//		
+//		tableView.beginUpdates()
+//		tableView.endUpdates()
+//		
+//		tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
+//	}
+	
+//    func expandCellsAtIndexPaths(indexPathArray: [NSIndexPath]) {
+//		
+//        for path in indexPathArray {
+//        
+//            guard let cell = tableView.cellForRowAtIndexPath(path) as? EventsTableViewCell else {
+//                return
+//            }
+//            let event = events[path.row]
+//            let isExpanded = event.isExpanded
+//            cell.descriptionLabel.text = isExpanded ? event.eventDescription : eventDescriptionText
+//            cell.descriptionLabel.textColor = isExpanded ? UIColor.blackColor() : UIColor.grayColor()
+//            cell.contentView.backgroundColor = isExpanded ? highlightedColor : whiteColor
+//            cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
+//            cell.showAttendanceViews(isExpanded)
+//            
+//            UIView.animateWithDuration(0.3) {
+//                cell.contentView.layoutIfNeeded()
+//            }
+//        }
+//	}
+	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		
-		var indexPathArray = [NSIndexPath]()
+		guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? EventsTableViewCell else { return }
 		
+		let event = events[indexPath.row]
+		let isExpanded = !event.isExpanded
+		event.isExpanded = isExpanded
 		
-		// Check if there is a previously selected index path
-		if let previouslySelectedPath = selectedIndexPath {
-			deSelectedIndexPath = previouslySelectedPath
-			selectedIndexPath = indexPath
-			
-			// Check if the previously selected index path is the same as the currently selected index path
-			if deSelectedIndexPath == indexPath {
-                let shouldExpand = !events[indexPath.row].isExpanded
-				events[indexPath.row].isExpanded = shouldExpand
-				indexPathArray = [indexPath]
-			} else {
-				events[indexPath.row].isExpanded = true
-				events[deSelectedIndexPath!.row].isExpanded = false
-				indexPathArray = [indexPath, deSelectedIndexPath!]
-			}
-			
-		} else {
-			
-			selectedIndexPath = indexPath
-			events[indexPath.row].isExpanded = true
-			indexPathArray = [indexPath]
+		cell.descriptionLabel.text = isExpanded ? event.eventDescription : eventDescriptionText
+		cell.expandCell(isExpanded)
+		
+		UIView.animateWithDuration(0.3) {
+			cell.contentView.layoutIfNeeded()
 		}
-		
-        expandCellsAtIndexPaths(indexPathArray)
 		
 		tableView.beginUpdates()
 		tableView.endUpdates()
 		
-		tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
+//		tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
 	}
 	
-    func expandCellsAtIndexPaths(indexPathArray: [NSIndexPath]) {
+	func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
 		
-        for path in indexPathArray {
-        
-            guard let cell = tableView.cellForRowAtIndexPath(path) as? EventsTableViewCell else {
-                return
-            }
-            let event = events[path.row]
-            let isExpanded = event.isExpanded
-            cell.descriptionLabel.text = isExpanded ? event.eventDescription : eventDescriptionText
-            cell.descriptionLabel.textColor = isExpanded ? UIColor.blackColor() : UIColor.grayColor()
-            cell.contentView.backgroundColor = isExpanded ? highlightedColor : whiteColor
-            cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
-            cell.showAttendanceViews(isExpanded)
-            
-            UIView.animateWithDuration(0.3) {
-                cell.contentView.layoutIfNeeded()
-            }
-        }
+		guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? EventsTableViewCell else { return }
+		
+		let event = events[indexPath.row]
+		let isExpanded = false
+		event.isExpanded = isExpanded
+		
+		cell.descriptionLabel.text = isExpanded ? event.eventDescription : eventDescriptionText
+		cell.expandCell(isExpanded)
+		
+		UIView.animateWithDuration(0.3) {
+			cell.contentView.layoutIfNeeded()
+		}
+		
+		tableView.beginUpdates()
+		tableView.endUpdates()
 	}
 }
 

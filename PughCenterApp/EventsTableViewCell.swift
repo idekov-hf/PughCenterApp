@@ -21,12 +21,20 @@ class EventsTableViewCell: UITableViewCell {
 	
 	let greenColor = UIColor(red: 133/255, green: 253/255, blue: 137/255, alpha: 1)
 	let redColor = UIColor(red: 255/255, green: 154/255, blue: 134/255, alpha: 1)
+	let highlightedColor = UIColor(red: 236/255, green: 255/255, blue: 253/255, alpha: 1)
+	let whiteColor = UIColor.whiteColor()
 	
 	var buttonTitle: Attendance! {
 		didSet {
 			attendanceButton.setTitle(buttonTitle.rawValue, forState: .Normal)
 			attendanceButton.backgroundColor = buttonTitle == Attendance.RSVP ? greenColor : redColor
 		}
+	}
+	
+	func expandCell(expand: Bool) {
+		contentView.backgroundColor = expand ? highlightedColor : whiteColor
+		descriptionLabel.textColor = expand ? UIColor.blackColor() : UIColor.grayColor()
+		showAttendanceViews(expand)
 	}
 	
 	func showAttendanceViews(cellExpanded: Bool) {
