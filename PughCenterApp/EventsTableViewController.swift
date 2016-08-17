@@ -84,7 +84,16 @@ class EventsTableViewController: UIViewController {
 			let newTitle = buttonTitle == Attendance.RSVP.rawValue ? Attendance.Cancel.rawValue : Attendance.RSVP.rawValue
             sender.setTitle(newTitle, forState: .Normal)
 			
-            adjustAttendanceData(buttonTitle!, row: selectedRow)
+			let eventURL = events[selectedRow].link
+			
+			setAttendanceEnabled(false, cell: tableView.cellForRowAtIndexPath(selectedIndexPath!) as! EventsTableViewCell)
+			ParseClient.sharedInstance.adjustAttendanceCount(buttonTitle!, eventURL: eventURL, row: selectedRow) {
+				count in
+				
+				let cell = self.tableView.cellForRowAtIndexPath(self.selectedIndexPath!) as! EventsTableViewCell
+				cell.attendanceLabel?.text = "\(count)"
+				self.setAttendanceEnabled(true, cell: self.tableView.cellForRowAtIndexPath(self.selectedIndexPath!) as! EventsTableViewCell)
+			}
             
             // Update the title of the button associated with the selected Event
             events[selectedRow].buttonStatus = newTitle
@@ -94,87 +103,6 @@ class EventsTableViewController: UIViewController {
             // Persist the button title dictionary
             defaults.setObject(linkDictionary, forKey: "linkDictionary")
             defaults.synchronize()
-        }
-    }
-        
-    func adjustAttendanceCount(indexPath: NSIndexPath) {
-        let query = PFQuery(className: "Event")
-        query.whereKey("link", equalTo: events[indexPath.row].link)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            // If the object exists, update the attendanceLabel.text value of the appropriate cell
-            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! EventsTableViewCell
-            guard error == nil else {
-                print(error)
-                return
-            }
-            guard let pfObjects = objects where pfObjects.count > 0 else {
-                cell.attendanceLabel?.text = "0"
-                return
-            }
-            let event = pfObjects[0]
-            cell.attendanceLabel?.text = "\(event["attendance"])"
-        }
-    }
-    
-    func adjustCountOnPress(count: Int) {
-        let cell = self.tableView.cellForRowAtIndexPath(selectedIndexPath!) as! EventsTableViewCell
-        cell.attendanceLabel?.text = "\(count)"
-    }
-    
-    func adjustAttendanceData(eventTitle: String, row: Int) {
-		
-		setAttendanceEnabled(false, cell: tableView.cellForRowAtIndexPath(selectedIndexPath!) as! EventsTableViewCell)
-        // Query the Parse database in order to find a PFObject using the link of the event associated with the selected cell
-        let query = PFQuery(className: "Event")
-        query.whereKey("link", equalTo: events[row].link)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            // If there is an error, print it out
-            if error != nil {
-                print("Error: \(error!)")
-            }
-            // If the array contains more than 0 objects, increment/decrement the attendance counter
-            else if let objects = objects where objects.count > 0 {
-				
-                let event = objects[0]
-                var count = event["attendance"] as! Int
-                if eventTitle == Attendance.RSVP.rawValue {
-                    event.incrementKey("attendance")
-                    count += 1
-                }
-                else {
-                    event.incrementKey("attendance", byAmount: -1)
-                    count -= 1
-                }
-                self.adjustCountOnPress(count)
-                event.saveInBackgroundWithBlock {
-                    (success: Bool, error: NSError?) -> Void in
-                    if (success) {
-                    } else {
-                        // There was a problem, check error.description
-                        print("Save not successful because: \(error?.description)")
-                    }
-                }
-				
-				self.setAttendanceEnabled(true, cell: self.tableView.cellForRowAtIndexPath(self.selectedIndexPath!) as! EventsTableViewCell)
-            }
-            // If it doesn't, create a new PFObject, set the attendance field to 1 and set the link field as well
-            else {
-                let eventObject = PFObject(className: "Event")
-                self.adjustCountOnPress(1)
-                eventObject["attendance"] = 1
-                eventObject["link"] = self.events[row].link
-                eventObject.saveInBackgroundWithBlock {
-                    (success: Bool, error: NSError?) -> Void in
-                    if (success) {
-                        // The object has been saved, update the attendance count of the event cell
-                    } else {
-                        // There was a problem, check error.description
-                        print("Did not save object in background because: \(error?.description)")
-                    }
-                }
-            }
         }
     }
 }
@@ -236,121 +164,24 @@ extension EventsTableViewController: UITableViewDataSource {
 // MARK: - UITableView Delegate
 extension EventsTableViewController: UITableViewDelegate {
 	
-//	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//		
-//		// Array that will store the indexPaths to be reloaded
-//		var paths = [NSIndexPath]()
-//		
-//		// Check if there is a previously selected index path
-//		if let previouslySelectedPath = selectedIndexPath {
-//			deSelectedIndexPath = previouslySelectedPath
-//			selectedIndexPath = indexPath
-//			
-//			// Check if the previously selected index path is the same as the currently selected index path
-//			if deSelectedIndexPath == indexPath {
-//				events[indexPath.row].isExpanded = !events[indexPath.row].isExpanded
-//				paths = [indexPath]
-//			} else {
-//				events[indexPath.row].isExpanded = true
-//				events[deSelectedIndexPath!.row].isExpanded = false
-//				paths = [indexPath, deSelectedIndexPath!]
-//			}
-//			
-//		} else {
-//		
-//			selectedIndexPath = indexPath
-//			events[indexPath.row].isExpanded = true
-//			paths = [selectedIndexPath!]
-//		}
-//		
-//		tableView.reloadRowsAtIndexPaths(paths, withRowAnimation: .Automatic)
-//		
-//		tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
-//	}
-	
-//	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//		
-//		var indexPathArray = [NSIndexPath]()
-//		
-//		// Check if there is a previously selected index path
-//		if let previouslySelectedPath = selectedIndexPath {
-//			deSelectedIndexPath = previouslySelectedPath
-//			selectedIndexPath = indexPath
-//			
-//			// Check if the previously selected index path is the same as the currently selected index path
-//			if deSelectedIndexPath == indexPath {
-//                let shouldExpand = !events[indexPath.row].isExpanded
-//				events[indexPath.row].isExpanded = shouldExpand
-//				indexPathArray = [indexPath]
-//			} else {
-//				events[indexPath.row].isExpanded = true
-//				events[deSelectedIndexPath!.row].isExpanded = false
-//				indexPathArray = [indexPath, deSelectedIndexPath!]
-//			}
-//			
-//		} else {
-//			
-//			selectedIndexPath = indexPath
-//			events[indexPath.row].isExpanded = true
-//			indexPathArray = [indexPath]
-//		}
-//		
-//        expandCellsAtIndexPaths(indexPathArray)
-//		
-//		tableView.beginUpdates()
-//		tableView.endUpdates()
-//		
-//		tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
-//	}
-	
-//    func expandCellsAtIndexPaths(indexPathArray: [NSIndexPath]) {
-//		
-//        for path in indexPathArray {
-//        
-//            guard let cell = tableView.cellForRowAtIndexPath(path) as? EventsTableViewCell else {
-//                return
-//            }
-//            let event = events[path.row]
-//            let isExpanded = event.isExpanded
-//            cell.descriptionLabel.text = isExpanded ? event.eventDescription : eventDescriptionText
-//            cell.descriptionLabel.textColor = isExpanded ? UIColor.blackColor() : UIColor.grayColor()
-//            cell.contentView.backgroundColor = isExpanded ? highlightedColor : whiteColor
-//            cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
-//            cell.showAttendanceViews(isExpanded)
-//            
-//            UIView.animateWithDuration(0.3) {
-//                cell.contentView.layoutIfNeeded()
-//            }
-//        }
-//	}
-	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		
-		guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? EventsTableViewCell else { return }
+		selectedIndexPath = indexPath
 		
-		let event = events[indexPath.row]
-		let isExpanded = !event.isExpanded
-		event.isExpanded = isExpanded
-		
-		cell.descriptionLabel.text = isExpanded ? event.eventDescription : eventDescriptionText
-		cell.expandCell(isExpanded)
-		
-		UIView.animateWithDuration(0.3) {
-			cell.contentView.layoutIfNeeded()
-		}
-		
-		tableView.beginUpdates()
-		tableView.endUpdates()
-		
-//		tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
+		expandCellAtIndexPath(!events[indexPath.row].isExpanded, indexPath: indexPath)
 	}
 	
 	func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
 		
+		expandCellAtIndexPath(false, indexPath: indexPath)
+	}
+	
+	func expandCellAtIndexPath(expand: Bool, indexPath: NSIndexPath) {
+		
 		guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? EventsTableViewCell else { return }
 		
 		let event = events[indexPath.row]
-		let isExpanded = false
+		let isExpanded = expand
 		event.isExpanded = isExpanded
 		
 		cell.descriptionLabel.text = isExpanded ? event.eventDescription : eventDescriptionText
@@ -362,6 +193,14 @@ extension EventsTableViewController: UITableViewDelegate {
 		
 		tableView.beginUpdates()
 		tableView.endUpdates()
+		
+		if expand {
+			setAttendanceEnabled(false, cell: cell)
+			ParseClient.sharedInstance.getAttendanceCountForEvent(event.link, completionHandler: { (attendanceCount) in
+				self.setAttendanceEnabled(true, cell: cell)
+				cell.attendanceLabel.text = "\(attendanceCount)"
+			})
+		}
 	}
 }
 

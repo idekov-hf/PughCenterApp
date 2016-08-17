@@ -47,6 +47,44 @@ class ParseClient {
 		eventObject["link"] = url
 		eventObject.saveInBackground()
 	}
+	
+	func adjustAttendanceCount(eventTitle: String, eventURL: String, row: Int, completionHandler: (count: Int) -> Void) {
+		
+		// Query the Parse database in order to find a PFObject using the link of the event associated with the selected cell
+		let query = PFQuery(className: "Event")
+		query.whereKey("link", equalTo: eventURL)
+		query.findObjectsInBackgroundWithBlock {
+			(objects: [PFObject]?, error: NSError?) -> Void in
+			// If there is an error, print it out
+			if error != nil {
+				print("Error: \(error!)")
+			}
+				// If the array contains more than 0 objects, increment/decrement the attendance counter
+			else if let objects = objects where objects.count > 0 {
+				
+				let event = objects[0]
+				var count = event["attendance"] as! Int
+				if eventTitle == Attendance.RSVP.rawValue {
+					event.incrementKey("attendance")
+					count += 1
+				}
+				else {
+					event.incrementKey("attendance", byAmount: -1)
+					count -= 1
+				}
+				
+				event.saveInBackgroundWithBlock {
+					(success: Bool, error: NSError?) -> Void in
+					if (success) {
+						completionHandler(count: count)
+					} else {
+						// There was a problem, check error.description
+						print("Save not successful because: \(error?.description)")
+					}
+				}
+			}
+		}
+	}
 }
 
 extension ParseClient {
