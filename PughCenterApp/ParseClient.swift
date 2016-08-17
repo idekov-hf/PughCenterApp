@@ -18,7 +18,7 @@ class ParseClient {
     func getAttendanceCountForEvent(url: String, completionHandler: (attendanceCount: Int) -> Void) {
 		
         let query = PFQuery(className: ClassNames.Event)
-        query.whereKey(Keys.URL, equalTo: url)
+        query.whereKey(Keys.Link, equalTo: url)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
@@ -42,17 +42,17 @@ class ParseClient {
 	
 	func createNewEventObject(url: String) {
 		
-		let eventObject = PFObject(className: "Event")
-		eventObject["attendance"] = 0
-		eventObject["link"] = url
+		let eventObject = PFObject(className: ClassNames.Event)
+		eventObject[Keys.Attendance] = 0
+		eventObject[Keys.Link] = url
 		eventObject.saveInBackground()
 	}
 	
 	func adjustAttendanceCount(eventTitle: String, eventURL: String, row: Int, completionHandler: (count: Int) -> Void) {
 		
 		// Query the Parse database in order to find a PFObject using the link of the event associated with the selected cell
-		let query = PFQuery(className: "Event")
-		query.whereKey("link", equalTo: eventURL)
+		let query = PFQuery(className: ClassNames.Event)
+		query.whereKey(Keys.Link, equalTo: eventURL)
 		query.findObjectsInBackgroundWithBlock {
 			(objects: [PFObject]?, error: NSError?) -> Void in
 			// If there is an error, print it out
@@ -63,13 +63,13 @@ class ParseClient {
 			else if let objects = objects where objects.count > 0 {
 				
 				let event = objects[0]
-				var count = event["attendance"] as! Int
+				var count = event[Keys.Attendance] as! Int
 				if eventTitle == Attendance.RSVP.rawValue {
-					event.incrementKey("attendance")
+					event.incrementKey(Keys.Attendance)
 					count += 1
 				}
 				else {
-					event.incrementKey("attendance", byAmount: -1)
+					event.incrementKey(Keys.Attendance, byAmount: -1)
 					count -= 1
 				}
 				
@@ -97,6 +97,6 @@ extension ParseClient {
     struct Keys {
 		
         static let Attendance = "attendance"
-        static let URL = "link"
+        static let Link = "link"
     }
 }
