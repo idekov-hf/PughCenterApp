@@ -177,16 +177,18 @@ extension EventsTableViewController: UITableViewDelegate {
 	
 	func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
 		
+		print("didDeselectRow")
+		
 		expandCellAtIndexPath(false, indexPath: indexPath)
 	}
 	
 	func expandCellAtIndexPath(expand: Bool, indexPath: NSIndexPath) {
 		
-		guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? EventsTableViewCell else { return }
-		
 		let event = events[indexPath.row]
 		let isExpanded = expand
 		event.isExpanded = isExpanded
+		
+		guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? EventsTableViewCell else { return }
 		
 		cell.descriptionLabel.text = isExpanded ? event.eventDescription : eventDescriptionText
 		cell.expandCell(isExpanded)
