@@ -177,8 +177,6 @@ extension EventsTableViewController: UITableViewDelegate {
 	
 	func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
 		
-		print("didDeselectRow")
-		
 		expandCellAtIndexPath(false, indexPath: indexPath)
 	}
 	
