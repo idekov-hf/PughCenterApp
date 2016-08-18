@@ -23,10 +23,10 @@ class NotificationsViewController: UIViewController {
         tableView.estimatedRowHeight = 155.0
         tableView.rowHeight = UITableViewAutomaticDimension
 		
-		let imageView = UIImageView(image: UIImage(named: "PughCenterLogo"))
-		imageView.contentMode = .Center
+//		let imageView = UIImageView(image: UIImage(named: "PughCenterLogo"))
+//		imageView.contentMode = .Center
 		
-		tableView.backgroundView = imageView
+//		tableView.backgroundView = imageView
 		
         activityIndicator.startAnimating()
         

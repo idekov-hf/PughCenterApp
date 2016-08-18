@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -129,6 +129,23 @@
                                     <outlet property="delegate" destination="7Kj-8f-U2p" id="SaP-rD-jR0"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YV0-1Q-x73">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are currently no upcoming events. Please check again during the semester." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFi-vB-3Bc">
+                                        <rect key="frame" x="64" y="120" width="472" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="zFi-vB-3Bc" firstAttribute="leading" secondItem="YV0-1Q-x73" secondAttribute="leading" constant="64" id="EgV-3s-uga"/>
+                                    <constraint firstItem="zFi-vB-3Bc" firstAttribute="top" secondItem="YV0-1Q-x73" secondAttribute="top" constant="120" id="bwI-sU-Mrk"/>
+                                    <constraint firstAttribute="trailing" secondItem="zFi-vB-3Bc" secondAttribute="trailing" constant="64" id="veT-4H-tbL"/>
+                                </constraints>
+                            </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zQh-EW-gsm">
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                             </activityIndicatorView>
@@ -137,6 +154,10 @@
                         <constraints>
                             <constraint firstItem="zQh-EW-gsm" firstAttribute="centerY" secondItem="48n-B2-lfM" secondAttribute="centerY" id="7Vk-I9-JLA"/>
                             <constraint firstItem="oSa-8x-54A" firstAttribute="top" secondItem="w8N-9J-165" secondAttribute="bottom" id="BLF-h6-LWd"/>
+                            <constraint firstAttribute="trailing" secondItem="YV0-1Q-x73" secondAttribute="trailing" id="JRt-5T-Ud7"/>
+                            <constraint firstItem="oSa-8x-54A" firstAttribute="top" secondItem="YV0-1Q-x73" secondAttribute="bottom" id="Lfp-WA-w8B"/>
+                            <constraint firstItem="YV0-1Q-x73" firstAttribute="leading" secondItem="48n-B2-lfM" secondAttribute="leading" id="N1B-zR-eQs"/>
+                            <constraint firstItem="YV0-1Q-x73" firstAttribute="top" secondItem="E2h-dY-OYC" secondAttribute="bottom" id="STE-ex-Nwe"/>
                             <constraint firstItem="w8N-9J-165" firstAttribute="top" secondItem="48n-B2-lfM" secondAttribute="top" id="ZVt-Lh-rQg"/>
                             <constraint firstItem="w8N-9J-165" firstAttribute="leading" secondItem="48n-B2-lfM" secondAttribute="leading" id="hCs-7C-Paq"/>
                             <constraint firstItem="zQh-EW-gsm" firstAttribute="centerX" secondItem="48n-B2-lfM" secondAttribute="centerX" id="jLe-l0-alA"/>
@@ -149,6 +170,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="zQh-EW-gsm" id="PhQ-sP-6PB"/>
                         <outlet property="menuButton" destination="3Xo-4Y-O9l" id="3Jg-Zx-q6J"/>
+                        <outlet property="noEventsView" destination="YV0-1Q-x73" id="4ML-XG-BBn"/>
                         <outlet property="tableView" destination="w8N-9J-165" id="eMw-uA-UHh"/>
                     </connections>
                 </viewController>

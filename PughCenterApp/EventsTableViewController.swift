@@ -16,6 +16,7 @@ class EventsTableViewController: UIViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
 	@IBOutlet var tableView: UITableView!
 	@IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var noEventsView: UIView!
 	
 	// MARK: Properties
     let eventParser = EventParser()
@@ -24,6 +25,7 @@ class EventsTableViewController: UIViewController {
 	let redColor = UIColor(red: 255/255, green: 154/255, blue: 134/255, alpha: 1)
 	let eventDescriptionText = "Press for event description >"
     let highlightedColor = UIColor(red: 236/255, green: 255/255, blue: 253/255, alpha: 1)
+    
     let whiteColor = UIColor.whiteColor()
 	
     var events = [Event]()
@@ -215,8 +217,15 @@ extension EventsTableViewController: EventParserDelegate {
         
         // Reload the table contents in the main queue
         dispatch_async(dispatch_get_main_queue()) {
-            self.tableView.reloadData()
             self.activityIndicator.stopAnimating()
+            if self.events.count > 0 {
+                self.tableView.hidden = false
+                self.noEventsView.hidden = true
+                self.tableView.reloadData()
+            } else {
+                self.noEventsView.hidden = false
+                self.tableView.hidden = true
+            }
         }
         
         // Add local notifications for each event

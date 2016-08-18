@@ -22,6 +22,7 @@
 		5D7054AA1D56EEB500B22946 /* WordpressClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7054A91D56EEB500B22946 /* WordpressClient.swift */; };
 		5D7054AC1D56F5DA00B22946 /* WordpressConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7054AB1D56F5DA00B22946 /* WordpressConstants.swift */; };
 		5D7054AE1D5700A900B22946 /* WordpressConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7054AD1D5700A900B22946 /* WordpressConvenience.swift */; };
+		5D9343F61D65365D00B1CE07 /* EmptyTestData.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5D9343F51D65365D00B1CE07 /* EmptyTestData.xml */; };
 		5DA58EFF1C696EFD00CB062D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */; };
 		5DA58F041C696EFD00CB062D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F021C696EFD00CB062D /* Main.storyboard */; };
 		5DA58F061C696EFD00CB062D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F051C696EFD00CB062D /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		5D7054A91D56EEB500B22946 /* WordpressClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordpressClient.swift; sourceTree = "<group>"; };
 		5D7054AB1D56F5DA00B22946 /* WordpressConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordpressConstants.swift; sourceTree = "<group>"; };
 		5D7054AD1D5700A900B22946 /* WordpressConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordpressConvenience.swift; sourceTree = "<group>"; };
+		5D9343F51D65365D00B1CE07 /* EmptyTestData.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = EmptyTestData.xml; sourceTree = "<group>"; };
 		5DA58EFB1C696EFD00CB062D /* PughCenterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PughCenterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DA58F031C696EFD00CB062D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -180,10 +182,11 @@
 				5D3824231D2A89D80057097F /* View */,
 				5D41D2421CBC7B7800F21991 /* Controller */,
 				5DA58F051C696EFD00CB062D /* Assets.xcassets */,
-				5DA58F071C696EFD00CB062D /* LaunchScreen.storyboard */,
+				5DA58F021C696EFD00CB062D /* Main.storyboard */,
 				5DA58F0A1C696EFD00CB062D /* Info.plist */,
 				5DC470CC1D25642700105D29 /* TestData.xml */,
-				5DA58F021C696EFD00CB062D /* Main.storyboard */,
+				5D9343F51D65365D00B1CE07 /* EmptyTestData.xml */,
+				5DA58F071C696EFD00CB062D /* LaunchScreen.storyboard */,
 			);
 			path = PughCenterApp;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D644C2F1C6B0BFC002FC8E9 /* Sliding Menu Tutorial in Resources */,
+				5D9343F61D65365D00B1CE07 /* EmptyTestData.xml in Resources */,
 				5DA58F091C696EFD00CB062D /* LaunchScreen.storyboard in Resources */,
 				5DA58F061C696EFD00CB062D /* Assets.xcassets in Resources */,
 				5DC470CD1D25642700105D29 /* TestData.xml in Resources */,
