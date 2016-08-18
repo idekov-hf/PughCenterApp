@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -51,13 +51,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtn-cz-t4S">
                                                     <rect key="frame" x="16" y="16" width="568" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" red="0.19215686269999999" green="0.28235294119999998" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.29019607843137252" green="0.53333333333333333" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8o-Aw-au4">
                                                     <rect key="frame" x="16" y="40" width="568" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.098039215690000001" green="0.26274509800000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.22745098039215686" green="0.25882352941176467" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aD6-E4-XEy">
@@ -165,7 +165,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="swz-0A-xBO">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="3Xo-4Y-O9l"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="3Xo-4Y-O9l">
+                            <color key="tintColor" red="1" green="0.38823529411764707" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="zQh-EW-gsm" id="PhQ-sP-6PB"/>
@@ -192,7 +194,7 @@
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oiO-hL-QbV">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="337"/>
-                                    <color key="backgroundColor" red="0.95686274510000002" green="1" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.69411764705882351" green="0.72941176470588232" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                             </subviews>
                         </view>
@@ -209,13 +211,12 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pugh Center" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cph-Ys-EmC">
                                                     <rect key="frame" x="8" y="11" width="112" height="21"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" red="0.19215686269999999" green="0.28235294119999998" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.086274509803921567" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.82482172819999999" green="0.95671665269999995" blue="0.95809666569999996" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.66705117449999995" green="0.95320364930000001" blue="0.91321411529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.25882352941176473" green="0.40000000000000002" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Sb1-gB-a4z">
                                         <rect key="frame" x="0.0" y="44" width="600" height="44"/>
@@ -231,7 +232,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.95686274509803915" green="1" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.69411764710000001" green="0.72941176470000002" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.95686274510000002" green="1" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -252,6 +253,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.69411764710000001" green="0.72941176470000002" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.95686274510000002" green="1" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -272,7 +274,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.95686274510000002" green="1" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.69411764710000001" green="0.72941176470000002" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.95686274510000002" green="1" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -293,7 +295,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.95686274510000002" green="1" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.69411764710000001" green="0.72941176470000002" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.95686274510000002" green="1" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -315,7 +317,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.95686274510000002" green="1" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.69411764710000001" green="0.72941176470000002" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="Kbv-pa-DgR" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Ve9-rN-RpA"/>
                                         </connections>
@@ -335,7 +337,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.95686274510000002" green="1" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.69411764710000001" green="0.72941176470000002" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="esX-Lx-888" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="PhJ-Vu-Ewl"/>
                                         </connections>
@@ -512,9 +514,9 @@ pughcenter@colby.edu</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vsE-B2-Zhf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.82482172819999999" green="0.95671665269999995" blue="0.95809666569999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.22352941176470587" green="0.41176470588235292" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.1058823529" green="0.21960784310000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.086274509799999996" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -917,4 +919,7 @@ pughcenter@colby.edu</string>
             <point key="canvasLocation" x="1066" y="321"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="22" height="22"/>
+    </resources>
 </document>

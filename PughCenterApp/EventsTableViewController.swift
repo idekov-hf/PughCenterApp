@@ -21,7 +21,8 @@ class EventsTableViewController: UIViewController {
 	// MARK: Properties
     let eventParser = EventParser()
     let defaults = NSUserDefaults.standardUserDefaults()
-	let greenColor = UIColor(red: 133/255, green: 253/255, blue: 137/255, alpha: 1)
+//	let greenColor = UIColor(red: 133/255, green: 253/255, blue: 137/255, alpha: 1)
+	let greenColor = UIColor(red: 191/255, green: 255/255, blue: 122/255, alpha: 1)
 	let redColor = UIColor(red: 255/255, green: 154/255, blue: 134/255, alpha: 1)
 	let eventDescriptionText = "Press for event description >"
     let highlightedColor = UIColor(red: 236/255, green: 255/255, blue: 253/255, alpha: 1)
@@ -128,16 +129,17 @@ extension EventsTableViewController: UITableViewDataSource {
 		let event = events[indexPath.row]
 		let eventIsExpanded = event.isExpanded
 		
-		let dateAsString = DateFormatters.outDateFormatter.stringFromDate(event.startDate!)
-		
 		cell.titleLabel.text = event.title
+		let dateAsString = DateFormatters.outDateFormatter.stringFromDate(event.startDate!)
 		cell.dateLabel.text = dateAsString
-		
 		cell.descriptionLabel.text = eventIsExpanded ? event.eventDescription : eventDescriptionText
+		cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
+		
 		cell.descriptionLabel.textColor = eventIsExpanded ? UIColor.blackColor() : UIColor.grayColor()
         cell.contentView.backgroundColor = eventIsExpanded ? highlightedColor : whiteColor
 		cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
-		cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
+//		cell.attendanceButton.setTitleColor(whiteColor, forState: .Normal)
+		
 		cell.showAttendanceViews(eventIsExpanded)
         
         if eventIsExpanded {
