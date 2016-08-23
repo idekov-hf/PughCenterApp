@@ -28,7 +28,8 @@ class EventsTableViewCell: UITableViewCell {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		attendanceButton.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+//		attendanceButton.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+		attendanceButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
 	}
 	
 	var buttonTitle: Attendance! {
