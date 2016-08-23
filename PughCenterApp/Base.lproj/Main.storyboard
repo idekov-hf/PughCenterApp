@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -166,7 +166,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="swz-0A-xBO">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="3Xo-4Y-O9l">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.0" green="0.15686274510000001" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -192,11 +192,17 @@
                             <rect key="frame" x="0.0" y="308" width="600" height="400"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oiO-hL-QbV">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="337"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oiO-hL-QbV">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                             </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="oiO-hL-QbV" secondAttribute="trailing" id="5n5-Qp-iF1"/>
+                                <constraint firstItem="oiO-hL-QbV" firstAttribute="leading" secondItem="vXq-We-gFr" secondAttribute="leading" id="Us9-E1-B5i"/>
+                                <constraint firstAttribute="bottom" secondItem="oiO-hL-QbV" secondAttribute="bottom" id="X3a-7k-JeO"/>
+                                <constraint firstItem="oiO-hL-QbV" firstAttribute="top" secondItem="vXq-We-gFr" secondAttribute="top" id="s8G-zk-Pr8"/>
+                            </constraints>
                         </view>
                         <sections>
                             <tableViewSection id="Wxb-jA-GN8">
@@ -216,7 +222,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.22352941176470587" green="0.41176470588235292" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Sb1-gB-a4z">
@@ -511,9 +517,9 @@ pughcenter@colby.edu</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vsE-B2-Zhf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.22352941176470587" green="0.41176470588235292" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.047058823529411764" green="0.18431372549019609" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.0" green="0.086274509799999996" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

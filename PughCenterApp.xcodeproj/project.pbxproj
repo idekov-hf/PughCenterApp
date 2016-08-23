@@ -27,6 +27,14 @@
 		5DA58F041C696EFD00CB062D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F021C696EFD00CB062D /* Main.storyboard */; };
 		5DA58F061C696EFD00CB062D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F051C696EFD00CB062D /* Assets.xcassets */; };
 		5DA58F091C696EFD00CB062D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA58F071C696EFD00CB062D /* LaunchScreen.storyboard */; };
+		5DA655C91D6CACD800230EC1 /* ITCFranklinGothicStd-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA655C11D6CACD800230EC1 /* ITCFranklinGothicStd-Book.otf */; };
+		5DA655CA1D6CACD800230EC1 /* ITCFranklinGothicStd-BookIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA655C21D6CACD800230EC1 /* ITCFranklinGothicStd-BookIt.otf */; };
+		5DA655CB1D6CACD800230EC1 /* ITCFranklinGothicStd-Demi.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA655C31D6CACD800230EC1 /* ITCFranklinGothicStd-Demi.otf */; };
+		5DA655CC1D6CACD800230EC1 /* ITCFranklinGothicStd-DemiIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA655C41D6CACD800230EC1 /* ITCFranklinGothicStd-DemiIt.otf */; };
+		5DA655CD1D6CACD800230EC1 /* ITCFranklinGothicStd-Hvy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA655C51D6CACD800230EC1 /* ITCFranklinGothicStd-Hvy.otf */; };
+		5DA655CE1D6CACD800230EC1 /* ITCFranklinGothicStd-HvyIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA655C61D6CACD800230EC1 /* ITCFranklinGothicStd-HvyIt.otf */; };
+		5DA655CF1D6CACD800230EC1 /* ITCFranklinGothicStd-Med.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA655C71D6CACD800230EC1 /* ITCFranklinGothicStd-Med.otf */; };
+		5DA655D01D6CACD800230EC1 /* ITCFranklinGothicStd-MedIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA655C81D6CACD800230EC1 /* ITCFranklinGothicStd-MedIt.otf */; };
 		5DC470CD1D25642700105D29 /* TestData.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5DC470CC1D25642700105D29 /* TestData.xml */; };
 		5DCBD46F1C72C15200A6E09D /* ClubsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */; };
 		5DCBD4711C72DE1F00A6E09D /* ClubDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */; };
@@ -60,6 +68,14 @@
 		5DA58F051C696EFD00CB062D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DA58F081C696EFD00CB062D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DA58F0A1C696EFD00CB062D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DA655C11D6CACD800230EC1 /* ITCFranklinGothicStd-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITCFranklinGothicStd-Book.otf"; sourceTree = "<group>"; };
+		5DA655C21D6CACD800230EC1 /* ITCFranklinGothicStd-BookIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITCFranklinGothicStd-BookIt.otf"; sourceTree = "<group>"; };
+		5DA655C31D6CACD800230EC1 /* ITCFranklinGothicStd-Demi.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITCFranklinGothicStd-Demi.otf"; sourceTree = "<group>"; };
+		5DA655C41D6CACD800230EC1 /* ITCFranklinGothicStd-DemiIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITCFranklinGothicStd-DemiIt.otf"; sourceTree = "<group>"; };
+		5DA655C51D6CACD800230EC1 /* ITCFranklinGothicStd-Hvy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITCFranklinGothicStd-Hvy.otf"; sourceTree = "<group>"; };
+		5DA655C61D6CACD800230EC1 /* ITCFranklinGothicStd-HvyIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITCFranklinGothicStd-HvyIt.otf"; sourceTree = "<group>"; };
+		5DA655C71D6CACD800230EC1 /* ITCFranklinGothicStd-Med.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITCFranklinGothicStd-Med.otf"; sourceTree = "<group>"; };
+		5DA655C81D6CACD800230EC1 /* ITCFranklinGothicStd-MedIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITCFranklinGothicStd-MedIt.otf"; sourceTree = "<group>"; };
 		5DC470CC1D25642700105D29 /* TestData.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TestData.xml; sourceTree = "<group>"; };
 		5DCBD46E1C72C15200A6E09D /* ClubsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubsTableViewController.swift; sourceTree = "<group>"; };
 		5DCBD4701C72DE1F00A6E09D /* ClubDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +198,7 @@
 				5D3824231D2A89D80057097F /* View */,
 				5D41D2421CBC7B7800F21991 /* Controller */,
 				5DA58F051C696EFD00CB062D /* Assets.xcassets */,
+				5DA655C01D6CACB000230EC1 /* Fonts */,
 				5DA58F021C696EFD00CB062D /* Main.storyboard */,
 				5DA58F0A1C696EFD00CB062D /* Info.plist */,
 				5DC470CC1D25642700105D29 /* TestData.xml */,
@@ -189,6 +206,21 @@
 				5DA58F071C696EFD00CB062D /* LaunchScreen.storyboard */,
 			);
 			path = PughCenterApp;
+			sourceTree = "<group>";
+		};
+		5DA655C01D6CACB000230EC1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5DA655C11D6CACD800230EC1 /* ITCFranklinGothicStd-Book.otf */,
+				5DA655C21D6CACD800230EC1 /* ITCFranklinGothicStd-BookIt.otf */,
+				5DA655C31D6CACD800230EC1 /* ITCFranklinGothicStd-Demi.otf */,
+				5DA655C41D6CACD800230EC1 /* ITCFranklinGothicStd-DemiIt.otf */,
+				5DA655C51D6CACD800230EC1 /* ITCFranklinGothicStd-Hvy.otf */,
+				5DA655C61D6CACD800230EC1 /* ITCFranklinGothicStd-HvyIt.otf */,
+				5DA655C71D6CACD800230EC1 /* ITCFranklinGothicStd-Med.otf */,
+				5DA655C81D6CACD800230EC1 /* ITCFranklinGothicStd-MedIt.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		B34B5FF4DD9FEA8381391DC2 /* Pods */ = {
@@ -276,9 +308,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D644C2F1C6B0BFC002FC8E9 /* Sliding Menu Tutorial in Resources */,
+				5DA655CA1D6CACD800230EC1 /* ITCFranklinGothicStd-BookIt.otf in Resources */,
+				5DA655CF1D6CACD800230EC1 /* ITCFranklinGothicStd-Med.otf in Resources */,
+				5DA655C91D6CACD800230EC1 /* ITCFranklinGothicStd-Book.otf in Resources */,
 				5D9343F61D65365D00B1CE07 /* EmptyTestData.xml in Resources */,
+				5DA655CE1D6CACD800230EC1 /* ITCFranklinGothicStd-HvyIt.otf in Resources */,
+				5DA655CD1D6CACD800230EC1 /* ITCFranklinGothicStd-Hvy.otf in Resources */,
+				5DA655D01D6CACD800230EC1 /* ITCFranklinGothicStd-MedIt.otf in Resources */,
 				5DA58F091C696EFD00CB062D /* LaunchScreen.storyboard in Resources */,
+				5DA655CB1D6CACD800230EC1 /* ITCFranklinGothicStd-Demi.otf in Resources */,
 				5DA58F061C696EFD00CB062D /* Assets.xcassets in Resources */,
+				5DA655CC1D6CACD800230EC1 /* ITCFranklinGothicStd-DemiIt.otf in Resources */,
 				5DC470CD1D25642700105D29 /* TestData.xml in Resources */,
 				5DA58F041C696EFD00CB062D /* Main.storyboard in Resources */,
 			);
