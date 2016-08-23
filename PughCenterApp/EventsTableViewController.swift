@@ -81,7 +81,7 @@ class EventsTableViewController: UIViewController {
         if let selectedRow = selectedIndexPath?.row {
             let buttonTitle = sender.titleLabel?.text
 			
-			let buttonBackgroundColor = buttonTitle == Attendance.RSVP.rawValue ? redColor : greenColor
+			let buttonBackgroundColor = buttonTitle == Attendance.RSVP.rawValue ? UIColor.clearColor() : greenColor
 			sender.backgroundColor = buttonBackgroundColor
 			
 			let newTitle = buttonTitle == Attendance.RSVP.rawValue ? Attendance.Cancel.rawValue : Attendance.RSVP.rawValue
@@ -134,12 +134,10 @@ extension EventsTableViewController: UITableViewDataSource {
 		cell.dateLabel.text = dateAsString
 		cell.descriptionLabel.text = eventIsExpanded ? event.eventDescription : eventDescriptionText
 		cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
+        cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
 		
 		cell.descriptionLabel.textColor = eventIsExpanded ? UIColor.blackColor() : UIColor.grayColor()
         cell.contentView.backgroundColor = eventIsExpanded ? highlightedColor : whiteColor
-		cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
-//		cell.attendanceButton.setTitleColor(whiteColor, forState: .Normal)
-		
 		cell.showAttendanceViews(eventIsExpanded)
         
         if eventIsExpanded {

@@ -35,7 +35,7 @@ class EventsTableViewCell: UITableViewCell {
 		didSet {
 			attendanceButton.setTitle(buttonTitle.rawValue, forState: .Normal)
 			attendanceButton.setTitleColor(whiteColor, forState: .Normal)
-			attendanceButton.backgroundColor = buttonTitle == Attendance.RSVP ? greenColor : redColor
+			attendanceButton.backgroundColor = buttonTitle == Attendance.RSVP ? greenColor : nil
 		}
 	}
 	
