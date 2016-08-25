@@ -20,10 +20,13 @@ class EventsTableViewCell: UITableViewCell {
 	@IBOutlet var buttonToSuperviewConstraint: NSLayoutConstraint!
 	
 //	let greenColor = UIColor(red: 133/255, green: 253/255, blue: 137/255, alpha: 1)
-	let greenColor = UIColor(red: 217/255, green: 245/255, blue: 157/255, alpha: 1)
+//	let greenColor = UIColor(red: 217/255, green: 245/255, blue: 157/255, alpha: 1)
+    let greenColor = UIColor(red:0.00, green:0.16, blue:0.47, alpha:1.0)
 	let redColor = UIColor(red: 255/255, green: 154/255, blue: 134/255, alpha: 1)
 //	let highlightedColor = UIColor(red: 236/255, green: 255/255, blue: 253/255, alpha: 1)
-	let highlightedColor = UIColor(red: 204/255, green: 222/255, blue: 255/255, alpha: 1)
+//	let highlightedColor = UIColor(red: 204/255, green: 222/255, blue: 255/255, alpha: 1)
+//    let highlightedColor = UIColor(red: 235/255, green: 241/255, blue: 255/255, alpha: 1)
+    let highlightedColor = UIColor(red:0.88, green:0.94, blue:1.00, alpha:1.0)
 	let whiteColor = UIColor.whiteColor()
 	
 	override func awakeFromNib() {

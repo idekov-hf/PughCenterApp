@@ -26,7 +26,7 @@ class EventsTableViewController: UIViewController {
 	let greenColor = UIColor(red: 63/255, green: 144/255, blue: 79/255, alpha: 1)
 	let redColor = UIColor(red: 255/255, green: 154/255, blue: 134/255, alpha: 1)
 	let eventDescriptionText = "Press for event description >"
-    let highlightedColor = UIColor(red: 236/255, green: 255/255, blue: 253/255, alpha: 1)
+//    let highlightedColor = UIColor(red: 236/255, green: 255/255, blue: 253/255, alpha: 1)
     
     let whiteColor = UIColor.whiteColor()
 	
@@ -137,9 +137,7 @@ extension EventsTableViewController: UITableViewDataSource {
 		cell.attendanceButton.setTitle(event.buttonStatus, forState: .Normal)
         cell.attendanceButton.backgroundColor = event.buttonStatus == Attendance.RSVP.rawValue ? greenColor : redColor
 		
-		cell.descriptionLabel.textColor = eventIsExpanded ? UIColor.blackColor() : UIColor.grayColor()
-        cell.contentView.backgroundColor = eventIsExpanded ? highlightedColor : whiteColor
-		cell.showAttendanceViews(eventIsExpanded)
+        cell.expandCell(eventIsExpanded)
         
         if eventIsExpanded {
             setAttendanceEnabled(false, cell: cell)
