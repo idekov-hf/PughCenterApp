@@ -24,7 +24,8 @@ class EventsTableViewController: UIViewController {
 //	let greenColor = UIColor(red: 133/255, green: 253/255, blue: 137/255, alpha: 1)
 //	let greenColor = UIColor(red: 191/255, green: 255/255, blue: 122/255, alpha: 1)
 	let greenColor = UIColor(red: 63/255, green: 144/255, blue: 79/255, alpha: 1)
-	let redColor = UIColor(red: 255/255, green: 154/255, blue: 134/255, alpha: 1)
+//	let redColor = UIColor(red: 255/255, green: 154/255, blue: 134/255, alpha: 1)
+    let redColor = UIColor(red:0.55, green:0.26, blue:0.31, alpha:1.0)
 	let eventDescriptionText = "Tap for event description >"
     
     let whiteColor = UIColor.whiteColor()
@@ -81,7 +82,7 @@ class EventsTableViewController: UIViewController {
         if let selectedRow = selectedIndexPath?.row {
             let buttonTitle = sender.titleLabel?.text
 			
-			let buttonBackgroundColor = buttonTitle == Attendance.RSVP.rawValue ? UIColor.clearColor() : greenColor
+			let buttonBackgroundColor = buttonTitle == Attendance.RSVP.rawValue ? redColor : greenColor
 			sender.backgroundColor = buttonBackgroundColor
 			
 			let newTitle = buttonTitle == Attendance.RSVP.rawValue ? Attendance.Cancel.rawValue : Attendance.RSVP.rawValue
