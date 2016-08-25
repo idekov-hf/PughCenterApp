@@ -25,8 +25,7 @@ class EventsTableViewController: UIViewController {
 //	let greenColor = UIColor(red: 191/255, green: 255/255, blue: 122/255, alpha: 1)
 	let greenColor = UIColor(red: 63/255, green: 144/255, blue: 79/255, alpha: 1)
 	let redColor = UIColor(red: 255/255, green: 154/255, blue: 134/255, alpha: 1)
-	let eventDescriptionText = "Press for event description >"
-//    let highlightedColor = UIColor(red: 236/255, green: 255/255, blue: 253/255, alpha: 1)
+	let eventDescriptionText = "Tap for event description >"
     
     let whiteColor = UIColor.whiteColor()
 	

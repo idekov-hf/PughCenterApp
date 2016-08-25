@@ -26,7 +26,7 @@ class EventsTableViewCell: UITableViewCell {
 //	let highlightedColor = UIColor(red: 236/255, green: 255/255, blue: 253/255, alpha: 1)
 //	let highlightedColor = UIColor(red: 204/255, green: 222/255, blue: 255/255, alpha: 1)
 //    let highlightedColor = UIColor(red: 235/255, green: 241/255, blue: 255/255, alpha: 1)
-    let highlightedColor = UIColor(red:0.88, green:0.94, blue:1.00, alpha:1.0)
+    let highlightedColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.0)
 	let whiteColor = UIColor.whiteColor()
 	
 	override func awakeFromNib() {
