@@ -29,6 +29,7 @@ extension WordpressClient {
         static let Clubs = "clubs"
         static let AboutPage = "about_page"
         static let Contacts = "additional_contacts"
+        static let FeaturedEvent = "pugh_events"
     }
     
     struct ParameterValues {
@@ -39,5 +40,10 @@ extension WordpressClient {
         static let Clubs = "clubs"
         static let About = "about_page"
         static let Contacts = "additional_contacts"
+        static let FeaturedEvent = "pugh_events"
+        static let FeaturedEventTitle = "title"
+        static let FeaturedEventImage = "image"
+        static let FeaturedEventDescription = "description"
+        static let FeaturedEventDateAndTime = "date_and_time"
     }
 }

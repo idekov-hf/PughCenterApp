@@ -84,4 +84,24 @@ extension WordpressClient {
             completionHandler(result: contactsArray, error: nil)
         }
     }
+    
+    func getFeaturedEventInformation(completionHandler: (result: [String: AnyObject]!, error: String?) -> Void) {
+        
+        let parameters = [
+            ParameterKeys.FeaturedEvent: ParameterValues.Show
+        ]
+        
+        taskForGETMethod(parameters) { (result, error) in
+            
+            guard let featuredEventsArray = result[JSONResponseKeys.FeaturedEvent] as? [[String : AnyObject]] else {
+                print("Contact info not succesfully extracted")
+                return
+            }
+            
+            let featuredEventInfo = featuredEventsArray[0]
+            
+            completionHandler(result: featuredEventInfo, error: nil)
+        }
+        
+    }
 }
