@@ -16,8 +16,8 @@ class EventParser: NSObject, NSXMLParserDelegate {
     
     weak var delegate: EventParserDelegate?
     
-//    let url = NSURL(string: "https://www.colby.edu/pugh/events-feed/")!
-    let url = NSBundle.mainBundle().URLForResource("TestData", withExtension: "xml")!
+    let url = NSURL(string: "https://www.colby.edu/pugh/events-feed/")!
+//    let url = NSBundle.mainBundle().URLForResource("TestData", withExtension: "xml")!
 //    let url = NSBundle.mainBundle().URLForResource("EmptyTestData", withExtension: "xml")!
     
     let defaults = NSUserDefaults.standardUserDefaults()
