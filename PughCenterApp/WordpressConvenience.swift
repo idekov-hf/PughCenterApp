@@ -87,21 +87,45 @@ extension WordpressClient {
     
     func getFeaturedEventInformation(completionHandler: (result: [String: AnyObject]!, error: String?) -> Void) {
         
+        featuredEventExists { (result, error) in
+            
+            if result == false {
+                
+                let parameters = [
+                    ParameterKeys.FeaturedEvent: ParameterValues.Show
+                ]
+                
+                self.taskForGETMethod(parameters) { (result, error) in
+                    
+                    guard let featuredEventsArray = result[JSONResponseKeys.FeaturedEvent] as? [[String : AnyObject]] else {
+                        print("Contact info not succesfully extracted")
+                        return
+                    }
+                    
+                    let featuredEventInfo = featuredEventsArray[0]
+                    
+                    completionHandler(result: featuredEventInfo, error: nil)
+                }
+            } else {
+                completionHandler(result: nil, error: "No featured event")
+            }
+        }
+    }
+    
+    func featuredEventExists(completionHandler: (result: Bool!, error: String?) -> Void) {
+        
         let parameters = [
-            ParameterKeys.FeaturedEvent: ParameterValues.Show
+            ParameterKeys.FeaturedEventBool: ParameterValues.Show
         ]
         
         taskForGETMethod(parameters) { (result, error) in
             
-            guard let featuredEventsArray = result[JSONResponseKeys.FeaturedEvent] as? [[String : AnyObject]] else {
+            guard let featuredEventExists = result[JSONResponseKeys.FeaturedEventExists] as? Bool else {
                 print("Contact info not succesfully extracted")
                 return
             }
             
-            let featuredEventInfo = featuredEventsArray[0]
-            
-            completionHandler(result: featuredEventInfo, error: nil)
+            completionHandler(result: featuredEventExists, error: nil)
         }
-        
     }
 }

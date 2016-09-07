@@ -30,6 +30,7 @@ extension WordpressClient {
         static let AboutPage = "about_page"
         static let Contacts = "additional_contacts"
         static let FeaturedEvent = "pugh_events"
+        static let FeaturedEventBool = "no_events"
     }
     
     struct ParameterValues {
@@ -45,5 +46,6 @@ extension WordpressClient {
         static let FeaturedEventImage = "image"
         static let FeaturedEventDescription = "description"
         static let FeaturedEventDateAndTime = "date_and_time"
+        static let FeaturedEventExists = "no_events"
     }
 }
