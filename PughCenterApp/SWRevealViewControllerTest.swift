@@ -23,18 +23,6 @@ class SWRevealViewControllerTest: SWRevealViewController {
         else {
             
             frontViewController = storyboard?.instantiateViewControllerWithIdentifier("FeaturedEventNavigationController")
-            
-//            WordpressClient.sharedInstance.featuredEventExists({ (result, error) in
-//                
-//                dispatch_async(dispatch_get_main_queue()) {
-//                
-//                    if result == false {
-//                        self.frontViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FeaturedEventNavigationController")
-//                    } else {
-//                        self.frontViewController = self.storyboard?.instantiateViewControllerWithIdentifier("EventsNavigationController")
-//                    }
-//                }
-//            })
         }
     }
     
