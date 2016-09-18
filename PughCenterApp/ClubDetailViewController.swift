@@ -38,7 +38,7 @@ class ClubDetailViewController: UIViewController {
         urlHeightConstaint.constant = size.height
     }
     
-    // MARK: Helper
+    // MARK: Helper Methods
     func loadImage(imageURL: String) {
         
         if imageURL != "" {

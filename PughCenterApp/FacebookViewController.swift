@@ -8,11 +8,14 @@
 
 import UIKit
 
+// MARK: - FacebookViewController
 class FacebookViewController: UIViewController {
-
+    
+    // MARK: Outlets
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet var webView: UIWebView!
     
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         

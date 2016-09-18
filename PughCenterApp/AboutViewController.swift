@@ -8,13 +8,16 @@
 
 import UIKit
 
+// MARK: - AboutViewController
 class AboutViewController: UIViewController {
     
+    // MARK: Outlets
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var titleLabel: UILabel!
-
+    
+    // MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -9,25 +9,23 @@
 import UIKit
 import Parse
 
+// MARK: - NotificationsViewController
 class NotificationsViewController: UIViewController {
-
+    
+    // MARK: Outlets and Variables
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var notificationData: [PFObject]?
     
+    // MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.estimatedRowHeight = 155.0
         tableView.rowHeight = UITableViewAutomaticDimension
-		
-//		let imageView = UIImageView(image: UIImage(named: "PughCenterLogo"))
-//		imageView.contentMode = .Center
-		
-//		tableView.backgroundView = imageView
-		
+
         activityIndicator.startAnimating()
         
         let screenWidth = UIScreen.mainScreen().bounds.width
@@ -40,6 +38,7 @@ class NotificationsViewController: UIViewController {
         loadData()
     }
     
+    // MARK: Helper Methods
     func loadData() {
         let query = PFQuery(className: "Notification")
         query.orderByDescending("createdAt")

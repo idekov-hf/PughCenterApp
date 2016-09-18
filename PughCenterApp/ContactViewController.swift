@@ -8,12 +8,15 @@
 
 import UIKit
 
+// MARK: - ContactViewController
 class ContactViewController: UIViewController {
-
+    
+    // MARK: Outlets
     @IBOutlet var menuButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    // MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +39,7 @@ class ContactViewController: UIViewController {
         }
     }
     
+    // MARK: Methods
     func displayContactInfo(contactsArray: [[String : AnyObject]]) {
         
         // Attributed string that is currently in the textView in the IB

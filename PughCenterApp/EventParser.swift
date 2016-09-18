@@ -8,17 +8,19 @@
 
 import Foundation
 
+// MARK: - EventParserDelegate
 protocol EventParserDelegate: class {
     func didFinishParsing(sender: EventParser)
 }
 
+// MARK: - EventParser
+
 class EventParser: NSObject, NSXMLParserDelegate {
     
+    // MARK: Properties
     weak var delegate: EventParserDelegate?
     
     let url = NSURL(string: "https://www.colby.edu/pugh/events-feed/")!
-//    let url = NSBundle.mainBundle().URLForResource("TestData", withExtension: "xml")!
-//    let url = NSBundle.mainBundle().URLForResource("EmptyTestData", withExtension: "xml")!
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -27,7 +29,7 @@ class EventParser: NSObject, NSXMLParserDelegate {
     var newLinkDictionary = [String: String]()
     var oldLinkDictionary = [String: String]()
     
-    // Parsing variables
+    // MARK: Parsing Variables
     let validElements = ["title", "description", "ev:startdate", "link"]
     var currentValue: String?
     var eventTitle: String?
@@ -35,6 +37,7 @@ class EventParser: NSObject, NSXMLParserDelegate {
     var eventDate: NSDate?
     var eventLink: String?
     
+    // MARK: Methods
     func beginParsing() {
         if let dictionary = defaults.objectForKey("linkDictionary") as? [String: String] {
             oldLinkDictionary = dictionary

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - SWRevealViewControllerTest
 class SWRevealViewControllerTest: SWRevealViewController {
     
     var notificationReceived = false
