@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         let configuration = ParseClientConfiguration {
-            $0.applicationId = "NVPRIp61qbH3LXvJ9pPn"
-            $0.server = "https://pughcenterapp.herokuapp.com/parse/"
+            $0.applicationId = ParseConstants.ApplicationID
+            $0.server = ParseConstants.ServerURL
         }
         Parse.initializeWithConfiguration(configuration)
         
