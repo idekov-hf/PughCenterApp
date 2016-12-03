@@ -14,6 +14,7 @@
 		5D1657891C6AAA18005D2229 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */; };
 		5D16578B1C6AAD73005D2229 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */; };
 		5D3824221D2A89540057097F /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3824211D2A89540057097F /* NotificationTableViewCell.swift */; };
+		5D3BA2291DF3228100350958 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3BA2281DF3228100350958 /* ParseConstants.swift */; };
 		5D465FF41D5D4D62001FAA16 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D465FF31D5D4D62001FAA16 /* ParseClient.swift */; };
 		5D57D6FA1CDD93D600FF0D0E /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D57D6F91CDD93D600FF0D0E /* Club.swift */; };
 		5D644C2B1C6AFD0C002FC8E9 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D644C2A1C6AFD0C002FC8E9 /* AboutViewController.swift */; };
@@ -52,6 +53,7 @@
 		5D1657881C6AAA18005D2229 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		5D16578A1C6AAD73005D2229 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		5D3824211D2A89540057097F /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		5D3BA2281DF3228100350958 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		5D465FF31D5D4D62001FAA16 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		5D57D6F91CDD93D600FF0D0E /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		5D644C2A1C6AFD0C002FC8E9 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				5D1657831C6AA1AD005D2229 /* SWRevealViewController */,
+				5D3BA2281DF3228100350958 /* ParseConstants.swift */,
 				5DA58EFE1C696EFD00CB062D /* AppDelegate.swift */,
 				5D0B79511CA495F000CE2E94 /* EventParser.swift */,
 				5D41D2401CBC7B6D00F21991 /* Model */,
@@ -398,6 +401,7 @@
 				5D1657891C6AAA18005D2229 /* EventsTableViewController.swift in Sources */,
 				5D57D6FA1CDD93D600FF0D0E /* Club.swift in Sources */,
 				5D644C2D1C6B0899002FC8E9 /* ContactViewController.swift in Sources */,
+				5D3BA2291DF3228100350958 /* ParseConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
